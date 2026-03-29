@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { BatteryCharging, Sun, BrainCircuit, Users, PlugZap, BarChart3 } from 'lucide-react';
+import { translations, Language } from './i18n';
 
 const SectionLabel = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <div className={`inline-block px-4 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-sm font-medium mb-8 backdrop-blur-sm ${className}`}>
@@ -110,68 +111,57 @@ const ProjectRow = ({ num, name, loc, status, statusColor }: { num: string, name
   );
 };
 
-const LegalView = ({ onBack }: { onBack: () => void }) => (
+const LegalView = ({ onBack, lang }: { onBack: () => void, lang: Language }) => {
+  const t = translations[lang].legal;
+  return (
   <div className="min-h-screen pt-32 pb-20 px-5 md:px-10 max-w-[800px] mx-auto z-10 relative bg-paper text-white">
     <button onClick={onBack} className="mb-12 font-display text-sm font-bold tracking-wide text-white/50 hover:text-accent transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">
-      ← Terug naar home
+      {t.back}
     </button>
     
     <div className="space-y-12 text-white/70 leading-[1.8] text-[15px]">
       <section>
-        <h2 className="font-display text-2xl font-bold text-white mb-6">Privacyverklaring</h2>
-        <p className="mb-4">Deze website verwerkt of bewaart geen persoonsgegevens.</p>
-        <p className="mb-4">Via deze website worden geen persoonsgegevens verzameld, opgeslagen of geanalyseerd. Er worden geen formulieren gebruikt en er wordt geen gebruikersregistratie toegepast.</p>
-        <p className="mb-4">Voor vragen, samenwerkingen of contact verwijzen wij naar de websites van de initiatiefnemers:<br/>
+        <h2 className="font-display text-2xl font-bold text-white mb-6">{t.privacy.title}</h2>
+        <p className="mb-4">{t.privacy.p1}</p>
+        <p className="mb-4">{t.privacy.p2}</p>
+        <p className="mb-4">{t.privacy.p3}<br/>
         <a href="https://www.vovon.nl" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">www.vovon.nl</a></p>
-        <p>Wanneer u via deze websites contact opneemt, geldt het privacybeleid van de betreffende organisatie.</p>
+        <p>{t.privacy.p4}</p>
       </section>
 
       <section>
-        <h2 className="font-display text-2xl font-bold text-white mb-6">Cookiebeleid</h2>
-        <p className="mb-4">Deze website maakt uitsluitend gebruik van functionele cookies die noodzakelijk zijn voor het goed functioneren van de website.</p>
-        <p className="mb-4">Er worden geen marketingcookies, trackingcookies of persoonlijke data verzameld via deze website.</p>
-        <p>Eventuele externe links naar andere websites kunnen hun eigen cookiebeleid hanteren. Wij adviseren u om de privacy- en cookieverklaringen van die websites te raadplegen.</p>
+        <h2 className="font-display text-2xl font-bold text-white mb-6">{t.cookie.title}</h2>
+        <p className="mb-4">{t.cookie.p1}</p>
+        <p className="mb-4">{t.cookie.p2}</p>
+        <p>{t.cookie.p3}</p>
       </section>
 
       <section>
-        <h2 className="font-display text-2xl font-bold text-white mb-6">Disclaimer</h2>
-        <p className="mb-4">De informatie op deze website wordt met zorg samengesteld door VOVON development. De inhoud van deze website is uitsluitend bedoeld voor algemene informatie. Aan de inhoud van deze website kunnen geen rechten worden ontleend.</p>
-        <p className="mb-4">Concepten, tekeningen, visualisaties en projectbeschrijvingen die op deze website worden getoond zijn indicatief en kunnen gedurende het ontwikkelproces wijzigen.</p>
-        <p className="mb-4">VOVON development aanvaardt geen aansprakelijkheid voor eventuele directe of indirecte schade die voortvloeit uit het gebruik van de informatie op deze website.</p>
-        <p className="mb-4">Deze website kan verwijzingen bevatten naar externe websites van partners of betrokken organisaties. Wij hebben geen controle over de inhoud van deze externe websites en kunnen niet verantwoordelijk worden gehouden voor de inhoud daarvan.</p>
-        <p>Alle teksten, beelden en concepten op deze website zijn beschermd door auteursrechten en intellectuele eigendomsrechten. Gebruik of reproductie zonder voorafgaande toestemming is niet toegestaan.</p>
+        <h2 className="font-display text-2xl font-bold text-white mb-6">{t.disclaimer.title}</h2>
+        <p className="mb-4">{t.disclaimer.p1}</p>
+        <p className="mb-4">{t.disclaimer.p2}</p>
+        <p className="mb-4">{t.disclaimer.p3}</p>
+        <p className="mb-4">{t.disclaimer.p4}</p>
+        <p>{t.disclaimer.p5}</p>
       </section>
     </div>
   </div>
-);
+  );
+};
 
 export default function App() {
   const [openAccordion, setOpenAccordion] = useState<number>(0);
   const [view, setView] = useState<'home' | 'legal'>('home');
+  const [lang, setLang] = useState<Language>('nl');
 
-  const accordions = [
-    {
-      title: "Wat is netbewuste gebiedsontwikkeling?",
-      content: "Netbewuste gebiedsontwikkeling integreert de beschikbare netcapaciteit als randvoorwaarde in het ruimtelijk en programmatisch ontwerp. Denk aan fasering op basis van transportcapaciteit, clustering van functies voor gedeeld netgebruik, en opslag als buffer."
-    },
-    {
-      title: "Waarom is dit nu urgent?",
-      content: "In meer dan 87% van de Nederlandse netgebieden bestaat transportschaarste. Nieuwe aansluitingen worden geweigerd of uitgesteld met 5–10 jaar. Wie niet netbewust ontwerpt, riskeert stilstand van de bouw."
-    },
-    {
-      title: "Welke partijen",
-      content: "Gemeenten, woningcorporaties, netbeheerders (Liander, Stedin, Enexis), projectontwikkelaars en bouwers. Wij faciliteren de tafel en leveren de input voor samenwerking."
-    },
-    {
-      title: "Hoe verhoudt dit zich tot de Energiewet 2024?",
-      content: "De Energiewet 2024 verankert Collectieve Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden met een gezamenlijk energie-profiel — precies waar wij op inrichten."
-    }
-  ];
+  const t = translations[lang];
+
+  const accordions = t.wat.accordions;
 
   return (
     <div className="relative">
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-5 md:px-10 h-24 bg-transparent z-50 transition-all duration-300">
+      <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-5 md:px-10 h-16 bg-paper border-b border-white/10 z-50 transition-all duration-300">
         <a href="#" onClick={(e) => { e.preventDefault(); setView('home'); window.scrollTo(0,0); }} className="flex items-center gap-3 no-underline">
           <span className="font-display font-bold text-2xl tracking-tight text-white"><span className="text-accent">V</span>OVON</span>
         </a>
@@ -179,24 +169,24 @@ export default function App() {
         {view === 'home' && (
           <div className="hidden lg:flex items-center gap-10">
             <ul className="flex gap-8 list-none m-0 p-0">
-              <li><a href="#hero" className="text-[15px] font-medium text-accent border-b-2 border-accent pb-1 no-underline">Home</a></li>
-              <li><a href="#wat" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">Wat is het</a></li>
-              <li><a href="#netpanel" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">Netpanel</a></li>
-              <li><a href="#aanpak" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">Werkwijze</a></li>
-              <li><a href="#projecten" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">Casestudy</a></li>
+              <li><a href="#hero" className="text-[15px] font-medium text-accent border-b-2 border-accent pb-1 no-underline">{t.nav.home}</a></li>
+              <li><a href="#wat" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">{t.nav.watIsHet}</a></li>
+              <li><a href="#netpanel" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">{t.nav.netpanel}</a></li>
+              <li><a href="#aanpak" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">{t.nav.werkwijze}</a></li>
+              <li><a href="#projecten" className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline">{t.nav.casestudy}</a></li>
             </ul>
             
             <div className="flex items-center gap-6">
               <a href="#contact" onClick={(e) => { if (view !== 'home') { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('contact')?.scrollIntoView(); }, 100); } }} className="font-display text-[15px] font-bold px-6 py-2.5 bg-white text-paper rounded-full hover:bg-white/90 transition-colors no-underline">
-                Aan de slag
+                {t.nav.aanDeSlag}
               </a>
-              <button className="flex items-center gap-2 text-white bg-transparent border-none cursor-pointer hover:text-accent transition-colors">
+              <button onClick={() => setLang(lang === 'nl' ? 'en' : 'nl')} className="flex items-center gap-2 text-white bg-transparent border-none cursor-pointer hover:text-accent transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"/>
                   <line x1="2" y1="12" x2="22" y2="12"/>
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                 </svg>
-                <span className="text-[15px] font-medium">NL</span>
+                <span className="text-[15px] font-medium">{lang === 'nl' ? 'EN' : 'NL'}</span>
               </button>
             </div>
           </div>
@@ -209,8 +199,8 @@ export default function App() {
       <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center text-center pt-[120px] pb-[160px] px-5 md:px-10 z-10">
         <div className="absolute inset-0 z-[-1] overflow-hidden">
           {/* Placeholder for background image, using a dark gradient for now */}
-          <div className="absolute inset-0 bg-gradient-to-b from-paper/80 to-paper/95 z-10"></div>
-          <img src="https://image2url.com/r2/default/images/1774787226532-82cc8b70-280b-41ed-a24b-ede00b5a874d.avif" alt="Gebiedsontwikkeling Background" className="w-full h-full object-cover opacity-40" referrerPolicy="no-referrer" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper/60 to-paper/90 z-10"></div>
+          <img src="https://image2url.com/r2/default/images/1774787226532-82cc8b70-280b-41ed-a24b-ede00b5a874d.avif" alt="Gebiedsontwikkeling Background" className="w-full h-full object-cover opacity-60" referrerPolicy="no-referrer" />
         </div>
 
         <motion.div 
@@ -220,31 +210,31 @@ export default function App() {
           className="flex flex-col items-center"
         >
           <div className="inline-block px-4 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-sm font-medium mb-8 backdrop-blur-sm">
-            Systeembewust
+            {t.hero.badge}
           </div>
           
           <h1 className="hero-title font-display font-extrabold text-[clamp(52px,8vw,120px)] leading-[0.92] tracking-[-3px] max-w-[900px] mb-6 text-white">
-            Bouwen<br/>binnen het<br/><span>net.</span>
+            {t.hero.title1}<br/>{t.hero.title2}<br/><span>{t.hero.title3}</span>
           </h1>
 
           <p className="text-[clamp(18px,2vw,24px)] leading-[1.5] text-white/90 max-w-[800px] mb-12 font-light">
-            Netcongestie hoeft geen rem te zijn. Integreer energie als ontwerpopdracht — van eerste stedenbouwkundig plan tot aansluit strategie. Flexibel, schaalbaar en netklaar.
+            {t.hero.desc}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 justify-center text-left">
             <div>
-              <div className="font-display text-4xl font-bold text-white mb-2">87%</div>
-              <div className="text-xs text-white/50 tracking-[1px] uppercase">Regio's met congestie</div>
+              <div className="font-display text-4xl font-bold text-white mb-2">{t.hero.stat1Val}</div>
+              <div className="text-xs text-white/50 tracking-[1px] uppercase">{t.hero.stat1Label}</div>
             </div>
             <div>
-              <div className="font-display text-4xl font-bold text-white mb-2">€0</div>
-              <div className="text-xs text-white/50 tracking-[1px] uppercase">faalkosten bij juiste aanpak</div>
+              <div className="font-display text-4xl font-bold text-white mb-2">{t.hero.stat2Val}</div>
+              <div className="text-xs text-white/50 tracking-[1px] uppercase">{t.hero.stat2Label}</div>
             </div>
           </div>
         </motion.div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-[11px] tracking-[2px] uppercase">
-          Scroll
+          {t.hero.scroll}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce">
             <path d="M12 5v14M19 12l-7 7-7-7"/>
           </svg>
@@ -256,22 +246,12 @@ export default function App() {
         <div className="inline-flex gap-20 animate-ticker">
           {[...Array(8)].map((_, i) => (
             <React.Fragment key={i}>
-              <div className="text-[11px] tracking-[2px] uppercase flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-fast"></div>
-                Netcongestie NL: 87% regio's vol
-              </div>
-              <div className="text-[11px] tracking-[2px] uppercase flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-fast"></div>
-                BESS-inzet verlaagt piekbelasting met 40%
-              </div>
-              <div className="text-[11px] tracking-[2px] uppercase flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-fast"></div>
-                Energiewet 2024: CEC & REC wettelijk verankerd
-              </div>
-              <div className="text-[11px] tracking-[2px] uppercase flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-fast"></div>
-                Cable pooling: zon + accu op één aansluiting
-              </div>
+              {t.ticker.map((item, idx) => (
+                <div key={idx} className="text-[11px] tracking-[2px] uppercase flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-fast"></div>
+                  {item}
+                </div>
+              ))}
             </React.Fragment>
           ))}
         </div>
@@ -285,12 +265,12 @@ export default function App() {
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.6 }}
         >
-          <SectionLabel>Wat is het</SectionLabel>
-          <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-6 text-white">
-            Net­bewust ontwerpen van de grond af
+          <SectionLabel>{t.wat.label}</SectionLabel>
+          <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-6 text-white whitespace-pre-line">
+            {t.wat.title}
           </h2>
           <p className="text-[15px] leading-[1.8] text-white/70 max-w-[340px] m-0">
-            Gebiedsontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland. Wij combineren beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.
+            {t.wat.desc}
           </p>
         </motion.div>
         
@@ -324,66 +304,66 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <SectionLabel>Netpanel</SectionLabel>
-              <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight m-0 text-white">
-                Live netcapaciteit<br/>Nederland
+              <SectionLabel>{t.netpanel.label}</SectionLabel>
+              <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight m-0 text-white whitespace-pre-line">
+                {t.netpanel.title}
               </h2>
             </div>
             <p className="text-[15px] text-white/70 max-w-[280px] md:text-right leading-[1.6] m-0">
-              Indicatieve status op basis van gepubliceerde congestiegebieden per netbeheerder. Bijgewerkt Q1 2025.
+              {t.netpanel.desc}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.0 }}>
               <NetCard 
-                label="Liander — regio's vol" 
-                value="91%" 
+                label={t.netpanel.cards[0].label} 
+                value={t.netpanel.cards[0].value} 
                 colorClass="green"
-                sub={<>Groot-Amsterdam, Flevoland,<br/>Gelderland, Noord-Holland</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[0].sub}</span>}
                 fillWidth="91%"
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
               <NetCard 
-                label="Enexis — transport­schaarste" 
-                value="84%" 
+                label={t.netpanel.cards[1].label} 
+                value={t.netpanel.cards[1].value} 
                 colorClass="amber"
-                sub={<>Noord-Brabant, Limburg,<br/>Drenthe, Friesland</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[1].sub}</span>}
                 fillWidth="84%"
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
               <NetCard 
-                label="Stedin — congestiezones" 
-                value="78%" 
+                label={t.netpanel.cards[2].label} 
+                value={t.netpanel.cards[2].value} 
                 colorClass="green"
-                sub={<>Zuid-Holland, Zeeland,<br/>Utrecht</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[2].sub}</span>}
                 fillWidth="78%"
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
               <NetCard 
-                label="Verwachte uitbreidingstermijn" 
-                value="7 jr" 
+                label={t.netpanel.cards[3].label} 
+                value={t.netpanel.cards[3].value} 
                 colorClass="blue"
-                sub={<>Gemiddelde wachttijd voor<br/>zwaar transport­verzoek</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[3].sub}</span>}
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
               <NetCard 
-                label="BESS-projecten operationeel NL" 
-                value="142" 
+                label={t.netpanel.cards[4].label} 
+                value={t.netpanel.cards[4].value} 
                 colorClass="amber"
-                sub={<>Gecombineerde capaciteit<br/>1.8 GWh — groei +34% YoY</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[4].sub}</span>}
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
               <NetCard 
-                label="Flexibiliteitsmarkt potentie" 
-                value="€340M" 
+                label={t.netpanel.cards[5].label} 
+                value={t.netpanel.cards[5].value} 
                 colorClass="green"
-                sub={<>Jaarlijks beschikbaar via<br/>FCR, aFRR, mFRR en IDM</>}
+                sub={<span className="whitespace-pre-line">{t.netpanel.cards[5].sub}</span>}
               />
             </motion.div>
           </div>
@@ -393,24 +373,24 @@ export default function App() {
       {/* WERKWIJZE / STAPPEN */}
       <section id="aanpak" className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.6 }}>
-          <SectionLabel>Werkwijze</SectionLabel>
-          <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-16 max-w-[600px] leading-[1.05] text-white">
-            Van quickscan tot<br/>operationeel gebied.
+          <SectionLabel>{t.aanpak.label}</SectionLabel>
+          <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-16 max-w-[600px] leading-[1.05] text-white whitespace-pre-line">
+            {t.aanpak.title}
           </h2>
         </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.0 }}>
-            <Step num="01" title="Quickscan Grip op Locatie" desc="Analyse van de omgeving, lokale energie dragers en vrager, ruimtelijke randvoorwaarden. Output: haalbaarheidsmatrix en go/no-go advies." tag="2–4 weken" />
+            <Step num={t.aanpak.steps[0].num} title={t.aanpak.steps[0].title} desc={t.aanpak.steps[0].desc} tag={t.aanpak.steps[0].tag} />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-            <Step num="02" title="Netintegratieplan" desc="Ruimtelijke ontwerp van het systeem: opwek, opslag, distributie en fasering afgestemd op transportcapaciteit. Inclusief energiesysteem." tag="6–10 weken" />
+            <Step num={t.aanpak.steps[1].num} title={t.aanpak.steps[1].title} desc={t.aanpak.steps[1].desc} tag={t.aanpak.steps[1].tag} />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-            <Step num="03" title="Stakeholderregie" desc="Begeleiding bij overleg, ontwikkelaars-netbeheerders, gemeentelijke besluitvorming en structuur. Procesregie en documenteren." tag="Parallel" />
+            <Step num={t.aanpak.steps[2].num} title={t.aanpak.steps[2].title} desc={t.aanpak.steps[2].desc} tag={t.aanpak.steps[2].tag} />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-            <Step num="04" title="Procesregie" desc="Projectbegeleiding tot operationele fase. Ook tijdens EMS-configuraties, integratie van energiesystemen en Netzero2050 strategieën" tag="Doorlopend" />
+            <Step num={t.aanpak.steps[3].num} title={t.aanpak.steps[3].title} desc={t.aanpak.steps[3].desc} tag={t.aanpak.steps[3].tag} />
           </motion.div>
         </div>
       </section>
@@ -425,30 +405,30 @@ export default function App() {
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.6 }}
           >
-            <SectionLabel>Instrumenten</SectionLabel>
-            <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight text-white m-0">
-              Onze technische<br/>gereedschapskist
+            <SectionLabel>{t.tools.label}</SectionLabel>
+            <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight text-white m-0 whitespace-pre-line">
+              {t.tools.title}
             </h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.0 }}>
-              <ToolPill icon={<BatteryCharging size={28} strokeWidth={1.5} />} title="BESS — Batterij­opslag" desc="Grootschalige lithium-ion opslag als nettbuffer. Laagt piekbelasting, verhoogt zelfsufficiëntie en genereert FCR/aFRR-inkomsten." badge="Flexibiliteitsmarkt" />
+              <ToolPill icon={<BatteryCharging size={28} strokeWidth={1.5} />} title={t.tools.pills[0].title} desc={t.tools.pills[0].desc} badge={t.tools.pills[0].badge} />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <ToolPill icon={<Sun size={28} strokeWidth={1.5} />} title="PV + Laadinfra" desc="Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte en flexibiliteit." badge="Mobiliteit" />
+              <ToolPill icon={<Sun size={28} strokeWidth={1.5} />} title={t.tools.pills[1].title} desc={t.tools.pills[1].desc} badge={t.tools.pills[1].badge} />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-              <ToolPill icon={<BrainCircuit size={28} strokeWidth={1.5} />} title="Energy Management:" desc="Slim energiemanagementsysteem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau." badge="AI-gestuurd" />
+              <ToolPill icon={<BrainCircuit size={28} strokeWidth={1.5} />} title={t.tools.pills[2].title} desc={t.tools.pills[2].desc} badge={t.tools.pills[2].badge} />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
-              <ToolPill icon={<Users size={28} strokeWidth={1.5} />} title="Energie­gemeenschap (CEC)" desc="Wettelijk kader via Energiewet 2024 voor gezamenlijk opwekken, opslaan en delen binnen een postcodegebied." badge="Energiewet 2024" />
+              <ToolPill icon={<Users size={28} strokeWidth={1.5} />} title={t.tools.pills[3].title} desc={t.tools.pills[3].desc} badge={t.tools.pills[3].badge} />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}>
-              <ToolPill icon={<PlugZap size={28} strokeWidth={1.5} />} title="Dynamische Netaansluiting" desc="Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting." badge="Netbeheerder" />
+              <ToolPill icon={<PlugZap size={28} strokeWidth={1.5} />} title={t.tools.pills[4].title} desc={t.tools.pills[4].desc} badge={t.tools.pills[4].badge} />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
-              <ToolPill icon={<BarChart3 size={28} strokeWidth={1.5} />} title="Faserings­model" desc="Bouwprogramma afgestemd op toenemende netcapaciteit. Elk bouwveld triggert pas bij beschikbaar transport." badge="Ruimtelijk" />
+              <ToolPill icon={<BarChart3 size={28} strokeWidth={1.5} />} title={t.tools.pills[5].title} desc={t.tools.pills[5].desc} badge={t.tools.pills[5].badge} />
             </motion.div>
           </div>
         </div>
@@ -457,46 +437,46 @@ export default function App() {
       {/* PROJECTEN */}
       <section id="projecten" className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-10%" }} transition={{ duration: 0.6 }}>
-          <SectionLabel>Casestudy's</SectionLabel>
+          <SectionLabel>{t.projecten.label}</SectionLabel>
           <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-12 m-0 text-white">
-            Casestudy's
+            {t.projecten.title}
           </h2>
         </motion.div>
         
         <div className="flex flex-col gap-[2px]">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.0 }}>
-            <ProjectRow num="001" name="Dronten Zuid" loc="Flevoland — 300 won." status="Principe verzoek" statusColor="blue" />
+            <ProjectRow num={t.projecten.rows[0].num} name={t.projecten.rows[0].name} loc={t.projecten.rows[0].loc} status={t.projecten.rows[0].status} statusColor="blue" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-            <ProjectRow num="002" name="Harderwijk" loc="Gelderland — 200MW" status="Consultatie" statusColor="amber" />
+            <ProjectRow num={t.projecten.rows[1].num} name={t.projecten.rows[1].name} loc={t.projecten.rows[1].loc} status={t.projecten.rows[1].status} statusColor="amber" />
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
-            <ProjectRow num="003" name="Hoorn" loc="Noord Holland — 100MW" status="Haalbaarheid research" statusColor="blue" />
+            <ProjectRow num={t.projecten.rows[2].num} name={t.projecten.rows[2].name} loc={t.projecten.rows[2].loc} status={t.projecten.rows[2].status} statusColor="blue" />
           </motion.div>
         </div>
       </section>
 
       {/* CONTACT CTA */}
       <section id="contact" className="py-[100px] px-5 md:px-10 bg-card text-center z-10 relative">
-        <SectionLabel className="mb-6 mx-auto">Aan de slag</SectionLabel>
+        <SectionLabel className="mb-6 mx-auto">{t.contact.label}</SectionLabel>
         <h2 className="contact-title font-display font-bold text-[clamp(36px,5vw,72px)] tracking-tight leading-[0.95] mb-8 m-0 text-white">
-          Uw gebied<br/><span>netklaar</span><br/>maken?
+          {t.contact.title1}<br/><span>{t.contact.title2}</span><br/>{t.contact.title3}
         </h2>
         <p className="text-[15px] text-white/70 mb-12 leading-[1.7] max-w-md mx-auto">
-          Starten met een Quickscan van uw locatie — om zo een helder beeld van kansen en risico's te krijgen.
+          {t.contact.desc}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="mailto:info@vovon.nl" className="font-display text-[15px] font-bold px-8 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors no-underline">
-            Quickscan aanvragen
+            {t.contact.btn1}
           </a>
           <a href="https://www.vovon.nl" target="_blank" rel="noopener noreferrer" className="font-display text-[15px] font-bold px-8 py-4 bg-white/10 border border-white/20 text-white rounded-full hover:bg-white/20 transition-colors no-underline">
-            Meer over VOVON
+            {t.contact.btn2}
           </a>
         </div>
       </section>
       </>
       ) : (
-        <LegalView onBack={() => { setView('home'); window.scrollTo(0,0); }} />
+        <LegalView onBack={() => { setView('home'); window.scrollTo(0,0); }} lang={lang} />
       )}
 
       {/* FOOTER */}
@@ -506,10 +486,10 @@ export default function App() {
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
           <button onClick={() => { setView('legal'); window.scrollTo(0,0); }} className="text-sm text-white/50 hover:text-accent transition-colors bg-transparent border-none cursor-pointer p-0">
-            Privacy, Cookies & Disclaimer
+            {t.footer.legal}
           </button>
           <p className="text-sm text-white/50 tracking-wide m-0 text-center sm:text-right">
-            Copyright © 2026 VOVON
+            {t.footer.copyright}
           </p>
         </div>
       </footer>

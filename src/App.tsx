@@ -24,7 +24,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }: { title: string, con
         </div>
       </div>
       <div 
-        className={`overflow-hidden transition-all duration-400 ease-in-out px-7 text-[15px] leading-[1.75] text-white/70 ${isOpen ? 'max-h-[300px] pb-6' : 'max-h-0'}`}
+        className={`overflow-hidden transition-all duration-400 ease-in-out px-7 text-[15px] leading-[1.75] text-white/70 whitespace-pre-line ${isOpen ? 'max-h-[500px] pb-6' : 'max-h-0'}`}
       >
         {content}
       </div>
@@ -267,39 +267,41 @@ export default function App() {
       </div>
 
       {/* WAT IS HET */}
-      <section id="wat" className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-20 items-start z-10 relative">
-        <motion.div 
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.6 }}
-        >
-          <SectionLabel>{t.wat.label}</SectionLabel>
-          <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-6 text-white whitespace-pre-line">
-            {t.wat.title}
-          </h2>
-          <p className="text-[15px] leading-[1.8] text-white/70 max-w-[340px] m-0">
-            {t.wat.desc}
-          </p>
-        </motion.div>
-        
-        <motion.div 
-          className="flex flex-col gap-[2px]"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          {accordions.map((acc, i) => (
-            <AccordionItem 
-              key={i}
-              title={acc.title}
-              content={acc.content}
-              isOpen={openAccordion === i}
-              onClick={() => setOpenAccordion(openAccordion === i ? -1 : i)}
-            />
-          ))}
-        </motion.div>
+      <section id="wat" className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-20 items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionLabel>{t.wat.label}</SectionLabel>
+            <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-6 text-white whitespace-pre-line">
+              {t.wat.title}
+            </h2>
+            <p className="text-[15px] leading-[1.8] text-white/70 max-w-[340px] m-0">
+              {t.wat.desc}
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="flex flex-col gap-[2px]"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {accordions.map((acc, i) => (
+              <AccordionItem 
+                key={i}
+                title={acc.title}
+                content={acc.content}
+                isOpen={openAccordion === i}
+                onClick={() => setOpenAccordion(openAccordion === i ? -1 : i)}
+              />
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* NET STATUS PANEL */}

@@ -48,6 +48,10 @@ export const translations = {
         {
           title: "Hoe verhoudt dit zich tot de Energiewet 2024?",
           content: "De Energiewet 2024 verankert Collectieve Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden met een gezamenlijk energie-profiel — precies waar wij op inrichten."
+        },
+        {
+          title: "Nieuw ACM-prioriteringskader (1 juli 2026)",
+          content: "Per 1 juli 2026 gaat bij netcongestie de overgangsfase van het nieuwe ACM-prioriteringskader in. Dat betekent in de praktijk:\n\n• Kleinverbruikers komen dan óók in beeld binnen het prioriteringskader; tot die datum gold de oude werkwijze nog.\n• De tot nu toe gereserveerde ruimte voor kleinverbruik is vanaf dan alleen nog beschikbaar voor partijen met prioriteit volgens het kader.\n• Projecten zonder prioriteit krijgen in congestiegebieden dus eerder te maken met een wachtrij.\n• De volgorde blijft grofweg: 1. congestieverzachters, 2. veiligheid, 3. basisbehoeften. Woningbouw valt onder basisbehoeften / woonbehoefte."
         }
       ]
     },
@@ -180,6 +184,10 @@ export const translations = {
         {
           title: "How does this relate to the Energy Act 2024?",
           content: "The Energy Act 2024 legally anchors Collective Energy Communities (CEC) and energy sharing. This creates new opportunities for areas with a joint energy profile — exactly what we design for."
+        },
+        {
+          title: "New ACM Prioritization Framework (July 1, 2026)",
+          content: "As of July 1, 2026, the transition phase of the new ACM prioritization framework for grid congestion will begin. In practice, this means:\n\n• Small consumers will then also be included in the prioritization framework; until that date, the old method still applied.\n• The space reserved for small consumers up to now will from then on only be available for parties with priority according to the framework.\n• Projects without priority in congestion areas will therefore face a queue sooner.\n• The order remains roughly: 1. congestion relievers, 2. safety, 3. basic needs. Housing falls under basic needs / housing needs."
         }
       ]
     },

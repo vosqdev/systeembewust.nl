@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { BatteryCharging, Sun, BrainCircuit, Users, PlugZap, BarChart3 } from 'lucide-react';
 import { translations, Language } from './i18n';
@@ -153,6 +153,15 @@ export default function App() {
   const [openAccordion, setOpenAccordion] = useState<number>(0);
   const [view, setView] = useState<'home' | 'legal'>('home');
   const [lang, setLang] = useState<Language>('nl');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const t = translations[lang];
 
@@ -161,7 +170,7 @@ export default function App() {
   return (
     <div className="relative">
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-5 md:px-10 h-16 bg-paper border-b border-white/10 z-50 transition-all duration-300">
+      <nav className={`fixed top-0 left-0 right-0 flex items-center justify-between px-5 md:px-10 h-16 z-50 transition-all duration-300 ${isScrolled ? 'bg-paper border-b border-white/10' : 'bg-transparent border-b border-transparent'}`}>
         <a href="#" onClick={(e) => { e.preventDefault(); setView('home'); window.scrollTo(0,0); }} className="flex items-center gap-3 no-underline">
           <span className="font-display font-bold text-2xl tracking-tight text-white"><span className="text-accent">V</span>OVON</span>
         </a>

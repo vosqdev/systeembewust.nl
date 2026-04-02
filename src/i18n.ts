@@ -68,6 +68,11 @@ export const translations = {
         { label: "Flexibiliteitsmarkt potentie", value: "€340M", sub: "Jaarlijks beschikbaar via\nFCR, aFRR, mFRR en IDM" }
       ]
     },
+    diagram: {
+      label: "Systeemmodel",
+      title: "Integrale aanpak in beeld",
+      desc: "Zonder de juiste balans tussen dragers en vragers is een gebied maar ook een systeem niet haalbaar en uitvoerbaar zonder hoge kosten."
+    },
     aanpak: {
       label: "Werkwijze",
       title: "Van quickscan tot\noperationeel gebied.",
@@ -203,6 +208,11 @@ export const translations = {
         { label: "BESS projects operational NL", value: "142", sub: "Combined capacity\n1.8 GWh — growth +34% YoY" },
         { label: "Flexibility market potential", value: "€340M", sub: "Annually available via\nFCR, aFRR, mFRR and IDM" }
       ]
+    },
+    diagram: {
+      label: "System Model",
+      title: "Integral approach visualized",
+      desc: "Without the right balance between carriers and demanders, an area as well as a system is neither feasible nor executable without high costs."
     },
     aanpak: {
       label: "Approach",

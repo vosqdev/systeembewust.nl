@@ -23,10 +23,10 @@ export const translations = {
       scroll: "Scroll"
     },
     ticker: [
-      "Netcongestie NL: 87% regio's vol",
-      "BESS-inzet verlaagt piekbelasting met 40%",
-      "Energiewet 2024: CEC & REC wettelijk verankerd",
-      "Cable pooling: zon + accu op één aansluiting"
+      "Energiewet 2024: energie gemeenschappen wettelijk verankerd",
+      "2025 kamerbrief decentrale ontwikkeling van energiesystemen",
+      "2026 motie tweede kamer - de FGU-regio - aanmerken als innovatiegebied",
+      "zon/wind + opslag + EV laden"
     ],
     wat: {
       label: "Wat is het",
@@ -164,10 +164,10 @@ export const translations = {
       scroll: "Scroll"
     },
     ticker: [
-      "NL Grid Congestion: 87% of regions full",
-      "BESS deployment reduces peak load by 40%",
-      "Energy Act 2024: CEC & REC legally anchored",
-      "Cable pooling: solar + battery on one connection"
+      "Energy Act 2024: energy communities legally anchored",
+      "2025 parliamentary letter on decentralized development of energy systems",
+      "2026 parliamentary motion - designate the FGU region as an innovation area",
+      "solar/wind + storage + EV charging"
     ],
     wat: {
       label: "What is it",

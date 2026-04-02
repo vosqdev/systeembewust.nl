@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import { EnergyCircle } from "./components/EnergyCircle";
 import {
   BatteryCharging,
   Sun,
@@ -809,98 +810,7 @@ export default function App() {
 
                   {/* Cycle */}
                   <div className="flex-1 relative flex items-center justify-center min-h-[400px] w-full">
-                    {/* Cycle Arrows */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg
-                        viewBox="0 0 400 400"
-                        className="w-full max-w-[360px] h-auto opacity-20 animate-[spin_40s_linear_infinite]"
-                      >
-                        <defs>
-                          <marker
-                            id="arrowhead"
-                            markerWidth="10"
-                            markerHeight="7"
-                            refX="9"
-                            refY="3.5"
-                            orient="auto"
-                          >
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" />
-                          </marker>
-                        </defs>
-                        <path
-                          d="M 200 20 A 180 180 0 0 1 380 200"
-                          fill="none"
-                          stroke="#ffffff"
-                          strokeWidth="16"
-                          markerEnd="url(#arrowhead)"
-                        />
-                        <path
-                          d="M 380 200 A 180 180 0 0 1 200 380"
-                          fill="none"
-                          stroke="#ffffff"
-                          strokeWidth="16"
-                          markerEnd="url(#arrowhead)"
-                        />
-                        <path
-                          d="M 200 380 A 180 180 0 0 1 20 200"
-                          fill="none"
-                          stroke="#ffffff"
-                          strokeWidth="16"
-                          markerEnd="url(#arrowhead)"
-                        />
-                        <path
-                          d="M 20 200 A 180 180 0 0 1 200 20"
-                          fill="none"
-                          stroke="#ffffff"
-                          strokeWidth="16"
-                          markerEnd="url(#arrowhead)"
-                        />
-                      </svg>
-                    </div>
-
-                    {/* Labels around cycle */}
-                    <div className="absolute top-4 left-1/4 font-medium text-white/70 text-sm md:text-base bg-card border border-white/10 px-3 py-1.5 rounded-lg">
-                      productie
-                    </div>
-                    <div className="absolute top-4 right-1/4 font-medium text-white/70 text-sm md:text-base bg-card border border-white/10 px-3 py-1.5 rounded-lg">
-                      opwekking
-                    </div>
-                    <div className="absolute bottom-1/4 right-0 font-medium text-white/70 text-sm md:text-base bg-card border border-white/10 px-3 py-1.5 rounded-lg">
-                      distributie
-                    </div>
-                    <div className="absolute bottom-4 right-1/4 font-medium text-white/70 text-sm md:text-base bg-card border border-white/10 px-3 py-1.5 rounded-lg">
-                      opslag
-                    </div>
-                    <div className="absolute bottom-1/4 left-0 font-medium text-white/70 text-sm md:text-base bg-card border border-white/10 px-3 py-1.5 rounded-lg">
-                      flexibiliteit
-                    </div>
-
-                    {/* Center Content */}
-                    <div className="bg-accent/10 w-[260px] h-[260px] rounded-full flex flex-col items-center justify-center relative z-10 p-6 text-center border-4 border-accent/30 shadow-[0_0_30px_rgba(0,200,160,0.15)] backdrop-blur-sm">
-                      <div className="grid grid-cols-3 gap-4 mb-4 text-white/50">
-                        <Sun size={28} className="mx-auto text-amber" />
-                        <div className="w-7 h-7 border-2 border-white/50 rounded-sm mx-auto grid grid-cols-2 gap-[1px] p-[2px]">
-                          <div className="bg-white/50"></div>
-                          <div className="bg-white/50"></div>
-                          <div className="bg-white/50"></div>
-                          <div className="bg-white/50"></div>
-                        </div>
-                        <Wind size={28} className="mx-auto text-blue" />
-                        <Home size={28} className="mx-auto text-white/70" />
-                        <BatteryCharging
-                          size={32}
-                          className="text-accent mx-auto"
-                        />
-                        <Car size={28} className="mx-auto text-white/70" />
-                        <div className="col-span-3 flex justify-center gap-4 mt-2">
-                          <PlugZap size={28} className="text-accent" />
-                          <Flame size={28} className="text-red" />
-                        </div>
-                      </div>
-                      <div className="text-xs text-accent font-bold uppercase tracking-wider max-w-[140px]">
-                        100% groene opgewekte energie
-                      </div>
-                    </div>
+                    <EnergyCircle />
                   </div>
                 </div>
               </div>

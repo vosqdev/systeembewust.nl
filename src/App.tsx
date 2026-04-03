@@ -16,6 +16,7 @@ import {
   Car,
   Menu,
   X,
+  Sparkles,
 } from "lucide-react";
 import { translations, Language } from "./i18n";
 
@@ -449,6 +450,20 @@ export default function App() {
               onClick={() => setLang(lang === "nl" ? "en" : "nl")}
               className="flex items-center gap-2 text-white bg-transparent border-none cursor-pointer hover:text-accent transition-colors"
             >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
               <span className="text-[15px] font-medium">
                 {lang === "nl" ? "EN" : "NL"}
               </span>
@@ -1043,6 +1058,38 @@ export default function App() {
                 </motion.div>
               </div>
             </div>
+          </section>
+
+          {/* BANNER */}
+          <section className="px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative mb-20">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.5 }}
+              className="relative overflow-hidden rounded-3xl border border-accent/30 p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[300px]"
+            >
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 z-0 opacity-20 bg-cover bg-center"
+                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200')" }}
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 z-0 bg-gradient-to-br from-background/90 via-background/80 to-accent/20"></div>
+              
+              <div className="relative z-10 bg-accent/20 p-4 rounded-full mb-6 inline-flex backdrop-blur-sm border border-accent/20">
+                <Sparkles className="w-8 h-8 text-accent" />
+              </div>
+              
+              <h3 className="relative z-10 font-display font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4">
+                {t.banner.title}
+              </h3>
+              
+              <p className="relative z-10 text-gray-200 text-lg md:text-xl max-w-2xl mx-auto m-0 font-medium">
+                {t.banner.desc}
+              </p>
+            </motion.div>
           </section>
 
           {/* PROJECTEN */}

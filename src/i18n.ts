@@ -42,12 +42,12 @@ export const translations = {
           content: "In meer dan 87% van de Nederlandse netgebieden bestaat transportschaarste. Nieuwe aansluitingen worden geweigerd of uitgesteld met 5–10 jaar. Wie niet netbewust ontwerpt, riskeert stilstand van de bouw."
         },
         {
-          title: "Welke partijen",
+          title: "Welke partijen?",
           content: "Gemeenten, woningcorporaties, netbeheerders, projectontwikkelaars en bouwers. Denk vanuit ketensamenwerking, ecoketens en systemen zorg voor de juist input en ga publiek-privaat samenwerken."
         },
         {
           title: "Hoe verhoudt dit zich tot de Energiewet 2024?",
-          content: "De Energiewet 2024 verankert Collectieve Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden met een gezamenlijk energie-profiel — precies waar wij op inrichten."
+          content: "De Energiewet 2024 verankert 'Collectieve' Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden vanuit energie-profiel — productie, opslag, flexibiliteit, gebruik."
         },
         {
           title: "Nieuw ACM-prioriteringskader (1 juli 2026)",
@@ -79,7 +79,7 @@ export const translations = {
       steps: [
         { num: "01", title: "Quickscan Grip op Locatie", desc: "Analyse van de omgeving, lokale energie dragers en vragers, ruimtelijke randvoorwaarden. Energieprofilering en reststromen. Output: haalbaarheidsmatrix.", tag: "2–4 weken" },
         { num: "02", title: "Netintegratieplan", desc: "Ruimtelijke ontwerp van het systeem: opwek, opslag, distributie en fasering afgestemd op transportcapaciteit. Inclusief energiesysteem.", tag: "6–10 weken" },
-        { num: "03", title: "Stakeholderregie", desc: "Begeleiding bij overleg, ontwikkelaars-netbeheerders, gemeentelijke besluitvorming en structuur. Procesregie en documenteren.", tag: "Parallel" },
+        { num: "03", title: "Stakeholderregie", desc: "Begeleiding bij overleg, gemeente-ontwikkelaars-netbeheerders, besluitvorming en structuur. Waar nodig documenteren en vastleggen.", tag: "Parallel" },
         { num: "04", title: "Procesregie", desc: "Projectbegeleiding tot operationele fase. Ook tijdens EMS-configuraties, integratie van energiesystemen en Netzero2050 strategieën", tag: "Doorlopend" }
       ]
     },
@@ -94,6 +94,10 @@ export const translations = {
         { title: "Dynamische Netaansluiting", desc: "Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting.", badge: "Netbeheerder" },
         { title: "Faserings­model", desc: "Bouwprogramma afgestemd op netcapaciteit en integratie. Rekening houdend met passief huis en energiesysteem systeem netbewust.", badge: "Ruimtelijk" }
       ]
+    },
+    banner: {
+      title: "Binnenkort meer!",
+      desc: "Een quickscan rekentool, systeembewust."
     },
     projecten: {
       label: "Casestudy's",
@@ -183,12 +187,12 @@ export const translations = {
           content: "There is transport scarcity in more than 87% of Dutch grid areas. New connections are refused or delayed by 5–10 years. Those who do not design grid-aware risk construction coming to a standstill."
         },
         {
-          title: "Which parties are involved?",
+          title: "Which parties?",
           content: "Municipalities, housing corporations, grid operators, project developers, and builders. Think from chain collaboration, eco-chains and systems ensure the right input and engage in public-private partnerships."
         },
         {
           title: "How does this relate to the Energy Act 2024?",
-          content: "The Energy Act 2024 legally anchors Collective Energy Communities (CEC) and energy sharing. This creates new opportunities for areas with a joint energy profile — exactly what we design for."
+          content: "The Energy Act 2024 legally anchors 'Collective' Energy Communities (CEC) and energy sharing. This creates new opportunities for areas based on energy profile — production, storage, flexibility, usage."
         },
         {
           title: "New ACM Prioritization Framework (July 1, 2026)",
@@ -220,7 +224,7 @@ export const translations = {
       steps: [
         { num: "01", title: "Quick Scan Location Grip", desc: "Analysis of the environment, local energy carriers and demand, spatial preconditions. Energy profiling and residual flows. Output: feasibility matrix.", tag: "2–4 weeks" },
         { num: "02", title: "Grid Integration Plan", desc: "Spatial design of the system: generation, storage, distribution, and phasing aligned with transport capacity. Including energy system.", tag: "6–10 weeks" },
-        { num: "03", title: "Stakeholder Management", desc: "Guidance during consultations, developers-grid operators, municipal decision-making, and structure. Process management and documentation.", tag: "Parallel" },
+        { num: "03", title: "Stakeholder Management", desc: "Guidance during consultations, municipality-developers-grid operators, decision-making, and structure. Documenting and recording where necessary.", tag: "Parallel" },
         { num: "04", title: "Process Management", desc: "Project guidance up to the operational phase. Also during EMS configurations, integration of energy systems, and Netzero2050 strategies.", tag: "Continuous" }
       ]
     },
@@ -235,6 +239,10 @@ export const translations = {
         { title: "Dynamic Grid Connection", desc: "Contractual flexibility agreements with grid operator: controllable power in exchange for priority connection.", badge: "Grid Operator" },
         { title: "Phasing Model", desc: "Construction program aligned with grid capacity and integration. Taking into account passive house and energy system grid-conscious.", badge: "Spatial" }
       ]
+    },
+    banner: {
+      title: "More coming soon!",
+      desc: "A quick scan calculation tool, system-aware."
     },
     projecten: {
       label: "Case Studies",

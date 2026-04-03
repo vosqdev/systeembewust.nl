@@ -18,6 +18,10 @@
   --color-stroke: rgba(255, 255, 255, 0.1); /* Subtle borders */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-paper);

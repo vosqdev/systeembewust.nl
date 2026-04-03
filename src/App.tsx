@@ -14,6 +14,8 @@ import {
   Wind,
   Home,
   Car,
+  Menu,
+  X,
 } from "lucide-react";
 import { translations, Language } from "./i18n";
 
@@ -282,6 +284,7 @@ export default function App() {
   const [view, setView] = useState<"home" | "legal">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -294,6 +297,46 @@ export default function App() {
   const t = translations[lang];
 
   const accordions = t.wat.accordions;
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    
+    if (view !== "home") {
+      setView("home");
+      setTimeout(() => {
+        if (id === "hero") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        const element = document.getElementById(id);
+        if (element) {
+          const navHeight = 64;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+      }, 100);
+      return;
+    }
+    
+    if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 64; // 4rem = 64px
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <div className="relative">
@@ -321,6 +364,7 @@ export default function App() {
               <li>
                 <a
                   href="#hero"
+                  onClick={(e) => scrollToSection(e, "hero")}
                   className="text-[15px] font-medium text-accent border-b-2 border-accent pb-1 no-underline"
                 >
                   {t.nav.home}
@@ -329,6 +373,7 @@ export default function App() {
               <li>
                 <a
                   href="#wat"
+                  onClick={(e) => scrollToSection(e, "wat")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
                   {t.nav.watIsHet}
@@ -337,6 +382,7 @@ export default function App() {
               <li>
                 <a
                   href="#netpanel"
+                  onClick={(e) => scrollToSection(e, "netpanel")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
                   {t.nav.netpanel}
@@ -345,6 +391,7 @@ export default function App() {
               <li>
                 <a
                   href="#aanpak"
+                  onClick={(e) => scrollToSection(e, "aanpak")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
                   {t.nav.werkwijze}
@@ -353,6 +400,7 @@ export default function App() {
               <li>
                 <a
                   href="#projecten"
+                  onClick={(e) => scrollToSection(e, "projecten")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
                   {t.nav.casestudy}
@@ -363,15 +411,7 @@ export default function App() {
             <div className="flex items-center gap-6">
               <a
                 href="#contact"
-                onClick={(e) => {
-                  if (view !== "home") {
-                    e.preventDefault();
-                    setView("home");
-                    setTimeout(() => {
-                      document.getElementById("contact")?.scrollIntoView();
-                    }, 100);
-                  }
-                }}
+                onClick={(e) => scrollToSection(e, "contact")}
                 className="font-display text-[15px] font-bold px-6 py-2.5 bg-white text-paper rounded-full hover:bg-white/90 transition-colors no-underline"
               >
                 {t.nav.aanDeSlag}
@@ -401,7 +441,93 @@ export default function App() {
             </div>
           </div>
         )}
+
+        {/* Mobile Menu Toggle */}
+        {view === "home" && (
+          <div className="flex lg:hidden items-center gap-4">
+            <button
+              onClick={() => setLang(lang === "nl" ? "en" : "nl")}
+              className="flex items-center gap-2 text-white bg-transparent border-none cursor-pointer hover:text-accent transition-colors"
+            >
+              <span className="text-[15px] font-medium">
+                {lang === "nl" ? "EN" : "NL"}
+              </span>
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white bg-transparent border-none cursor-pointer p-2 hover:text-accent transition-colors"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        )}
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {view === "home" && (
+        <div
+          className={`fixed inset-0 bg-paper/95 backdrop-blur-md z-40 lg:hidden transition-all duration-300 ease-in-out flex flex-col items-center justify-center ${
+            isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <ul className="flex flex-col gap-8 list-none m-0 p-0 text-center">
+            <li>
+              <a
+                href="#hero"
+                onClick={(e) => scrollToSection(e, "hero")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {t.nav.home}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#wat"
+                onClick={(e) => scrollToSection(e, "wat")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {t.nav.watIsHet}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#netpanel"
+                onClick={(e) => scrollToSection(e, "netpanel")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {t.nav.netpanel}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#aanpak"
+                onClick={(e) => scrollToSection(e, "aanpak")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {t.nav.werkwijze}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#projecten"
+                onClick={(e) => scrollToSection(e, "projecten")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {t.nav.casestudy}
+              </a>
+            </li>
+            <li className="mt-4">
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "contact")}
+                className="font-display text-lg font-bold px-8 py-3 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors no-underline inline-block"
+              >
+                {t.nav.aanDeSlag}
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
 
       {view === "home" ? (
         <>

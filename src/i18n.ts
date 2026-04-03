@@ -77,7 +77,7 @@ export const translations = {
       label: "Werkwijze",
       title: "Van quickscan tot\noperationeel gebied.",
       steps: [
-        { num: "01", title: "Quickscan Grip op Locatie", desc: "Analyse van de omgeving, lokale energie dragers en vrager, ruimtelijke randvoorwaarden. Output: haalbaarheidsmatrix en go/no-go advies.", tag: "2–4 weken" },
+        { num: "01", title: "Quickscan Grip op Locatie", desc: "Analyse van de omgeving, lokale energie dragers en vragers, ruimtelijke randvoorwaarden. Energieprofilering en reststromen. Output: haalbaarheidsmatrix.", tag: "2–4 weken" },
         { num: "02", title: "Netintegratieplan", desc: "Ruimtelijke ontwerp van het systeem: opwek, opslag, distributie en fasering afgestemd op transportcapaciteit. Inclusief energiesysteem.", tag: "6–10 weken" },
         { num: "03", title: "Stakeholderregie", desc: "Begeleiding bij overleg, ontwikkelaars-netbeheerders, gemeentelijke besluitvorming en structuur. Procesregie en documenteren.", tag: "Parallel" },
         { num: "04", title: "Procesregie", desc: "Projectbegeleiding tot operationele fase. Ook tijdens EMS-configuraties, integratie van energiesystemen en Netzero2050 strategieën", tag: "Doorlopend" }
@@ -218,7 +218,7 @@ export const translations = {
       label: "Approach",
       title: "From quick scan to\noperational area.",
       steps: [
-        { num: "01", title: "Quick Scan Location Grip", desc: "Analysis of the environment, local energy carriers and demand, spatial preconditions. Output: feasibility matrix and go/no-go advice.", tag: "2–4 weeks" },
+        { num: "01", title: "Quick Scan Location Grip", desc: "Analysis of the environment, local energy carriers and demand, spatial preconditions. Energy profiling and residual flows. Output: feasibility matrix.", tag: "2–4 weeks" },
         { num: "02", title: "Grid Integration Plan", desc: "Spatial design of the system: generation, storage, distribution, and phasing aligned with transport capacity. Including energy system.", tag: "6–10 weeks" },
         { num: "03", title: "Stakeholder Management", desc: "Guidance during consultations, developers-grid operators, municipal decision-making, and structure. Process management and documentation.", tag: "Parallel" },
         { num: "04", title: "Process Management", desc: "Project guidance up to the operational phase. Also during EMS configurations, integration of energy systems, and Netzero2050 strategies.", tag: "Continuous" }

@@ -31,7 +31,7 @@ export const translations = {
     wat: {
       label: "Wat is het",
       title: "Net­bewust ontwerpen van de grond af",
-      desc: "Gebiedsontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland. Wij combineren beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.",
+      desc: "Gebiedsontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.",
       accordions: [
         {
           title: "Wat is netbewuste gebiedsontwikkeling?",
@@ -43,7 +43,7 @@ export const translations = {
         },
         {
           title: "Welke partijen",
-          content: "Gemeenten, woningcorporaties, netbeheerders (Liander, Stedin, Enexis), projectontwikkelaars en bouwers. Wij faciliteren de tafel en leveren de input voor samenwerking."
+          content: "Gemeenten, woningcorporaties, netbeheerders, projectontwikkelaars en bouwers. Denk vanuit ketensamenwerking, ecoketens en systemen zorg voor de juist input en ga publiek-privaat samenwerken."
         },
         {
           title: "Hoe verhoudt dit zich tot de Energiewet 2024?",
@@ -85,14 +85,14 @@ export const translations = {
     },
     tools: {
       label: "Instrumenten",
-      title: "Onze technische\ngereedschapskist",
+      title: "De gereedschapskist",
       pills: [
-        { title: "BESS — Batterij­opslag", desc: "Grootschalige lithium-ion opslag als nettbuffer. Laagt piekbelasting, verhoogt zelfsufficiëntie en genereert FCR/aFRR-inkomsten.", badge: "Flexibiliteitsmarkt" },
+        { title: "BESS — Batterij­opslag", desc: "Opslag als nettbuffer, dit verlaagt de piekbelasting, verhoogt zelfsufficiëntie en genereert hernieuwbare inkomsten.", badge: "Flexibiliteitsmarkt" },
         { title: "PV + Laadinfra", desc: "Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte en flexibiliteit.", badge: "Mobiliteit" },
         { title: "Energy Management:", desc: "Slim energiemanagementsysteem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau.", badge: "AI-gestuurd" },
-        { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2024 voor gezamenlijk opwekken, opslaan en delen binnen een postcodegebied.", badge: "Energiewet 2024" },
+        { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2024 voor gezamenlijk opwekken, opslaan en delen binnen een gebied ook groepscontract (GTO) en energiecoöperatie mogelijkheden.", badge: "Energiewet 2024" },
         { title: "Dynamische Netaansluiting", desc: "Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting.", badge: "Netbeheerder" },
-        { title: "Faserings­model", desc: "Bouwprogramma afgestemd op toenemende netcapaciteit. Elk bouwveld systeem bewust pas bij beschikbaar transport.", badge: "Ruimtelijk" }
+        { title: "Faserings­model", desc: "Bouwprogramma afgestemd op netcapaciteit en integratie. Rekening houdend met passief huis en energiesysteem systeem netbewust.", badge: "Ruimtelijk" }
       ]
     },
     projecten: {
@@ -172,7 +172,7 @@ export const translations = {
     wat: {
       label: "What is it",
       title: "Grid-aware design from the ground up",
-      desc: "Area development and energy infrastructure are too often planned separately. We combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.",
+      desc: "Area development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.",
       accordions: [
         {
           title: "What is grid-aware area development?",
@@ -184,7 +184,7 @@ export const translations = {
         },
         {
           title: "Which parties are involved?",
-          content: "Municipalities, housing corporations, grid operators (Liander, Stedin, Enexis), project developers, and builders. We facilitate the table and provide the input for collaboration."
+          content: "Municipalities, housing corporations, grid operators, project developers, and builders. Think from chain collaboration, eco-chains and systems ensure the right input and engage in public-private partnerships."
         },
         {
           title: "How does this relate to the Energy Act 2024?",
@@ -226,14 +226,14 @@ export const translations = {
     },
     tools: {
       label: "Instruments",
-      title: "Our technical\ntoolbox",
+      title: "The toolbox",
       pills: [
-        { title: "BESS — Battery Storage", desc: "Large-scale lithium-ion storage as a grid buffer. Lowers peak load, increases self-sufficiency, and generates FCR/aFRR revenue.", badge: "Flexibility Market" },
+        { title: "BESS — Battery Storage", desc: "Storage as a grid buffer, this lowers peak load, increases self-sufficiency, and generates renewable revenue.", badge: "Flexibility Market" },
         { title: "PV + Charging Infra", desc: "Solar, storage, and EV charging infrastructure via Solar Parking. Maximum utilization of available space and flexibility.", badge: "Mobility" },
         { title: "Energy Management:", desc: "Smart energy management system that optimizes supply, demand, and grid tariffs in real-time at the area level.", badge: "AI-driven" },
-        { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2024 for joint generation, storage, and sharing within a postal code area.", badge: "Energy Act 2024" },
+        { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2024 for joint generation, storage, and sharing within an area, including group contract (GTO) and energy cooperative possibilities.", badge: "Energy Act 2024" },
         { title: "Dynamic Grid Connection", desc: "Contractual flexibility agreements with grid operator: controllable power in exchange for priority connection.", badge: "Grid Operator" },
-        { title: "Phasing Model", desc: "Construction program aligned with increasing grid capacity. Each building field system consciously only when transport is available.", badge: "Spatial" }
+        { title: "Phasing Model", desc: "Construction program aligned with grid capacity and integration. Taking into account passive house and energy system grid-conscious.", badge: "Spatial" }
       ]
     },
     projecten: {

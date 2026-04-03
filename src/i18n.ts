@@ -88,7 +88,7 @@ export const translations = {
       title: "De gereedschapskist",
       pills: [
         { title: "BESS — Batterij­opslag", desc: "Opslag als nettbuffer, dit verlaagt de piekbelasting, verhoogt zelfsufficiëntie en genereert hernieuwbare inkomsten.", badge: "Flexibiliteitsmarkt" },
-        { title: "PV + Laadinfra", desc: "Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte en flexibiliteit.", badge: "Mobiliteit" },
+        { title: "PV + Laadinfra", desc: "Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte -dubbelfunctie gebruik, flex en diensten zoals potentiële ERE-opbrengst via EV-charge.", badge: "Mobiliteit" },
         { title: "Energy Management:", desc: "Slim energiemanagementsysteem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau.", badge: "AI-gestuurd" },
         { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2024 voor gezamenlijk opwekken, opslaan en delen binnen een gebied ook groepscontract (GTO) en energiecoöperatie mogelijkheden.", badge: "Energiewet 2024" },
         { title: "Dynamische Netaansluiting", desc: "Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting.", badge: "Netbeheerder" },
@@ -233,7 +233,7 @@ export const translations = {
       title: "The toolbox",
       pills: [
         { title: "BESS — Battery Storage", desc: "Storage as a grid buffer, this lowers peak load, increases self-sufficiency, and generates renewable revenue.", badge: "Flexibility Market" },
-        { title: "PV + Charging Infra", desc: "Solar, storage, and EV charging infrastructure via Solar Parking. Maximum utilization of available space and flexibility.", badge: "Mobility" },
+        { title: "PV + Charging Infra", desc: "Solar, storage, and EV charging infrastructure via Solar Parking. Maximum utilization of available space - dual-function use, flex and services such as potential ERE revenue via EV-charge.", badge: "Mobility" },
         { title: "Energy Management:", desc: "Smart energy management system that optimizes supply, demand, and grid tariffs in real-time at the area level.", badge: "AI-driven" },
         { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2024 for joint generation, storage, and sharing within an area, including group contract (GTO) and energy cooperative possibilities.", badge: "Energy Act 2024" },
         { title: "Dynamic Grid Connection", desc: "Contractual flexibility agreements with grid operator: controllable power in exchange for priority connection.", badge: "Grid Operator" },

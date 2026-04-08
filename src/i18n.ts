@@ -8,6 +8,7 @@ export const translations = {
       netpanel: "Netpanel",
       werkwijze: "Werkwijze",
       casestudy: "Casestudy",
+      positionPaper: "Position Paper",
       aanDeSlag: "Aan de slag"
     },
     hero: {
@@ -21,6 +22,16 @@ export const translations = {
       stat2Val: "€0",
       stat2Label: "faalkosten bij juiste aanpak",
       scroll: "Scroll"
+    },
+    callToAction: {
+      title: "Oproep: kies voor systeemsturing",
+      p1: "Nederland heeft geen gebrek aan plannen.\nHet heeft een gebrek aan samenhang.",
+      p2: "De komende jaren bepalen of:",
+      list: [
+        "we blijven vastlopen in procedures en congestie, of",
+        "we versnellen door integraal te sturen op systemen"
+      ],
+      p3: "De Bandstad biedt ruimte.\nHet energiesysteem bepaalt of we die ruimte kunnen benutten."
     },
     ticker: [
       "Energiewet 2024: energie gemeenschappen wettelijk verankerd",
@@ -144,6 +155,40 @@ export const translations = {
     footer: {
       legal: "Privacy, Cookies & Disclaimer",
       copyright: "Copyright © 2026 VOVON"
+    },
+    positionPaper: {
+      title: "Position Paper — Systeembewust Nederland",
+      subtitle: "Van Randstad naar Bandstad: sturen op het energiesysteem als fundament voor gebiedsontwikkeling",
+      sections: [
+        {
+          title: "1. Aanleiding: Nederland loopt vast in zijn eigen succes",
+          content: "Nederland staat op een kantelpunt.\n\nDe klassieke ontwikkellogica — bouwen waar vraag is, infrastructuur achteraf aanpassen — werkt niet meer. De grenzen zijn bereikt:\n• Netcongestie remt woningbouw en economie\n• Ruimtelijke druk in de Randstad is maximaal\n• Energie, mobiliteit en ruimte zijn niet langer los te ontwikkelen systemen\n\nDe kaart van Nederland verschuift.\n\nNiet langer is de Randstad het enige zwaartepunt. Een nieuwe ruimtelijke realiteit ontstaat: de Bandstad — een netwerk van regio’s rondom de Randstad waar ruimte, energie en groei samenkomen."
+        },
+        {
+          title: "2. Probleemdefinitie: sectorale ontwikkeling faalt",
+          content: "De huidige praktijk:\n• Woningbouw → gestuurd door grond en markt\n• Energie → gestuurd door netbeheerders en wetgeving\n• Mobiliteit → gestuurd door infrastructuurprogramma’s\n\n👉 Resultaat:\n• projecten vertragen of vallen stil\n• investeringen sluiten niet op elkaar aan\n• maatschappelijke kosten lopen op\n\nDe kern van het probleem:\n\nNederland ontwikkelt nog steeds sectoraal, terwijl de opgaven systeemvraagstukken zijn."
+        },
+        {
+          title: "3. De Bandstad als nieuwe ontwikkelrealiteit",
+          content: "De “Bandstad” vormt het nieuwe speelveld voor groei:\n• Flevoland, Zwolle, Arnhem–Nijmegen, Brabant\n• Beschikbare ruimte voor wonen en economie\n• Strategische ligging t.o.v. energie-infrastructuur\n\nMaar:\n\nZonder systeembewuste ontwikkeling wordt de Bandstad dezelfde bottleneck als de Randstad."
+        },
+        {
+          title: "4. Oplossingsrichting: systeembewuste gebiedsontwikkeling",
+          content: "Systeembewust ontwikkelen betekent:\n\nHet energiesysteem is geen randvoorwaarde, maar het startpunt van gebiedsontwikkeling.\n\nKernprincipes:\n\n1. Energie als ordenend principe\n• Ontwikkelen op basis van beschikbare en maakbare capaciteit\n• Lokale opwek, opslag en flexibiliteit integraal ontwerpen\n\n2. Gebiedsontwikkeling = systeemontwikkeling\n• Wonen, werken, mobiliteit en energie in één ontwerp\n• Van “project” naar “ecosysteem”\n\n3. Van netaansluiting naar energienetwerk\n• Gesloten distributiesystemen (GDS)\n• Energy hubs en lokale energiegemeenschappen\n\n4. Sturing op tijd i.p.v. alleen ruimte\n• Fasering afgestemd op energiecapaciteit\n• Slim programmeren voorkomt stilstand"
+        },
+        {
+          title: "5. Wat vraagt dit van het Rijk en regio’s?",
+          content: "Van beleid naar uitvoering\n\n1. Maak ruimte voor experiment en versnelling\n• Versoepel regels voor GDS en energy hubs\n• Creëer experimenteergebieden (Bandstad-regio’s)\n\n2. Koppel woningbouw en energieprogrammering\n• Geen woningbouw zonder energieplan\n• Verplicht integraal programmeren\n\n3. Stuur op systeemwaarde i.p.v. sectorale KPI’s\n• Niet alleen aantallen woningen\n• Maar ook:\n  - netimpact\n  - flexibiliteit\n  - energie-autonomie\n\n4. Faciliteer nieuwe samenwerkingsvormen\n• Publiek-private gebiedscoalities\n• Ontwikkelaars als systeemregisseurs"
+        },
+        {
+          title: "6. De rol van systeembewust.nl",
+          content: "Systeembewust.nl positioneert zich als:\n\nVersneller van integrale gebiedsontwikkeling op basis van het energiesysteem\n\nWij:\n• Vertalen complexe systeemvraagstukken naar concrete gebiedsconcepten\n• Verbinden overheden, netbeheerders en marktpartijen\n• Ontwikkelen rekenmodellen en scenario’s voor:\n  - energiecapaciteit\n  - fasering\n  - businesscases\n\nOnze focus:\n• Bandstad-regio’s als nieuwe groeimotor\n• Netbewuste woon- en werkgebieden\n• Energy hubs als fundament voor ontwikkeling"
+        },
+        {
+          title: "7. Oproep: kies voor systeemsturing",
+          content: "Nederland heeft geen gebrek aan plannen.\nHet heeft een gebrek aan samenhang.\n\nDe komende jaren bepalen of:\n• we blijven vastlopen in procedures en congestie\nof\n• we versnellen door integraal te sturen op systemen\n\nDe Bandstad biedt ruimte.\nHet energiesysteem bepaalt of we die ruimte kunnen benutten."
+        }
+      ]
     }
   },
   en: {
@@ -153,6 +198,7 @@ export const translations = {
       netpanel: "Grid Panel",
       werkwijze: "Approach",
       casestudy: "Case Studies",
+      positionPaper: "Position Paper",
       aanDeSlag: "Get Started"
     },
     hero: {
@@ -166,6 +212,16 @@ export const translations = {
       stat2Val: "€0",
       stat2Label: "failure costs with the right approach",
       scroll: "Scroll"
+    },
+    callToAction: {
+      title: "Call to action: choose system steering",
+      p1: "The Netherlands has no shortage of plans.\nIt has a shortage of coherence.",
+      p2: "The coming years will determine whether:",
+      list: [
+        "we remain stuck in procedures and congestion, or",
+        "we accelerate by integrally steering on systems"
+      ],
+      p3: "The Bandstad offers space.\nThe energy system determines whether we can utilize that space."
     },
     ticker: [
       "Energy Act 2024: energy communities legally anchored",
@@ -289,6 +345,40 @@ export const translations = {
     footer: {
       legal: "Privacy, Cookies & Disclaimer",
       copyright: "Copyright © 2026 VOVON"
+    },
+    positionPaper: {
+      title: "Position Paper — System-Aware Netherlands",
+      subtitle: "From Randstad to Bandstad: steering on the energy system as the foundation for area development",
+      sections: [
+        {
+          title: "1. Background: The Netherlands is getting stuck in its own success",
+          content: "The Netherlands is at a tipping point.\n\nThe classic development logic — building where there is demand, adapting infrastructure afterwards — no longer works. The limits have been reached:\n• Grid congestion slows down housing construction and the economy\n• Spatial pressure in the Randstad is at its maximum\n• Energy, mobility, and space are no longer systems that can be developed separately\n\nThe map of the Netherlands is shifting.\n\nThe Randstad is no longer the only center of gravity. A new spatial reality is emerging: the Bandstad — a network of regions around the Randstad where space, energy, and growth come together."
+        },
+        {
+          title: "2. Problem definition: sectoral development fails",
+          content: "Current practice:\n• Housing construction → driven by land and market\n• Energy → driven by grid operators and legislation\n• Mobility → driven by infrastructure programs\n\n👉 Result:\n• projects slow down or come to a standstill\n• investments do not align with each other\n• social costs are rising\n\nThe core of the problem:\n\nThe Netherlands is still developing sectorally, while the challenges are system issues."
+        },
+        {
+          title: "3. The Bandstad as a new development reality",
+          content: "The “Bandstad” forms the new playing field for growth:\n• Flevoland, Zwolle, Arnhem–Nijmegen, Brabant\n• Available space for living and economy\n• Strategic location relative to energy infrastructure\n\nBut:\n\nWithout system-aware development, the Bandstad will become the same bottleneck as the Randstad."
+        },
+        {
+          title: "4. Solution direction: system-aware area development",
+          content: "System-aware development means:\n\nThe energy system is not a precondition, but the starting point of area development.\n\nCore principles:\n\n1. Energy as an organizing principle\n• Develop based on available and realizable capacity\n• Integrally design local generation, storage, and flexibility\n\n2. Area development = system development\n• Living, working, mobility, and energy in one design\n• From “project” to “ecosystem”\n\n3. From grid connection to energy network\n• Closed distribution systems (GDS)\n• Energy hubs and local energy communities\n\n4. Steering on time instead of just space\n• Phasing aligned with energy capacity\n• Smart programming prevents standstill"
+        },
+        {
+          title: "5. What does this require from the State and regions?",
+          content: "From policy to execution\n\n1. Make room for experiment and acceleration\n• Relax rules for GDS and energy hubs\n• Create experimental areas (Bandstad regions)\n\n2. Link housing construction and energy programming\n• No housing construction without an energy plan\n• Mandatory integral programming\n\n3. Steer on system value instead of sectoral KPIs\n• Not just numbers of homes\n• But also:\n  - grid impact\n  - flexibility\n  - energy autonomy\n\n4. Facilitate new forms of collaboration\n• Public-private area coalitions\n• Developers as system directors"
+        },
+        {
+          title: "6. The role of systeembewust.nl",
+          content: "Systeembewust.nl positions itself as:\n\nAccelerator of integral area development based on the energy system\n\nWe:\n• Translate complex system issues into concrete area concepts\n• Connect governments, grid operators, and market parties\n• Develop calculation models and scenarios for:\n  - energy capacity\n  - phasing\n  - business cases\n\nOur focus:\n• Bandstad regions as a new growth engine\n• Grid-aware living and working areas\n• Energy hubs as the foundation for development"
+        },
+        {
+          title: "7. Call to action: choose system steering",
+          content: "The Netherlands has no shortage of plans.\nIt has a shortage of coherence.\n\nThe coming years will determine whether:\n• we remain stuck in procedures and congestion\nor\n• we accelerate by integrally steering on systems\n\nThe Bandstad offers space.\nThe energy system determines whether we can utilize that space."
+        }
+      ]
     }
   }
 };

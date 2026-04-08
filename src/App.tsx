@@ -217,6 +217,77 @@ const ProjectRow = ({
   );
 };
 
+const PositionPaperView = ({
+  onBack,
+  lang,
+}: {
+  onBack: () => void;
+  lang: Language;
+}) => {
+  const t = translations[lang].positionPaper;
+  return (
+    <div className="min-h-screen pt-32 pb-20 px-5 md:px-10 z-10 relative text-white">
+      {/* Background Image */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-paper/90 via-paper/95 to-paper z-10"></div>
+        <img
+          src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
+          alt="Position Paper Background"
+          className="w-full h-full object-cover opacity-40"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
+      <div className="max-w-[800px] mx-auto relative z-10">
+        <button
+          onClick={onBack}
+          className="mb-12 font-display text-sm font-bold tracking-wide text-white/50 hover:text-accent transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none p-0"
+        >
+          {translations[lang].legal.back}
+        </button>
+
+        <div className="space-y-12 text-white/70 leading-[1.8] text-[15px]">
+          <div className="mb-16">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+              {t.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-accent font-medium leading-relaxed">
+              {t.subtitle}
+            </p>
+          </div>
+
+          {t.sections.map((section, idx) => (
+            <section key={idx} className="mb-12">
+              <h2 className="font-display text-2xl font-bold text-white mb-6">
+                {section.title}
+              </h2>
+              {idx === 2 ? (
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="space-y-4 whitespace-pre-wrap flex-1">
+                    {section.content}
+                  </div>
+                  <div className="w-full md:w-1/2 lg:w-2/5 rounded-2xl overflow-hidden border border-white/10 shadow-xl flex-shrink-0">
+                    <img 
+                      src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg" 
+                      alt="Bandstad" 
+                      className="w-full h-48 md:h-56 lg:h-64 object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4 whitespace-pre-wrap">
+                  {section.content}
+                </div>
+              )}
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const LegalView = ({
   onBack,
   lang,
@@ -282,7 +353,7 @@ const LegalView = ({
 
 export default function App() {
   const [openAccordion, setOpenAccordion] = useState<number>(0);
-  const [view, setView] = useState<"home" | "legal">("home");
+  const [view, setView] = useState<"home" | "legal" | "position-paper">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -406,6 +477,17 @@ export default function App() {
                 >
                   {t.nav.casestudy}
                 </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setView("position-paper");
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`text-[15px] font-medium transition-colors bg-transparent border-none cursor-pointer p-0 ${view === "position-paper" ? "text-accent border-b-2 border-accent pb-1" : "text-white hover:text-accent"}`}
+                >
+                  {t.nav.positionPaper}
+                </button>
               </li>
             </ul>
 
@@ -531,6 +613,18 @@ export default function App() {
                 {t.nav.casestudy}
               </a>
             </li>
+            <li>
+              <button
+                onClick={() => {
+                  setView("position-paper");
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo(0, 0);
+                }}
+                className={`text-2xl font-bold transition-colors bg-transparent border-none cursor-pointer p-0 ${view === "position-paper" ? "text-accent" : "text-white hover:text-accent"}`}
+              >
+                {t.nav.positionPaper}
+              </button>
+            </li>
             <li className="mt-4">
               <a
                 href="#contact"
@@ -544,7 +638,7 @@ export default function App() {
         </div>
       )}
 
-      {view === "home" ? (
+      {view === "home" && (
         <>
           {/* HERO */}
           <section
@@ -640,6 +734,58 @@ export default function App() {
               ))}
             </div>
           </div>
+
+          {/* CALL TO ACTION HEADER */}
+          <section className="py-16 md:py-24 px-5 md:px-10 max-w-[1000px] mx-auto z-10 relative">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.6 }}
+              className="relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-12"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-paper/95 via-paper/80 to-accent/20 z-10"></div>
+                <img
+                  src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
+                  alt="Call to Action Background"
+                  className="w-full h-full object-cover opacity-50"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-accent/50 to-transparent z-20"></div>
+              
+              <div className="relative z-20">
+                <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-8 text-white">
+                  {t.callToAction.title}
+                </h2>
+                
+                <div className="space-y-6 text-lg md:text-xl text-white/80 leading-relaxed font-medium">
+                  <p className="whitespace-pre-line text-white">
+                    {t.callToAction.p1}
+                  </p>
+                  
+                  <div>
+                    <p className="mb-3">{t.callToAction.p2}</p>
+                    <ul className="list-none p-0 m-0 space-y-3">
+                      {t.callToAction.list.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <p className="whitespace-pre-line text-accent pt-4 border-t border-white/10">
+                    {t.callToAction.p3}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </section>
 
           {/* WAT IS HET */}
           <section
@@ -1191,7 +1337,17 @@ export default function App() {
             </div>
           </section>
         </>
-      ) : (
+      )}
+      {view === "position-paper" && (
+        <PositionPaperView
+          onBack={() => {
+            setView("home");
+            window.scrollTo(0, 0);
+          }}
+          lang={lang}
+        />
+      )}
+      {view === "legal" && (
         <LegalView
           onBack={() => {
             setView("home");

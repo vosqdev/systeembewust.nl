@@ -5,8 +5,25 @@ import { GoogleGenAI } from '@google/genai';
 import Markdown from 'react-markdown';
 import { Language, translations } from '../i18n';
 
-// Initialize Gemini API
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Lazy initialize Gemini API
+let aiClient: GoogleGenAI | null = null;
+
+const getAIClient = () => {
+  if (!aiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      console.error('GEMINI_API_KEY is not set. AI Assistant will not work.');
+      return null;
+    }
+    try {
+      aiClient = new GoogleGenAI({ apiKey });
+    } catch (e) {
+      console.error('Failed to initialize Gemini API:', e);
+      return null;
+    }
+  }
+  return aiClient;
+};
 
 interface Message {
   role: 'user' | 'assistant';
@@ -99,6 +116,11 @@ Huidige taal van de website: ${lang === 'nl' ? 'Nederlands' : 'Engels'}.
     setIsLoading(true);
 
     try {
+      const ai = getAIClient();
+      if (!ai) {
+        throw new Error('AI Client not initialized. Please check your API key.');
+      }
+
       const chatHistory = messages.map(msg => ({
         role: msg.role === 'assistant' ? 'model' : 'user',
         parts: [{ text: msg.content }]

@@ -736,58 +736,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* CALL TO ACTION HEADER */}
-          <section className="py-16 md:py-24 px-5 md:px-10 max-w-[1000px] mx-auto z-10 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6 }}
-              className="relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-12"
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-paper/95 via-paper/80 to-accent/20 z-10"></div>
-                <img
-                  src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
-                  alt="Call to Action Background"
-                  className="w-full h-full object-cover opacity-50"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-accent/50 to-transparent z-20"></div>
-              
-              <div className="relative z-20">
-                <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-8 text-white">
-                  {t.callToAction.title}
-                </h2>
-                
-                <div className="space-y-6 text-lg md:text-xl text-white/80 leading-relaxed font-medium">
-                  <p className="whitespace-pre-line text-white">
-                    {t.callToAction.p1}
-                  </p>
-                  
-                  <div>
-                    <p className="mb-3">{t.callToAction.p2}</p>
-                    <ul className="list-none p-0 m-0 space-y-3">
-                      {t.callToAction.list.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span className="text-accent mt-1.5 flex-shrink-0">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <p className="whitespace-pre-line text-accent pt-4 border-t border-white/10">
-                    {t.callToAction.p3}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </section>
-
           {/* WAT IS HET */}
           <section
             id="wat"
@@ -1300,6 +1248,58 @@ export default function App() {
                 />
               </motion.div>
             </div>
+          </section>
+
+          {/* CALL TO ACTION HEADER */}
+          <section className="py-16 md:py-24 px-5 md:px-10 max-w-[1000px] mx-auto z-10 relative">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.6 }}
+              className="relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-12"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-paper/95 via-paper/80 to-accent/20 z-10"></div>
+                <img
+                  src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
+                  alt="Call to Action Background"
+                  className="w-full h-full object-cover opacity-50"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-accent/50 to-transparent z-20"></div>
+              
+              <div className="relative z-20">
+                <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-8 text-white">
+                  {t.callToAction.title}
+                </h2>
+                
+                <div className="space-y-6 text-lg md:text-xl text-white/80 leading-relaxed font-medium">
+                  <p className="whitespace-pre-line text-white">
+                    {t.callToAction.p1}
+                  </p>
+                  
+                  <div>
+                    <p className="mb-3">{t.callToAction.p2}</p>
+                    <ul className="list-none p-0 m-0 space-y-3">
+                      {t.callToAction.list.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <p className="whitespace-pre-line text-accent pt-4 border-t border-white/10">
+                    {t.callToAction.p3}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </section>
 
           {/* CONTACT CTA */}

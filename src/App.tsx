@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { EnergyCircle } from "./components/EnergyCircle";
+import { AIAssistant } from "./components/AIAssistant";
 import {
   BatteryCharging,
   Sun,
@@ -484,7 +485,7 @@ export default function App() {
                     setView("position-paper");
                     window.scrollTo(0, 0);
                   }}
-                  className={`text-[15px] font-medium transition-colors bg-transparent border-none cursor-pointer p-0 ${view === "position-paper" ? "text-accent border-b-2 border-accent pb-1" : "text-white hover:text-accent"}`}
+                  className="text-[15px] font-medium transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
                 >
                   {t.nav.positionPaper}
                 </button>
@@ -620,7 +621,7 @@ export default function App() {
                   setIsMobileMenuOpen(false);
                   window.scrollTo(0, 0);
                 }}
-                className={`text-2xl font-bold transition-colors bg-transparent border-none cursor-pointer p-0 ${view === "position-paper" ? "text-accent" : "text-white hover:text-accent"}`}
+                className="text-2xl font-bold transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
               >
                 {t.nav.positionPaper}
               </button>
@@ -1379,6 +1380,9 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* AI Assistant */}
+      <AIAssistant lang={lang} />
     </div>
   );
 }

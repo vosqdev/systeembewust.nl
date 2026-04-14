@@ -140,13 +140,13 @@ Huidige taal van de website: ${lang === 'nl' ? 'Nederlands' : 'Engels'}.
       const assistantMessage = response.text || (lang === 'nl' ? 'Sorry, ik kon geen antwoord genereren.' : 'Sorry, I could not generate a response.');
       
       setMessages((prev) => [...prev, { role: 'assistant', content: assistantMessage }]);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error calling Gemini API:', error);
       setMessages((prev) => [...prev, { 
         role: 'assistant', 
         content: lang === 'nl' 
-          ? 'Er is een fout opgetreden bij het verbinden met de AI. Probeer het later opnieuw.' 
-          : 'An error occurred while connecting to the AI. Please try again later.' 
+          ? `Er is een fout opgetreden bij het verbinden met de AI: ${error.message || 'Onbekende fout'}` 
+          : `An error occurred while connecting to the AI: ${error.message || 'Unknown error'}` 
       }]);
     } finally {
       setIsLoading(false);

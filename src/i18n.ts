@@ -219,7 +219,7 @@ export const translations = {
       title2: "netklaar",
       title3: "maken?",
       desc: "Starten met een Quickscan van uw locatie — om zo een helder beeld van kansen en risico's te krijgen.",
-      btn1: "Quickscan aanvragen",
+      btn1: "Meer informatie",
       btn2: "Meer over VOVON"
     },
     legal: {
@@ -604,7 +604,7 @@ export const translations = {
       title2: "grid-ready",
       title3: "?",
       desc: "Start with a Quick Scan of your location — to get a clear picture of opportunities and risks.",
-      btn1: "Request Quick Scan",
+      btn1: "More information",
       btn2: "More about VOVON"
     },
     legal: {

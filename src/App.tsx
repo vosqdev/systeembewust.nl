@@ -1183,12 +1183,6 @@ export default function App() {
                   transition={{ duration: 0.4 }}
                   className="space-y-8"
                 >
-                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
-                    {lang === "nl" 
-                      ? "Volg onze gestructureerde routekaart om stapsgewijs tot een netbewuste gebiedsontwikkeling te komen, van initiatief tot beheer."
-                      : "Follow our structured roadmap to step-by-step achieve grid-aware area development, from initiative to management."}
-                  </p>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {t.frameworks.routekaart.steps.map((step: any, idx: number) => (
                       <div
@@ -1450,18 +1444,12 @@ export default function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:info@vovon.nl"
-                className="font-display text-[15px] font-bold px-8 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors no-underline"
-              >
-                {t.contact.btn1}
-              </a>
-              <a
                 href="https://www.vovon.nl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-display text-[15px] font-bold px-8 py-4 bg-white/10 border border-white/20 text-white rounded-full hover:bg-white/20 transition-colors no-underline"
+                className="font-display text-[15px] font-bold px-8 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors no-underline"
               >
-                {t.contact.btn2}
+                {t.contact.btn1}
               </a>
             </div>
           </section>

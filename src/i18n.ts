@@ -73,15 +73,29 @@ export const translations = {
     netpanel: {
       label: "Netpanel",
       title: "Live netcapaciteit\nNederland",
-      desc: "Indicatieve status op basis van gepubliceerde congestiegebieden per netbeheerder. Bijgewerkt Q1 2025.",
-      cards: [
-        { label: "Liander — regio's vol", value: "91%", sub: "Groot-Amsterdam, Flevoland,\nGelderland, Noord-Holland" },
-        { label: "Enexis — transport­schaarste", value: "84%", sub: "Noord-Brabant, Limburg,\nDrenthe, Friesland" },
-        { label: "Stedin — congestiezones", value: "78%", sub: "Zuid-Holland, Zeeland,\nUtrecht" },
-        { label: "Verwachte uitbreidingstermijn", value: "7 jr", sub: "Gemiddelde wachttijd voor\nzwaar transport­verzoek" },
-        { label: "BESS-projecten operationeel NL", value: "142", sub: "Gecombineerde capaciteit\n1.8 GWh — groei +34% YoY" },
-        { label: "Flexibiliteitsmarkt potentie", value: "€340M", sub: "Jaarlijks beschikbaar via\nFCR, aFRR, mFRR en IDM" }
-      ]
+      desc: "Indicatieve status op basis van gepubliceerde congestiegebieden per netbeheerder. Bijgewerkt juli 2026.",
+      tabs: {
+        afname: "Afname (Verbruik)",
+        invoeding: "Invoeding (Teruglevering)"
+      },
+      cards: {
+        afname: [
+          { label: "Liander — regio's vol", value: "95%", sub: "Groot-Amsterdam, Flevoland,\nGelderland, Noord-Holland, Friesland-Zuid" },
+          { label: "Enexis — transport­schaarste", value: "88%", sub: "Noord-Brabant, Limburg,\nDrenthe, Overijssel, Groningen" },
+          { label: "Stedin — congestiezones", value: "84%", sub: "Zuid-Holland, Zeeland,\nUtrecht" },
+          { label: "Verwachte uitbreidingstermijn", value: "5-10 jr", sub: "Gemiddelde wachttijd voor\nzwaar transport­verzoek" },
+          { label: "BESS-projecten operationeel NL", value: "248", sub: "Gecombineerde capaciteit\n3.2 GWh — groei +75% YoY" },
+          { label: "Flexibiliteitsmarkt potentie", value: "€480M", sub: "Jaarlijks beschikbaar via\nFCR, aFRR, mFRR, GOPACS en IDM" }
+        ],
+        invoeding: [
+          { label: "Liander — teruglever­stop", value: "98%", sub: "Friesland, Flevoland, Gelderland,\nkop van Noord-Holland" },
+          { label: "Enexis — opwek­congestie", value: "93%", sub: "Groningen, Drenthe, Overijssel,\nNoord-Brabant" },
+          { label: "Stedin — invoed­beperkingen", value: "79%", sub: "Utrecht, Zuid-Hollandse eilanden,\nZeeland" },
+          { label: "Verwachte uitbreidingstermijn", value: "4-8 jr", sub: "Gemiddelde wachttijd voor\ngrootschalige invoeding" },
+          { label: "Batterij-initiatieven (BESS)", value: "3.5 GW", sub: "In de wachtrij voor\nnetinpassing in heel NL" },
+          { label: "Curtailment (Afschakeling)", value: "12%", sub: "Gemiddeld verlies van zonne-energie\ndoor lokale overbelasting" }
+        ]
+      }
     },
     diagram: {
       label: "Systeemmodel",
@@ -410,15 +424,29 @@ export const translations = {
     netpanel: {
       label: "Grid Panel",
       title: "Live grid capacity\nNetherlands",
-      desc: "Indicative status based on published congestion areas per grid operator. Updated Q1 2025.",
-      cards: [
-        { label: "Liander — regions full", value: "91%", sub: "Greater Amsterdam, Flevoland,\nGelderland, North Holland" },
-        { label: "Enexis — transport scarcity", value: "84%", sub: "North Brabant, Limburg,\nDrenthe, Friesland" },
-        { label: "Stedin — congestion zones", value: "78%", sub: "South Holland, Zeeland,\nUtrecht" },
-        { label: "Expected expansion time", value: "7 yrs", sub: "Average waiting time for\nheavy transport request" },
-        { label: "BESS projects operational NL", value: "142", sub: "Combined capacity\n1.8 GWh — growth +34% YoY" },
-        { label: "Flexibility market potential", value: "€340M", sub: "Annually available via\nFCR, aFRR, mFRR and IDM" }
-      ]
+      desc: "Indicative status based on published congestion areas per grid operator. Updated July 2026.",
+      tabs: {
+        afname: "Consumption (Demand)",
+        invoeding: "Feed-in (Generation)"
+      },
+      cards: {
+        afname: [
+          { label: "Liander — regions full", value: "95%", sub: "Greater Amsterdam, Flevoland,\nGelderland, North Holland, South-Friesland" },
+          { label: "Enexis — transport scarcity", value: "88%", sub: "North Brabant, Limburg,\nDrenthe, Overijssel, Groningen" },
+          { label: "Stedin — congestion zones", value: "84%", sub: "South Holland, Zeeland,\nUtrecht" },
+          { label: "Expected expansion time", value: "5-10 yrs", sub: "Average waiting time for\nheavy transport request" },
+          { label: "BESS projects operational NL", value: "248", sub: "Combined capacity\n3.2 GWh — growth +75% YoY" },
+          { label: "Flexibility market potential", value: "€480M", sub: "Annually available via\nFCR, aFRR, mFRR, GOPACS and IDM" }
+        ],
+        invoeding: [
+          { label: "Liander — feed-in stop", value: "98%", sub: "Friesland, Flevoland, Gelderland,\ntop of North Holland" },
+          { label: "Enexis — generation congestion", value: "93%", sub: "Groningen, Drenthe, Overijssel,\nNorth Brabant" },
+          { label: "Stedin — feed-in limits", value: "79%", sub: "Utrecht, South Holland islands,\nZeeland" },
+          { label: "Expected expansion time", value: "4-8 yrs", sub: "Average waiting time for\nlarge-scale feed-in connection" },
+          { label: "Battery initiatives (BESS)", value: "3.5 GW", sub: "In queue for grid integration\nacross the Netherlands" },
+          { label: "Curtailment (Shedding)", value: "12%", sub: "Average solar energy loss due to\nlocal system overloading" }
+        ]
+      }
     },
     diagram: {
       label: "System Model",

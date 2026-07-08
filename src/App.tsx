@@ -393,6 +393,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("routekaart");
+  const [netpanelTab, setNetpanelTab] = useState<"afname" | "invoeding">("afname");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -839,7 +840,7 @@ export default function App() {
           >
             <div className="max-w-[1200px] mx-auto">
               <motion.div
-                className="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6"
+                className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-14 gap-6"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -847,121 +848,73 @@ export default function App() {
               >
                 <div>
                   <SectionLabel>{t.netpanel.label}</SectionLabel>
-                  <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight m-0 text-white whitespace-pre-line">
+                  <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight m-0 text-white whitespace-pre-line mb-4">
                     {t.netpanel.title}
                   </h2>
+                  <p className="text-[15px] text-white/70 max-w-[500px] leading-[1.6] m-0">
+                    {t.netpanel.desc}
+                  </p>
                 </div>
-                <p className="text-[15px] text-white/70 max-w-[280px] md:text-right leading-[1.6] m-0">
-                  {t.netpanel.desc}
-                </p>
+
+                {/* Tab Toggles */}
+                <div className="flex p-1 bg-white/5 border border-white/10 rounded-2xl shrink-0 self-start lg:self-end">
+                  <button
+                    onClick={() => setNetpanelTab("afname")}
+                    className={`px-5 py-2.5 rounded-xl font-display text-[14px] font-bold transition-all border-none cursor-pointer ${
+                      netpanelTab === "afname"
+                        ? "bg-accent text-paper shadow-lg"
+                        : "bg-transparent text-white/60 hover:text-white"
+                    }`}
+                  >
+                    {t.netpanel.tabs.afname}
+                  </button>
+                  <button
+                    onClick={() => setNetpanelTab("invoeding")}
+                    className={`px-5 py-2.5 rounded-xl font-display text-[14px] font-bold transition-all border-none cursor-pointer ${
+                      netpanelTab === "invoeding"
+                        ? "bg-accent text-paper shadow-lg"
+                        : "bg-transparent text-white/60 hover:text-white"
+                    }`}
+                  >
+                    {t.netpanel.tabs.invoeding}
+                  </button>
+                </div>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.0 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[0].label}
-                    value={t.netpanel.cards[0].value}
-                    colorClass="green"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[0].sub}
-                      </span>
-                    }
-                    fillWidth="91%"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[1].label}
-                    value={t.netpanel.cards[1].value}
-                    colorClass="amber"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[1].sub}
-                      </span>
-                    }
-                    fillWidth="84%"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[2].label}
-                    value={t.netpanel.cards[2].value}
-                    colorClass="green"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[2].sub}
-                      </span>
-                    }
-                    fillWidth="78%"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[3].label}
-                    value={t.netpanel.cards[3].value}
-                    colorClass="blue"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[3].sub}
-                      </span>
-                    }
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[4].label}
-                    value={t.netpanel.cards[4].value}
-                    colorClass="amber"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[4].sub}
-                      </span>
-                    }
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                  <NetCard
-                    label={t.netpanel.cards[5].label}
-                    value={t.netpanel.cards[5].value}
-                    colorClass="green"
-                    sub={
-                      <span className="whitespace-pre-line">
-                        {t.netpanel.cards[5].sub}
-                      </span>
-                    }
-                  />
-                </motion.div>
+                {(t.netpanel.cards as any)[netpanelTab].map((card: any, idx: number) => {
+                  let colorClass = "green";
+                  if (idx === 0) colorClass = "red";
+                  else if (idx === 1) colorClass = "amber";
+                  else if (idx === 2) colorClass = "amber";
+                  else if (idx === 3) colorClass = "blue";
+                  else if (idx === 4) colorClass = "green";
+                  else if (idx === 5) colorClass = "green";
+
+                  const hasProgressBar = idx < 3;
+                  const fillWidth = hasProgressBar ? card.value : undefined;
+
+                  return (
+                    <motion.div
+                      key={`${netpanelTab}-${idx}`}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    >
+                      <NetCard
+                        label={card.label}
+                        value={card.value}
+                        colorClass={colorClass}
+                        sub={
+                          <span className="whitespace-pre-line">
+                            {card.sub}
+                          </span>
+                        }
+                        fillWidth={fillWidth}
+                      />
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </section>

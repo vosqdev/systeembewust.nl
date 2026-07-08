@@ -10,9 +10,10 @@ let aiClient: GoogleGenAI | null = null;
 
 const getAIClient = () => {
   if (!aiClient) {
-    const apiKey = process.env.GEMINI_API_KEY;
+    // Check both import.meta.env (for Netlify/Vite) and process.env (for AI Studio)
+    const apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY || (typeof process !== 'undefined' ? process.env?.GEMINI_API_KEY : undefined);
     if (!apiKey) {
-      console.error('GEMINI_API_KEY is not set. AI Assistant will not work.');
+      console.error('GEMINI_API_KEY or VITE_GEMINI_API_KEY is not set. AI Assistant will not work.');
       return null;
     }
     try {
@@ -63,8 +64,9 @@ Belangrijke context over VOVON en netbewuste gebiedsontwikkeling:
   - Energiegemeenschap (CEC, Energiewet 2024)
   - Dynamische Netaansluiting
   - Faseringsmodel
+  - Kwartierdata (onmisbaar voor inzicht in energieverbruik en peak shaving in de infrastructuur)
 
-Jouw doel is om vragen van bezoekers te beantwoorden over deze onderwerpen, de visie van VOVON uit te leggen (zoals beschreven in de Position Paper), en ze te enthousiasmeren voor een Quickscan.
+Jouw doel is om vragen van bezoekers te beantwoorden over deze onderwerpen (netcongestie, energie hubs, kwartierdata), de visie van VOVON uit te leggen, en ze te enthousiasmeren voor een Quickscan.
 Wees professioneel, behulpzaam, en gebruik duidelijke taal. Als de gebruiker in het Engels spreekt, antwoord dan in het Engels. Als de gebruiker in het Nederlands spreekt, antwoord dan in het Nederlands.
 Huidige taal van de website: ${lang === 'nl' ? 'Nederlands' : 'Engels'}.
 `;

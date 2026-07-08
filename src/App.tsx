@@ -139,15 +139,15 @@ const Step = ({
   desc: string;
   tag: string;
 }) => (
-  <div className="border border-white/10 rounded-3xl p-10 relative bg-card transition-all duration-300 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
+  <div className="border border-white/10 rounded-3xl p-10 relative bg-card h-full flex flex-col transition-all duration-300 hover:border-accent/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
     <div className="font-display font-bold text-[64px] tracking-tighter leading-none text-white/10 mb-6">
       {num}
     </div>
     <h3 className="font-display text-xl font-bold mb-4 tracking-tight text-white">
       {title}
     </h3>
-    <p className="text-[15px] leading-[1.7] text-white/70">{desc}</p>
-    <div className="inline-block mt-6 text-xs font-medium tracking-wide py-1.5 px-3 rounded-full border border-white/10 text-white/60 bg-white/5">
+    <p className="text-[15px] leading-[1.7] text-white/70 mb-6">{desc}</p>
+    <div className="inline-block mt-auto text-xs font-medium tracking-wide py-1.5 px-3 rounded-full border border-white/10 text-white/60 bg-white/5 self-start">
       {tag}
     </div>
   </div>
@@ -164,15 +164,15 @@ const ToolPill = ({
   desc: string;
   badge: string;
 }) => (
-  <div className="border border-white/10 rounded-2xl p-7 flex flex-col gap-4 transition-all duration-300 hover:border-accent/50 hover:bg-white/5 cursor-default group">
-    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-2 group-hover:bg-accent/10 group-hover:scale-110 transition-all duration-300">
+  <div className="border border-white/10 rounded-2xl p-7 flex flex-col gap-4 h-full transition-all duration-300 hover:border-accent/50 hover:bg-white/5 cursor-default group">
+    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-2 group-hover:bg-accent/10 group-hover:scale-110 transition-all duration-300 shrink-0">
       {icon}
     </div>
-    <div className="font-display text-lg font-bold tracking-tight text-white">
+    <div className="font-display text-lg font-bold tracking-tight text-white shrink-0">
       {title}
     </div>
     <div className="text-[14px] leading-[1.7] text-white/70">{desc}</div>
-    <div className="text-xs font-medium tracking-wide py-1.5 px-3 rounded-full bg-accent/10 text-accent self-start mt-auto">
+    <div className="text-xs font-medium tracking-wide py-1.5 px-3 rounded-full bg-accent/10 text-accent self-start mt-auto shrink-0">
       {badge}
     </div>
   </div>
@@ -218,71 +218,105 @@ const ProjectRow = ({
   );
 };
 
-const PositionPaperView = ({
+const DataView = ({
   onBack,
   lang,
 }: {
   onBack: () => void;
   lang: Language;
 }) => {
-  const t = translations[lang].positionPaper;
+  const t = translations[lang].dataPage;
   return (
-    <div className="min-h-screen pt-32 pb-20 px-5 md:px-10 z-10 relative text-white">
-      {/* Background Image */}
-      <div className="fixed inset-0 z-[-1] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-paper/90 via-paper/95 to-paper z-10"></div>
-        <img
-          src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
-          alt="Position Paper Background"
-          className="w-full h-full object-cover opacity-40"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-
-      <div className="max-w-[800px] mx-auto relative z-10">
+    <div className="min-h-screen pt-32 pb-20 px-5 md:px-10 z-10 relative bg-paper text-white">
+      <div className="max-w-[800px] mx-auto">
         <button
           onClick={onBack}
           className="mb-12 font-display text-sm font-bold tracking-wide text-white/50 hover:text-accent transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none p-0"
         >
-          {translations[lang].legal.back}
+          {t.back}
         </button>
 
-        <div className="space-y-12 text-white/70 leading-[1.8] text-[15px]">
-          <div className="mb-16">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-              {t.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-accent font-medium leading-relaxed">
-              {t.subtitle}
-            </p>
-          </div>
+        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
+          {t.title}
+        </h1>
 
-          {t.sections.map((section, idx) => (
-            <section key={idx} className="mb-12">
-              <h2 className="font-display text-2xl font-bold text-white mb-6">
-                {section.title}
-              </h2>
-              {idx === 2 ? (
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="space-y-4 whitespace-pre-wrap flex-1">
-                    {section.content}
-                  </div>
-                  <div className="w-full md:w-1/2 lg:w-2/5 rounded-2xl overflow-hidden border border-white/10 shadow-xl flex-shrink-0">
-                    <img 
-                      src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg" 
-                      alt="Bandstad" 
-                      className="w-full h-48 md:h-56 lg:h-64 object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4 whitespace-pre-wrap">
-                  {section.content}
-                </div>
-              )}
-            </section>
-          ))}
+        <div className="text-xl text-white/80 leading-relaxed mb-16 space-y-6">
+          <p>{t.intro1}</p>
+          <p>{t.intro2}</p>
+        </div>
+
+        <div className="space-y-16 text-white/70 leading-[1.8] text-[16px]">
+          {/* Section 1 */}
+          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h2 className="font-display text-2xl font-bold text-white mb-6">
+              {t.section1.title}
+            </h2>
+            <div className="space-y-4">
+              <p>{t.section1.p1}</p>
+              <p>{t.section1.p2}</p>
+              <ul className="list-disc pl-5 space-y-2 text-accent">
+                {t.section1.bullets.map((bullet, idx) => (
+                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
+                ))}
+              </ul>
+              <p className="pt-2 font-medium">{t.section1.p3}</p>
+            </div>
+          </section>
+
+          {/* Section 2 */}
+          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h2 className="font-display text-2xl font-bold text-white mb-6">
+              {t.section2.title}
+            </h2>
+            <div className="space-y-4">
+              <p>{t.section2.p1}</p>
+              <ul className="list-disc pl-5 space-y-2 text-accent">
+                {t.section2.bullets.map((bullet, idx) => (
+                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
+                ))}
+              </ul>
+              <p className="pt-2 font-medium">{t.section2.p2}</p>
+            </div>
+          </section>
+
+          {/* Section 3 */}
+          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h2 className="font-display text-2xl font-bold text-white mb-6">
+              {t.section3.title}
+            </h2>
+            <div className="space-y-4">
+              <p>{t.section3.p1}</p>
+              <p>{t.section3.p2}</p>
+              <ul className="list-disc pl-5 space-y-2 text-accent">
+                {t.section3.bullets.map((bullet, idx) => (
+                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
+                ))}
+              </ul>
+              <p className="pt-2 font-medium">{t.section3.p3}</p>
+            </div>
+          </section>
+
+          {/* Section 4 */}
+          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
+            <h2 className="font-display text-2xl font-bold text-white mb-6">
+              {t.section4.title}
+            </h2>
+            <div className="space-y-4">
+              <p>{t.section4.p1}</p>
+              <p>{t.section4.p2}</p>
+              <ul className="list-disc pl-5 space-y-2 text-accent">
+                {t.section4.bullets.map((bullet, idx) => (
+                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <footer className="pt-8 border-t border-white/20">
+            <p className="text-xl md:text-2xl font-display font-medium text-white leading-relaxed whitespace-pre-wrap">
+              {t.conclusion}
+            </p>
+          </footer>
         </div>
       </div>
     </div>
@@ -354,10 +388,11 @@ const LegalView = ({
 
 export default function App() {
   const [openAccordion, setOpenAccordion] = useState<number>(0);
-  const [view, setView] = useState<"home" | "legal" | "position-paper">("home");
+  const [view, setView] = useState<"home" | "legal" | "data">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("routekaart");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -472,6 +507,15 @@ export default function App() {
               </li>
               <li>
                 <a
+                  href="#modellen"
+                  onClick={(e) => scrollToSection(e, "modellen")}
+                  className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
+                >
+                  {lang === "nl" ? "Modellen" : "Frameworks"}
+                </a>
+              </li>
+              <li>
+                <a
                   href="#projecten"
                   onClick={(e) => scrollToSection(e, "projecten")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
@@ -482,12 +526,12 @@ export default function App() {
               <li>
                 <button
                   onClick={() => {
-                    setView("position-paper");
+                    setView("data");
                     window.scrollTo(0, 0);
                   }}
                   className="text-[15px] font-medium transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
                 >
-                  {t.nav.positionPaper}
+                  {t.nav.data}
                 </button>
               </li>
             </ul>
@@ -607,6 +651,15 @@ export default function App() {
             </li>
             <li>
               <a
+                href="#modellen"
+                onClick={(e) => scrollToSection(e, "modellen")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+              >
+                {lang === "nl" ? "Modellen" : "Frameworks"}
+              </a>
+            </li>
+            <li>
+              <a
                 href="#projecten"
                 onClick={(e) => scrollToSection(e, "projecten")}
                 className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
@@ -617,13 +670,13 @@ export default function App() {
             <li>
               <button
                 onClick={() => {
-                  setView("position-paper");
+                  setView("data");
                   setIsMobileMenuOpen(false);
                   window.scrollTo(0, 0);
                 }}
                 className="text-2xl font-bold transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
               >
-                {t.nav.positionPaper}
+                {t.nav.data}
               </button>
             </li>
             <li className="mt-4">
@@ -930,12 +983,13 @@ export default function App() {
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.0 }}
+                className="h-full"
               >
                 <Step
                   num={t.aanpak.steps[0].num}
@@ -949,6 +1003,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
+                className="h-full"
               >
                 <Step
                   num={t.aanpak.steps[1].num}
@@ -962,6 +1017,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="h-full"
               >
                 <Step
                   num={t.aanpak.steps[2].num}
@@ -975,6 +1031,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
+                className="h-full"
               >
                 <Step
                   num={t.aanpak.steps[3].num}
@@ -1072,12 +1129,13 @@ export default function App() {
                 </h2>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.0 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<BatteryCharging size={28} strokeWidth={1.5} />}
@@ -1091,6 +1149,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<Sun size={28} strokeWidth={1.5} />}
@@ -1104,6 +1163,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<BrainCircuit size={28} strokeWidth={1.5} />}
@@ -1117,6 +1177,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<Users size={28} strokeWidth={1.5} />}
@@ -1130,6 +1191,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<PlugZap size={28} strokeWidth={1.5} />}
@@ -1143,6 +1205,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.5 }}
+                  className="h-full"
                 >
                   <ToolPill
                     icon={<BarChart3 size={28} strokeWidth={1.5} />}
@@ -1155,39 +1218,198 @@ export default function App() {
             </div>
           </section>
 
-          {/* BANNER */}
-          <section className="px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative mb-20">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.5 }}
-              className="relative overflow-hidden rounded-3xl border border-accent/30 p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[300px]"
-            >
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 z-0 opacity-20 bg-cover bg-center"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200')" }}
-              />
-              
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 z-0 bg-gradient-to-br from-background/90 via-background/80 to-accent/20"></div>
-              
-              <div className="relative z-10 bg-accent/20 p-4 rounded-full mb-6 inline-flex backdrop-blur-sm border border-accent/20">
-                <Sparkles className="w-8 h-8 text-accent" />
+          {/* MODEILLEN / FRAMEWORKS */}
+          <section
+            id="modellen"
+            className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative"
+          >
+            {/* Tabs & Section Header */}
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <SectionLabel>{lang === "nl" ? "Systeem Modellen" : "System Frameworks"}</SectionLabel>
+                <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight leading-[1.05] text-white">
+                  {lang === "nl" ? "Netbewuste frameworks" : "Grid-aware frameworks"}
+                </h2>
+              </motion.div>
+
+              {/* Tab Toggles */}
+              <div className="flex flex-wrap gap-2 p-1.5 bg-card border border-white/10 rounded-2xl self-start lg:self-end">
+                {["routekaart", "locatieNaarSysteem", "planvorming"].map((tab) => {
+                  const active = activeFrameworkTab === tab;
+                  return (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveFrameworkTab(tab)}
+                      className={`px-5 py-2.5 rounded-xl font-display text-[14px] font-bold transition-all ${
+                        active
+                          ? "bg-accent text-paper shadow-lg"
+                          : "text-white/60 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {t.frameworks.tabs[tab as keyof typeof t.frameworks.tabs]}
+                    </button>
+                  );
+                })}
               </div>
-              
-              <h3 className="relative z-10 font-display font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4">
-                {t.banner.title}
-              </h3>
-              
-              <p className="relative z-10 text-gray-200 text-lg md:text-xl max-w-2xl mx-auto m-0 font-medium">
-                {t.banner.desc}
-              </p>
-            </motion.div>
+            </div>
+
+            {/* TAB CONTENT */}
+            <div className="min-h-[450px]">
+              {/* TAB 1: Routekaart */}
+              {activeFrameworkTab === "routekaart" && (
+                <motion.div
+                  key="routekaart"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-8"
+                >
+                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
+                    {lang === "nl" 
+                      ? "Volg onze gestructureerde routekaart om stapsgewijs tot een netbewuste gebiedsontwikkeling te komen, van initiatief tot beheer."
+                      : "Follow our structured roadmap to step-by-step achieve grid-aware area development, from initiative to management."}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {t.frameworks.routekaart.steps.map((step: any, idx: number) => (
+                      <div
+                        key={idx}
+                        className="bg-card border border-white/10 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between hover:border-white/20 transition-all duration-300"
+                      >
+                        {/* Colored Top Bar */}
+                        <div
+                          className="absolute top-0 left-0 right-0 h-[4px]"
+                          style={{ backgroundColor: step.color }}
+                        />
+
+                        <div>
+                          {/* Number Bubble */}
+                          <div
+                            className="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-lg text-white mb-6"
+                            style={{ backgroundColor: step.color }}
+                          >
+                            {step.num}
+                          </div>
+
+                          <h3 className="font-display font-bold text-xl text-white mb-3">
+                            {step.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-[14px] leading-[1.6] text-white/70 whitespace-pre-line m-0 mt-2">
+                          {step.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* TAB 2: Locatie naar Systeem */}
+              {activeFrameworkTab === "locatieNaarSysteem" && (
+                <motion.div
+                  key="locatieNaarSysteem"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
+                    {lang === "nl"
+                      ? "Hoe we een locatie omvormen tot een betrouwbaar en werkend lokaal energiesysteem met optimale balans."
+                      : "How we transform a location into a reliable and working local energy system with optimal balance."}
+                  </p>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    {t.frameworks.locatieNaarSysteem.cols.map((col: any, idx: number) => (
+                      <div
+                        key={idx}
+                        className="bg-card border border-white/10 rounded-3xl p-8 flex flex-col hover:border-white/20 transition-all duration-300"
+                      >
+                        {/* Col Title & Color Accent */}
+                        <div className="flex items-center gap-3 mb-8">
+                          <span
+                            className="w-3.5 h-3.5 rounded-full shrink-0"
+                            style={{ backgroundColor: col.color }}
+                          />
+                          <h3 className="font-display font-bold text-2xl text-white">
+                            <span className="text-white/40 mr-2">{idx + 1}</span>
+                            {col.title}
+                          </h3>
+                        </div>
+
+                        {/* List Items */}
+                        <ul className="space-y-4 list-none p-0 m-0 flex-1 flex flex-col justify-between">
+                          {col.items.map((item: string, itemIdx: number) => (
+                            <li key={itemIdx} className="flex gap-3 text-[14px] leading-[1.6] text-white/80">
+                              <span className="w-1.5 h-6 shrink-0 rounded-full" style={{ backgroundColor: col.color }} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* TAB 3: Planvorming */}
+              {activeFrameworkTab === "planvorming" && (
+                <motion.div
+                  key="planvorming"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-6"
+                >
+                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
+                    {lang === "nl"
+                      ? "Integratie van energie-eisen in de vroege ruimtelijke fasen om risico's en faalkosten te elimineren."
+                      : "Integration of energy requirements into early spatial phases to eliminate risks and failure costs."}
+                  </p>
+
+                  <div className="space-y-4">
+                    {t.frameworks.planvorming.phases.map((item: any, idx: number) => (
+                      <div
+                        key={idx}
+                        className="bg-card border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/20 transition-all duration-300"
+                      >
+                        <div className="flex flex-col md:flex-row md:items-center gap-6 flex-1">
+                          {/* Phase Label */}
+                          <div
+                            className="px-5 py-2.5 rounded-xl font-display font-bold text-sm text-center min-w-[160px] max-w-[200px]"
+                            style={{
+                              backgroundColor: `${item.color}20`,
+                              color: item.color,
+                              border: `1px solid ${item.color}40`,
+                            }}
+                          >
+                            {item.phase}
+                          </div>
+
+                          {/* Phase Content */}
+                          <div className="flex-1">
+                            <p className="text-[16px] font-bold text-white m-0 leading-snug">
+                              {item.content}
+                            </p>
+                            <p className="text-[13px] text-white/50 m-0 mt-1 flex items-center gap-1.5 font-medium">
+                              <span className="text-[15px]" style={{ color: item.color }}>↑</span> {item.note}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
           </section>
 
-          {/* PROJECTEN */}
+          {/* SAMENWERKING (PUBLIEK-PRIVATE SAMENWERKING) */}
           <section
             id="projecten"
             className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative"
@@ -1197,109 +1419,58 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.6 }}
+              className="mb-16"
             >
-              <SectionLabel>{t.projecten.label}</SectionLabel>
-              <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-12 m-0 text-white">
-                {t.projecten.title}
+              <SectionLabel>{t.samenwerking.label}</SectionLabel>
+              <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-4 m-0 text-white uppercase">
+                {t.samenwerking.title}
               </h2>
+              <p className="text-lg md:text-xl text-white/80 max-w-[900px] leading-relaxed mt-4 font-display">
+                {t.samenwerking.subtitle1}
+                <span className="text-accent font-bold">
+                  {t.samenwerking.subtitleHighlight}
+                </span>
+              </p>
             </motion.div>
 
-            <div className="flex flex-col gap-[2px]">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.0 }}
-              >
-                <ProjectRow
-                  num={t.projecten.rows[0].num}
-                  name={t.projecten.rows[0].name}
-                  loc={t.projecten.rows[0].loc}
-                  status={t.projecten.rows[0].status}
-                  statusColor="blue"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <ProjectRow
-                  num={t.projecten.rows[1].num}
-                  name={t.projecten.rows[1].name}
-                  loc={t.projecten.rows[1].loc}
-                  status={t.projecten.rows[1].status}
-                  statusColor="amber"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <ProjectRow
-                  num={t.projecten.rows[2].num}
-                  name={t.projecten.rows[2].name}
-                  loc={t.projecten.rows[2].loc}
-                  status={t.projecten.rows[2].status}
-                  statusColor="blue"
-                />
-              </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+              {t.samenwerking.pillars.map((pillar: any, idx: number) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className="bg-white rounded-[24px] p-8 flex flex-col relative overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-300"
+                >
+                  {/* Top Colored Bar */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[6px]"
+                    style={{ backgroundColor: pillar.color }}
+                  />
+
+                  {/* Header Title with corresponding color */}
+                  <h3
+                    className="font-display font-bold text-xl tracking-wider mb-8"
+                    style={{ color: pillar.color }}
+                  >
+                    {pillar.title}
+                  </h3>
+
+                  {/* List of points */}
+                  <ul className="space-y-6 list-none p-0 m-0 flex-1 flex flex-col justify-start">
+                    {pillar.items.map((item: string, itemIdx: number) => (
+                      <li
+                        key={itemIdx}
+                        className="text-[15px] leading-[1.6] text-gray-800 font-semibold relative pl-0"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
             </div>
-          </section>
-
-          {/* CALL TO ACTION HEADER */}
-          <section className="py-16 md:py-24 px-5 md:px-10 max-w-[1000px] mx-auto z-10 relative">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6 }}
-              className="relative overflow-hidden rounded-3xl border border-white/10 p-8 md:p-12"
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-paper/95 via-paper/80 to-accent/20 z-10"></div>
-                <img
-                  src="https://image2url.com/r2/default/images/1775629115457-952ba11a-e36b-4306-abc8-65dd208c5734.jpg"
-                  alt="Call to Action Background"
-                  className="w-full h-full object-cover opacity-50"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-accent/50 to-transparent z-20"></div>
-              
-              <div className="relative z-20">
-                <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-8 text-white">
-                  {t.callToAction.title}
-                </h2>
-                
-                <div className="space-y-6 text-lg md:text-xl text-white/80 leading-relaxed font-medium">
-                  <p className="whitespace-pre-line text-white">
-                    {t.callToAction.p1}
-                  </p>
-                  
-                  <div>
-                    <p className="mb-3">{t.callToAction.p2}</p>
-                    <ul className="list-none p-0 m-0 space-y-3">
-                      {t.callToAction.list.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <span className="text-accent mt-1.5 flex-shrink-0">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <p className="whitespace-pre-line text-accent pt-4 border-t border-white/10">
-                    {t.callToAction.p3}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </section>
 
           {/* CONTACT CTA */}
@@ -1339,8 +1510,8 @@ export default function App() {
           </section>
         </>
       )}
-      {view === "position-paper" && (
-        <PositionPaperView
+      {view === "data" && (
+        <DataView
           onBack={() => {
             setView("home");
             window.scrollTo(0, 0);
@@ -1380,9 +1551,6 @@ export default function App() {
           </p>
         </div>
       </footer>
-
-      {/* AI Assistant */}
-      <AIAssistant lang={lang} />
     </div>
   );
 }

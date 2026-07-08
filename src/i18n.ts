@@ -7,8 +7,8 @@ export const translations = {
       watIsHet: "Wat is het",
       netpanel: "Netpanel",
       werkwijze: "Werkwijze",
-      casestudy: "Casestudy",
-      positionPaper: "Position Paper",
+      casestudy: "Samenwerking",
+      data: "Kwartierdata",
       aanDeSlag: "Aan de slag"
     },
     hero: {
@@ -42,15 +42,15 @@ export const translations = {
     wat: {
       label: "Wat is het",
       title: "Net­bewust ontwerpen van de grond af",
-      desc: "Gebiedsontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.",
+      desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.\nMaar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen.",
       accordions: [
         {
-          title: "Wat is netbewuste gebiedsontwikkeling?",
-          content: "Netbewuste gebiedsontwikkeling integreert de beschikbare netcapaciteit als randvoorwaarde in het ruimtelijk en programmatisch ontwerp. Denk aan fasering op basis van transportcapaciteit, clustering van functies voor gedeeld netgebruik, en opslag als buffer."
+          title: "Wat is netbewust?",
+          content: "Netbewust ontwikkelen of bouwen integreert de beschikbare netcapaciteit als randvoorwaarde in het ruimtelijk, technische en programmatisch ontwerp. Denk aan fasering op basis van transportcapaciteit, contractering, clustering van functies voor gedeeld netgebruik, en opslag als buffer. Maar ook mobiliteit en laadinfra."
         },
         {
           title: "Waarom is dit nu urgent?",
-          content: "In meer dan 87% van de Nederlandse netgebieden bestaat transportschaarste. Nieuwe aansluitingen worden geweigerd of uitgesteld met 5–10 jaar. Wie niet netbewust ontwerpt, riskeert stilstand van de bouw."
+          content: "In meer dan 87% van de Nederlandse netgebieden bestaat transportschaarste. Nieuwe aansluitingen worden geweigerd of uitgesteld met 5–10 jaar. Bestaande aansluitingen kunnen niet worden vergroot. Wie niet netbewust ontwerpt, riskeert stilstand van de bouw, maar ook van zijn bedrijf."
         },
         {
           title: "Welke partijen?",
@@ -63,6 +63,10 @@ export const translations = {
         {
           title: "Nieuw ACM-prioriteringskader (1 juli 2026)",
           content: "Per 1 juli 2026 gaat bij netcongestie de overgangsfase van het nieuwe ACM-prioriteringskader in. Dat betekent in de praktijk:\n\n• Kleinverbruikers komen dan óók in beeld binnen het prioriteringskader; tot die datum gold de oude werkwijze nog.\n• De tot nu toe gereserveerde ruimte voor kleinverbruik is vanaf dan alleen nog beschikbaar voor partijen met prioriteit volgens het kader.\n• Projecten zonder prioriteit krijgen in congestiegebieden dus eerder te maken met een wachtrij.\n• De volgorde blijft grofweg: 1. congestieverzachters, 2. veiligheid, 3. basisbehoeften. Woningbouw valt onder basisbehoeften / woonbehoefte."
+        },
+        {
+          title: "De sleutel tot een werkend energiesysteem",
+          content: "De energietransitie vraagt niet alleen om meer opwek, maar vooral om slimmer gebruik van het bestaande systeem. Daarbij is één type data onmisbaar: kwartierdata.\n\nKwartierdata geeft inzicht in energieverbruik en -opwek per 15 minuten. Waar traditionele energiedata slechts totalen laat zien, maakt kwartierdata zichtbaar wanneer en hoe intensief het energiesysteem daadwerkelijk wordt belast. En precies daar ligt de kern van het probleem én de oplossing."
         }
       ]
     },
@@ -110,13 +114,55 @@ export const translations = {
       title: "Binnenkort meer!",
       desc: "Een quickscan rekentool, systeembewust."
     },
-    projecten: {
-      label: "Casestudy's",
-      title: "Casestudy's",
-      rows: [
-        { num: "001", name: "Dronten Zuid", loc: "Flevoland — 300 won.", status: "Principe verzoek" },
-        { num: "002", name: "Harderwijk", loc: "Gelderland — 200MW", status: "Consultatie" },
-        { num: "003", name: "Hoorn", loc: "Noord Holland — 100MW", status: "Haalbaarheid research" }
+    samenwerking: {
+      label: "Samenwerking",
+      title: "PUBLIEK-PRIVATE SAMENWERKING",
+      subtitle1: "Netbewust ontwikkelen vanuit energiesysteem ",
+      subtitleHighlight: "kan niet anders dan publiek-privaat",
+      pillars: [
+        {
+          title: "GEMEENTE",
+          color: "#0D9488",
+          items: [
+            "Borgt netcapaciteit in omgevingsplan",
+            "Reserveert trafo-locaties en MS-routes",
+            "Netbewuste eisen in gronduitgifte en erfpacht",
+            "Prioriteert bouwlocaties op congestiekaart",
+            "Haalbare gronduitgifte"
+          ]
+        },
+        {
+          title: "NETBEHEERDER",
+          color: "#F59E0B",
+          items: [
+            "Vroeg betrokken bij planvorming",
+            "Capaciteitsplan afgestemd op fasering en vermogen",
+            "Flex-contracten met energiegemeenschap",
+            "Ruimte bieden aan opslag als congestiemaatregel",
+            "Verantwoordelijke voor leveringszekerheid aansluiting"
+          ]
+        },
+        {
+          title: "ONTWIKKELAAR",
+          color: "#06B6D4",
+          items: [
+            "Quickscan energieprofiel bij locatieaankoop / tender",
+            "Energieconcept in SO/VO-fase, oprichten energiegemeenschap initiëren",
+            "Verkoopbaarheid vastgoed",
+            "Afname zekerheid bij gronduitgifte / tenders",
+            "Verantwoordelijke voor tijdige en juiste aanvraag"
+          ]
+        },
+        {
+          title: "BEWONERS",
+          color: "#EC4899",
+          items: [
+            "Lid van gemeenschap inzicht in eigen energie verbruik",
+            "Stabielere woonlasten vanuit delen",
+            "Stemt in met vraag & behoefte",
+            "Betalen de rekening van netbewust ontwikkelen & bouwen vanuit gronduitgifte"
+          ]
+        }
       ]
     },
     contact: {
@@ -152,43 +198,144 @@ export const translations = {
         p5: "Alle teksten, beelden en concepten op deze website zijn beschermd door auteursrechten en intellectuele eigendomsrechten. Gebruik of reproductie zonder voorafgaande toestemming is niet toegestaan."
       }
     },
+    dataPage: {
+      title: "Data: de sleutel tot een werkend energiesysteem",
+      intro1: "De energietransitie vraagt niet alleen om meer opwek, maar vooral om slimmer gebruik van het bestaande systeem. Daarbij is één type data onmisbaar: kwartierdata.",
+      intro2: "Kwartierdata geeft inzicht in energieverbruik en -opwek per 15 minuten. Waar traditionele energiedata slechts totalen laat zien, maakt kwartierdata zichtbaar wanneer en hoe intensief het energiesysteem daadwerkelijk wordt belast. En precies daar ligt de kern van het probleem én de oplossing.",
+      section1: {
+        title: "Van verbruik naar vermogen",
+        p1: "Netcongestie wordt niet veroorzaakt door te veel energie, maar door gelijktijdigheid en piekbelasting. Het energiesysteem wordt afgerekend op vermogen (kW), niet alleen op volume (kWh).",
+        p2: "Met kwartierdata wordt inzichtelijk:",
+        bullets: [
+          "waar en wanneer pieken ontstaan",
+          "hoe infrastructuur daadwerkelijk wordt benut",
+          "waar flexibiliteit aanwezig is"
+        ],
+        p3: "Dit maakt het mogelijk om gericht te sturen in plaats van generiek te beperken."
+      },
+      section2: {
+        title: "Fundament voor slimme energiesystemen",
+        p1: "Data vormt de basis voor:",
+        bullets: [
+          "energy hubs en lokale energiesystemen",
+          "batterijopslag (BESS) en peak shaving",
+          "slim laden van mobiliteit",
+          "afstemming tussen opwek, opslag en verbruik"
+        ],
+        p2: "Zonder data blijft sturing reactief. Met kwartierdata wordt het systeem voorspelbaar en stuurbaar."
+      },
+      section3: {
+        title: "Van beperking naar benutting",
+        p1: "Waar het huidige energiesysteem vaak wordt ervaren als een beperkende factor, maakt kwartierdata het mogelijk om juist ruimte te creëren binnen bestaande netcapaciteit.",
+        p2: "Door inzicht te combineren met slimme sturing:",
+        bullets: [
+          "worden pieken afgevlakt",
+          "wordt bestaande infrastructuur efficiënter gebruikt",
+          "ontstaan nieuwe verdienmodellen rondom flexibiliteit"
+        ],
+        p3: "Dit is de essentie van een systeembewuste aanpak: niet alleen uitbreiden, maar eerst optimaliseren wat er al is."
+      },
+      section4: {
+        title: "Systeembewust perspectief",
+        p1: "Binnen Systeembewust zien wij kwartierdata niet als technische bijzaak, maar als een strategisch instrument. Het verbindt energie, ruimte en gebruik in één integrale oplossing.",
+        p2: "Wie werkt met data:",
+        bullets: [
+          "begrijpt het echte gedrag van het energiesysteem",
+          "kan sturen op zowel technisch als economisch niveau",
+          "en legt de basis voor toekomstbestendige plek"
+        ]
+      },
+      conclusion: "Data maakt zichtbaar wat voorheen verborgen bleef. En juist dat inzicht maakt de energietransitie uitvoerbaar.",
+      back: "Terug naar home"
+    },
     footer: {
       legal: "Privacy, Cookies & Disclaimer",
       copyright: "Copyright © 2026 VOVON"
     },
-    positionPaper: {
-      title: "Position Paper — Systeembewust Nederland",
-      subtitle: "Van Randstad naar Bandstad: sturen op het energiesysteem als fundament voor gebiedsontwikkeling",
-      sections: [
-        {
-          title: "1. Aanleiding: Nederland loopt vast in zijn eigen succes",
-          content: "Nederland staat op een kantelpunt.\n\nDe klassieke ontwikkellogica — bouwen waar vraag is, infrastructuur achteraf aanpassen — werkt niet meer. De grenzen zijn bereikt:\n• Netcongestie remt woningbouw en economie\n• Ruimtelijke druk in de Randstad is maximaal\n• Energie, mobiliteit en ruimte zijn niet langer los te ontwikkelen systemen\n\nDe kaart van Nederland verschuift.\n\nNiet langer is de Randstad het enige zwaartepunt. Een nieuwe ruimtelijke realiteit ontstaat: de Bandstad — een netwerk van regio’s rondom de Randstad waar ruimte, energie en groei samenkomen."
-        },
-        {
-          title: "2. Probleemdefinitie: sectorale ontwikkeling faalt",
-          content: "De huidige praktijk:\n• Woningbouw → gestuurd door grond en markt\n• Energie → gestuurd door netbeheerders en wetgeving\n• Mobiliteit → gestuurd door infrastructuurprogramma’s\n\n👉 Resultaat:\n• projecten vertragen of vallen stil\n• investeringen sluiten niet op elkaar aan\n• maatschappelijke kosten lopen op\n\nDe kern van het probleem:\n\nNederland ontwikkelt nog steeds sectoraal, terwijl de opgaven systeemvraagstukken zijn."
-        },
-        {
-          title: "3. De Bandstad als nieuwe ontwikkelrealiteit",
-          content: "De “Bandstad” vormt het nieuwe speelveld voor groei:\n• Flevoland, Zwolle, Arnhem–Nijmegen, Brabant\n• Beschikbare ruimte voor wonen en economie\n• Strategische ligging t.o.v. energie-infrastructuur\n\nMaar:\n\nZonder systeembewuste ontwikkeling wordt de Bandstad dezelfde bottleneck als de Randstad."
-        },
-        {
-          title: "4. Oplossingsrichting: systeembewuste gebiedsontwikkeling",
-          content: "Systeembewust ontwikkelen betekent:\n\nHet energiesysteem is geen randvoorwaarde, maar het startpunt van gebiedsontwikkeling.\n\nKernprincipes:\n\n1. Energie als ordenend principe\n• Ontwikkelen op basis van beschikbare en maakbare capaciteit\n• Lokale opwek, opslag en flexibiliteit integraal ontwerpen\n\n2. Gebiedsontwikkeling = systeemontwikkeling\n• Wonen, werken, mobiliteit en energie in één ontwerp\n• Van “project” naar “ecosysteem”\n\n3. Van netaansluiting naar energienetwerk\n• Gesloten distributiesystemen (GDS)\n• Energy hubs en lokale energiegemeenschappen\n\n4. Sturing op tijd i.p.v. alleen ruimte\n• Fasering afgestemd op energiecapaciteit\n• Slim programmeren voorkomt stilstand"
-        },
-        {
-          title: "5. Wat vraagt dit van het Rijk en regio’s?",
-          content: "Van beleid naar uitvoering\n\n1. Maak ruimte voor experiment en versnelling\n• Versoepel regels voor GDS en energy hubs\n• Creëer experimenteergebieden (Bandstad-regio’s)\n\n2. Koppel woningbouw en energieprogrammering\n• Geen woningbouw zonder energieplan\n• Verplicht integraal programmeren\n\n3. Stuur op systeemwaarde i.p.v. sectorale KPI’s\n• Niet alleen aantallen woningen\n• Maar ook:\n  - netimpact\n  - flexibiliteit\n  - energie-autonomie\n\n4. Faciliteer nieuwe samenwerkingsvormen\n• Publiek-private gebiedscoalities\n• Ontwikkelaars als systeemregisseurs"
-        },
-        {
-          title: "6. De rol van systeembewust.nl",
-          content: "Systeembewust.nl positioneert zich als:\n\nVersneller van integrale gebiedsontwikkeling op basis van het energiesysteem\n\nWij:\n• Vertalen complexe systeemvraagstukken naar concrete gebiedsconcepten\n• Verbinden overheden, netbeheerders en marktpartijen\n• Ontwikkelen rekenmodellen en scenario’s voor:\n  - energiecapaciteit\n  - fasering\n  - businesscases\n\nOnze focus:\n• Bandstad-regio’s als nieuwe groeimotor\n• Netbewuste woon- en werkgebieden\n• Energy hubs als fundament voor ontwikkeling"
-        },
-        {
-          title: "7. Oproep: kies voor systeemsturing",
-          content: "Nederland heeft geen gebrek aan plannen.\nHet heeft een gebrek aan samenhang.\n\nDe komende jaren bepalen of:\n• we blijven vastlopen in procedures en congestie\nof\n• we versnellen door integraal te sturen op systemen\n\nDe Bandstad biedt ruimte.\nHet energiesysteem bepaalt of we die ruimte kunnen benutten."
-        }
-      ]
+    frameworks: {
+      tabs: {
+        routekaart: "De Routekaart (6 Stappen)",
+        locatieNaarSysteem: "Locatie naar Systeem",
+        planvorming: "Voor Planvorming"
+      },
+      routekaart: {
+        label: "De Routekaart",
+        title: "In 6 stappen naar netbewuste ontwikkeling",
+        steps: [
+          { num: "1", title: "Initiatief", desc: "Start met net impact quickscan\n+ aansluiting, doelgroep , energieprofiel", color: "#0D9488" },
+          { num: "2", title: "Concept", desc: "Energiesysteem incl. opslag\n+ mobiliteit haalbaarheid", color: "#E11D48" },
+          { num: "3", title: "Planvorming", desc: "Leiding-routes (smart grid) +\ntrafo&opslag in stedenbouwk. plan", color: "#EC4899" },
+          { num: "4", title: "Ontwerp", desc: "Capaciteitsaanvraag\n+ congestie verzachtende maatregelen", color: "#F59E0B" },
+          { num: "5", title: "Realisatie", desc: "Tijdig aansluiting op basis van\nenergiebehoefte vanuit profiel\nOVG + huisnummerbesluit", color: "#3B82F6" },
+          { num: "6", title: "Beheer", desc: "Flex-contract\n+ CO₂-balans 2050", color: "#10B981" }
+        ]
+      },
+      locatieNaarSysteem: {
+        label: "Systeemopzet",
+        title: "Van locatie naar werkend energiesysteem",
+        cols: [
+          {
+            title: "Voorbereiden",
+            color: "#0D9488",
+            items: [
+              "Data dragers & vragers inventariseren",
+              "Inzicht in huidige en toekomstige energieopgaven",
+              "Technische, financiële en ruimtelijke haalbaarheid",
+              "Netimpact quickscan (Grip op Locatie)"
+            ]
+          },
+          {
+            title: "Organiseren",
+            color: "#EC4899",
+            items: [
+              "Uitgangspunten energiegemeenschap bepalen",
+              "Principe-ontwerp (ruimte voor groei)",
+              "Plan efficiënte energiesystemen",
+              "Afstemming capaciteit met netbeheerder"
+            ]
+          },
+          {
+            title: "Realiseren",
+            color: "#06B6D4",
+            items: [
+              "Technische eisen en programma uitwerken",
+              "Energiegemeenschap oprichten (CEC/REC)",
+              "Aansluiting + GDS/smart grid realiseren",
+              "Flex-contracten + EMS in beheer nemen"
+            ]
+          }
+        ]
+      },
+      planvorming: {
+        label: "Voor Planvorming",
+        title: "Netbewust ontwikkelen",
+        phases: [
+          {
+            phase: "Pre-initiatieffase",
+            color: "#F59E0B",
+            content: "Quickscan energieprofiel + Grip op Locatie check bij verwerving",
+            note: "Voorkomt financieel verlies op locaties met netcongestie"
+          },
+          {
+            phase: "SO/VO-fase",
+            color: "#0D9488",
+            content: "Energieconcept laten doorrekenen (MW totaal/piek, teruglevering, BESS, EV-mobiliteit)",
+            note: "Lagere infrastructuurkosten door slim ontwerp"
+          },
+          {
+            phase: "Omgevingsplan",
+            color: "#EC4899",
+            content: "Trafo-locatie + LS/MS-route vastleggen, netbeheerder aanhaken",
+            note: "Minder planrisico, snellere vergunning"
+          },
+          {
+            phase: "Bouwvoorbereiding",
+            color: "#10B981",
+            content: "Aansluiting aanvraag zodra VO gereed (BAG, huisnummerbesluit)",
+            note: "Sluitende bouwplanning — gecontracteerd vermogen is de bottleneck, niet de aansluiting"
+          }
+        ]
+      }
     }
   },
   en: {
@@ -197,8 +344,8 @@ export const translations = {
       watIsHet: "What is it",
       netpanel: "Grid Panel",
       werkwijze: "Approach",
-      casestudy: "Case Studies",
-      positionPaper: "Position Paper",
+      casestudy: "Collaboration",
+      data: "Data",
       aanDeSlag: "Get Started"
     },
     hero: {
@@ -232,15 +379,15 @@ export const translations = {
     wat: {
       label: "What is it",
       title: "Grid-aware design from the ground up",
-      desc: "Area development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.",
+      desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.\nBut also respond on time regarding a connection so you can continue building.",
       accordions: [
         {
-          title: "What is grid-aware area development?",
-          content: "Grid-aware area development integrates the available grid capacity as a precondition in the spatial and programmatic design. Think of phasing based on transport capacity, clustering functions for shared grid use, and storage as a buffer."
+          title: "What is grid-aware?",
+          content: "Grid-aware development or construction integrates the available grid capacity as a precondition in the spatial, technical, and programmatic design. Think of phasing based on transport capacity, contracting, clustering functions for shared grid use, and storage as a buffer. But also mobility and charging infrastructure."
         },
         {
           title: "Why is this urgent now?",
-          content: "There is transport scarcity in more than 87% of Dutch grid areas. New connections are refused or delayed by 5–10 years. Those who do not design grid-aware risk construction coming to a standstill."
+          content: "There is transport scarcity in more than 87% of Dutch grid areas. New connections are refused or delayed by 5–10 years. Existing connections cannot be enlarged. Those who do not design grid-aware risk a standstill of construction, but also of their business."
         },
         {
           title: "Which parties?",
@@ -253,6 +400,10 @@ export const translations = {
         {
           title: "New ACM Prioritization Framework (July 1, 2026)",
           content: "As of July 1, 2026, the transition phase of the new ACM prioritization framework for grid congestion will begin. In practice, this means:\n\n• Small consumers will then also be included in the prioritization framework; until that date, the old method still applied.\n• The space reserved for small consumers up to now will from then on only be available for parties with priority according to the framework.\n• Projects without priority in congestion areas will therefore face a queue sooner.\n• The order remains roughly: 1. congestion relievers, 2. safety, 3. basic needs. Housing falls under basic needs / housing needs."
+        },
+        {
+          title: "The key to a working energy system",
+          content: "The energy transition requires not only more generation, but above all smarter use of the existing system. One type of data is indispensable here: quarter-hourly data.\n\nQuarter-hourly data provides insight into energy consumption and generation per 15 minutes. Where traditional energy data only shows totals, quarter-hourly data makes visible when and how intensively the energy system is actually loaded. And exactly there lies the core of the problem and the solution."
         }
       ]
     },
@@ -300,13 +451,55 @@ export const translations = {
       title: "More coming soon!",
       desc: "A quick scan calculation tool, system-aware."
     },
-    projecten: {
-      label: "Case Studies",
-      title: "Case Studies",
-      rows: [
-        { num: "001", name: "Dronten Zuid", loc: "Flevoland — 300 homes", status: "Principle request" },
-        { num: "002", name: "Harderwijk", loc: "Gelderland — 200MW", status: "Consultation" },
-        { num: "003", name: "Hoorn", loc: "North Holland — 100MW", status: "Feasibility research" }
+    samenwerking: {
+      label: "Collaboration",
+      title: "PUBLIC-PRIVATE PARTNERSHIP",
+      subtitle1: "Grid-aware development from an energy system perspective ",
+      subtitleHighlight: "can only be public-private",
+      pillars: [
+        {
+          title: "MUNICIPALITY",
+          color: "#0D9488",
+          items: [
+            "Secures grid capacity in zoning plan",
+            "Reserves transformer locations and medium voltage routes",
+            "Grid-aware requirements in land issuance and ground lease",
+            "Prioritizes building locations on congestion map",
+            "Feasible land issuance"
+          ]
+        },
+        {
+          title: "GRID OPERATOR",
+          color: "#F59E0B",
+          items: [
+            "Involved early in planning phase",
+            "Capacity plan aligned with phasing and capacity",
+            "Flex contracts with energy community",
+            "Provide space for storage as congestion mitigation measure",
+            "Responsible for security of supply of the connection"
+          ]
+        },
+        {
+          title: "DEVELOPER",
+          color: "#06B6D4",
+          items: [
+            "Quickscan energy profile at location acquisition / tender",
+            "Energy concept in SO/VO phase, initiate establishment of energy community",
+            "Saleability of real estate",
+            "Take-off certainty in land issuance / tenders",
+            "Responsible for timely and correct application"
+          ]
+        },
+        {
+          title: "RESIDENTS",
+          color: "#EC4899",
+          items: [
+            "Member of community, insight into own energy consumption",
+            "More stable housing costs from sharing",
+            "Agrees with demand & need",
+            "Pays the bill for grid-aware development & construction from land issuance"
+          ]
+        }
       ]
     },
     contact: {
@@ -342,43 +535,144 @@ export const translations = {
         p5: "All texts, images, and concepts on this website are protected by copyrights and intellectual property rights. Use or reproduction without prior permission is not permitted."
       }
     },
+    dataPage: {
+      title: "Data: the key to a working energy system",
+      intro1: "The energy transition requires not only more generation, but above all smarter use of the existing system. One type of data is indispensable here: quarter-hourly data.",
+      intro2: "Quarter-hourly data provides insight into energy consumption and generation per 15 minutes. Where traditional energy data only shows totals, quarter-hourly data makes visible when and how intensively the energy system is actually loaded. And exactly there lies the core of the problem and the solution.",
+      section1: {
+        title: "From consumption to power",
+        p1: "Grid congestion is not caused by too much energy, but by simultaneity and peak load. The energy system is billed on power (kW), not just on volume (kWh).",
+        p2: "With quarter-hourly data, it becomes clear:",
+        bullets: [
+          "where and when peaks arise",
+          "how infrastructure is actually utilized",
+          "where flexibility is available"
+        ],
+        p3: "This makes it possible to steer targeted instead of generically restrict."
+      },
+      section2: {
+        title: "Foundation for smart energy systems",
+        p1: "Data forms the basis for:",
+        bullets: [
+          "energy hubs and local energy systems",
+          "battery storage (BESS) and peak shaving",
+          "smart charging of mobility",
+          "alignment between generation, storage, and consumption"
+        ],
+        p2: "Without data, steering remains reactive. With quarter-hourly data, the system becomes predictable and controllable."
+      },
+      section3: {
+        title: "From restriction to utilization",
+        p1: "Where the current energy system is often experienced as a limiting factor, quarter-hourly data makes it possible to precisely create space within existing grid capacity.",
+        p2: "By combining insight with smart steering:",
+        bullets: [
+          "peaks are flattened",
+          "existing infrastructure is used more efficiently",
+          "new revenue models arise around flexibility"
+        ],
+        p3: "This is the essence of a system-aware approach: not just expanding, but first optimizing what is already there."
+      },
+      section4: {
+        title: "System-aware perspective",
+        p1: "Within System-aware, we view quarter-hourly data not as a technical side issue, but as a strategic instrument. It connects energy, space, and usage into one integral solution.",
+        p2: "Those who work with data:",
+        bullets: [
+          "understand the real behavior of the energy system",
+          "can steer on both a technical and economic level",
+          "and lay the foundation for a future-proof place"
+        ]
+      },
+      conclusion: "Data makes visible what previously remained hidden. And exactly that insight makes the energy transition actionable.",
+      back: "Back to home"
+    },
     footer: {
       legal: "Privacy, Cookies & Disclaimer",
       copyright: "Copyright © 2026 VOVON"
     },
-    positionPaper: {
-      title: "Position Paper — System-Aware Netherlands",
-      subtitle: "From Randstad to Bandstad: steering on the energy system as the foundation for area development",
-      sections: [
-        {
-          title: "1. Background: The Netherlands is getting stuck in its own success",
-          content: "The Netherlands is at a tipping point.\n\nThe classic development logic — building where there is demand, adapting infrastructure afterwards — no longer works. The limits have been reached:\n• Grid congestion slows down housing construction and the economy\n• Spatial pressure in the Randstad is at its maximum\n• Energy, mobility, and space are no longer systems that can be developed separately\n\nThe map of the Netherlands is shifting.\n\nThe Randstad is no longer the only center of gravity. A new spatial reality is emerging: the Bandstad — a network of regions around the Randstad where space, energy, and growth come together."
-        },
-        {
-          title: "2. Problem definition: sectoral development fails",
-          content: "Current practice:\n• Housing construction → driven by land and market\n• Energy → driven by grid operators and legislation\n• Mobility → driven by infrastructure programs\n\n👉 Result:\n• projects slow down or come to a standstill\n• investments do not align with each other\n• social costs are rising\n\nThe core of the problem:\n\nThe Netherlands is still developing sectorally, while the challenges are system issues."
-        },
-        {
-          title: "3. The Bandstad as a new development reality",
-          content: "The “Bandstad” forms the new playing field for growth:\n• Flevoland, Zwolle, Arnhem–Nijmegen, Brabant\n• Available space for living and economy\n• Strategic location relative to energy infrastructure\n\nBut:\n\nWithout system-aware development, the Bandstad will become the same bottleneck as the Randstad."
-        },
-        {
-          title: "4. Solution direction: system-aware area development",
-          content: "System-aware development means:\n\nThe energy system is not a precondition, but the starting point of area development.\n\nCore principles:\n\n1. Energy as an organizing principle\n• Develop based on available and realizable capacity\n• Integrally design local generation, storage, and flexibility\n\n2. Area development = system development\n• Living, working, mobility, and energy in one design\n• From “project” to “ecosystem”\n\n3. From grid connection to energy network\n• Closed distribution systems (GDS)\n• Energy hubs and local energy communities\n\n4. Steering on time instead of just space\n• Phasing aligned with energy capacity\n• Smart programming prevents standstill"
-        },
-        {
-          title: "5. What does this require from the State and regions?",
-          content: "From policy to execution\n\n1. Make room for experiment and acceleration\n• Relax rules for GDS and energy hubs\n• Create experimental areas (Bandstad regions)\n\n2. Link housing construction and energy programming\n• No housing construction without an energy plan\n• Mandatory integral programming\n\n3. Steer on system value instead of sectoral KPIs\n• Not just numbers of homes\n• But also:\n  - grid impact\n  - flexibility\n  - energy autonomy\n\n4. Facilitate new forms of collaboration\n• Public-private area coalitions\n• Developers as system directors"
-        },
-        {
-          title: "6. The role of systeembewust.nl",
-          content: "Systeembewust.nl positions itself as:\n\nAccelerator of integral area development based on the energy system\n\nWe:\n• Translate complex system issues into concrete area concepts\n• Connect governments, grid operators, and market parties\n• Develop calculation models and scenarios for:\n  - energy capacity\n  - phasing\n  - business cases\n\nOur focus:\n• Bandstad regions as a new growth engine\n• Grid-aware living and working areas\n• Energy hubs as the foundation for development"
-        },
-        {
-          title: "7. Call to action: choose system steering",
-          content: "The Netherlands has no shortage of plans.\nIt has a shortage of coherence.\n\nThe coming years will determine whether:\n• we remain stuck in procedures and congestion\nor\n• we accelerate by integrally steering on systems\n\nThe Bandstad offers space.\nThe energy system determines whether we can utilize that space."
-        }
-      ]
+    frameworks: {
+      tabs: {
+        routekaart: "The Roadmap (6 Steps)",
+        locatieNaarSysteem: "Location to System",
+        planvorming: "For Planning"
+      },
+      routekaart: {
+        label: "The Roadmap",
+        title: "Grid-aware development in 6 steps",
+        steps: [
+          { num: "1", title: "Initiative", desc: "Start with grid impact quick scan\n+ connection, target group, energy profile", color: "#0D9488" },
+          { num: "2", title: "Concept", desc: "Energy system incl. storage\n+ mobility feasibility", color: "#E11D48" },
+          { num: "3", title: "Planning Phase", desc: "Cable routes (smart grid) +\ntransformer & storage in urban design plan", color: "#EC4899" },
+          { num: "4", title: "Design", desc: "Capacity request\n+ congestion mitigation measures", color: "#F59E0B" },
+          { num: "5", title: "Realization", desc: "Timely connection based on\nenergy need from profile\nOVG + house number decision", color: "#3B82F6" },
+          { num: "6", title: "Management", desc: "Flex contract\n+ CO₂ balance 2050", color: "#10B981" }
+        ]
+      },
+      locatieNaarSysteem: {
+        label: "System Design",
+        title: "From location to working energy system",
+        cols: [
+          {
+            title: "Prepare",
+            color: "#0D9488",
+            items: [
+              "Inventory data carriers & demanders",
+              "Insight into current and future energy challenges",
+              "Technical, financial and spatial feasibility",
+              "Grid impact quick scan (Location Grip)"
+            ]
+          },
+          {
+            title: "Organize",
+            color: "#EC4899",
+            items: [
+              "Determine principles of energy community",
+              "Draft design (room for growth)",
+              "Plan efficient energy systems",
+              "Align capacity with grid operator"
+            ]
+          },
+          {
+            title: "Realize",
+            color: "#06B6D4",
+            items: [
+              "Develop technical requirements and program",
+              "Establish energy community (CEC/REC)",
+              "Realize connection + private grid/smart grid",
+              "Implement flex contracts + EMS in management"
+            ]
+          }
+        ]
+      },
+      planvorming: {
+        label: "For Planning",
+        title: "Grid-aware development",
+        phases: [
+          {
+            phase: "Pre-initiative phase",
+            color: "#F59E0B",
+            content: "Quick scan energy profile + Location Grip check during acquisition",
+            note: "Prevents financial loss at locations with grid congestion"
+          },
+          {
+            phase: "SO/VO Phase",
+            color: "#0D9488",
+            content: "Calculate energy concept (total MW/peak, return delivery, BESS, EV mobility)",
+            note: "Lower infrastructure costs due to smart design"
+          },
+          {
+            phase: "Zoning/Spatial Plan",
+            color: "#EC4899",
+            content: "Secure transformer location + LS/MS route, hook up grid operator",
+            note: "Less planning risk, faster permit"
+          },
+          {
+            phase: "Construction Prep",
+            color: "#10B981",
+            content: "Request connection as soon as VO is ready (BAG, house number decision)",
+            note: "Tight construction schedule — contracted capacity is the bottleneck, not the connection"
+          }
+        ]
+      }
     }
   }
 };

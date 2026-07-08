@@ -218,110 +218,7 @@ const ProjectRow = ({
   );
 };
 
-const DataView = ({
-  onBack,
-  lang,
-}: {
-  onBack: () => void;
-  lang: Language;
-}) => {
-  const t = translations[lang].dataPage;
-  return (
-    <div className="min-h-screen pt-32 pb-20 px-5 md:px-10 z-10 relative bg-paper text-white">
-      <div className="max-w-[800px] mx-auto">
-        <button
-          onClick={onBack}
-          className="mb-12 font-display text-sm font-bold tracking-wide text-white/50 hover:text-accent transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none p-0"
-        >
-          {t.back}
-        </button>
 
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-          {t.title}
-        </h1>
-
-        <div className="text-xl text-white/80 leading-relaxed mb-16 space-y-6">
-          <p>{t.intro1}</p>
-          <p>{t.intro2}</p>
-        </div>
-
-        <div className="space-y-16 text-white/70 leading-[1.8] text-[16px]">
-          {/* Section 1 */}
-          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
-            <h2 className="font-display text-2xl font-bold text-white mb-6">
-              {t.section1.title}
-            </h2>
-            <div className="space-y-4">
-              <p>{t.section1.p1}</p>
-              <p>{t.section1.p2}</p>
-              <ul className="list-disc pl-5 space-y-2 text-accent">
-                {t.section1.bullets.map((bullet, idx) => (
-                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
-                ))}
-              </ul>
-              <p className="pt-2 font-medium">{t.section1.p3}</p>
-            </div>
-          </section>
-
-          {/* Section 2 */}
-          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
-            <h2 className="font-display text-2xl font-bold text-white mb-6">
-              {t.section2.title}
-            </h2>
-            <div className="space-y-4">
-              <p>{t.section2.p1}</p>
-              <ul className="list-disc pl-5 space-y-2 text-accent">
-                {t.section2.bullets.map((bullet, idx) => (
-                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
-                ))}
-              </ul>
-              <p className="pt-2 font-medium">{t.section2.p2}</p>
-            </div>
-          </section>
-
-          {/* Section 3 */}
-          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
-            <h2 className="font-display text-2xl font-bold text-white mb-6">
-              {t.section3.title}
-            </h2>
-            <div className="space-y-4">
-              <p>{t.section3.p1}</p>
-              <p>{t.section3.p2}</p>
-              <ul className="list-disc pl-5 space-y-2 text-accent">
-                {t.section3.bullets.map((bullet, idx) => (
-                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
-                ))}
-              </ul>
-              <p className="pt-2 font-medium">{t.section3.p3}</p>
-            </div>
-          </section>
-
-          {/* Section 4 */}
-          <section className="bg-white/5 p-8 rounded-2xl border border-white/10">
-            <h2 className="font-display text-2xl font-bold text-white mb-6">
-              {t.section4.title}
-            </h2>
-            <div className="space-y-4">
-              <p>{t.section4.p1}</p>
-              <p>{t.section4.p2}</p>
-              <ul className="list-disc pl-5 space-y-2 text-accent">
-                {t.section4.bullets.map((bullet, idx) => (
-                  <li key={idx}><span className="text-white/70">{bullet}</span></li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          <footer className="pt-8 border-t border-white/20">
-            <p className="text-xl md:text-2xl font-display font-medium text-white leading-relaxed whitespace-pre-wrap">
-              {t.conclusion}
-            </p>
-          </footer>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const LegalView = ({
   onBack,
@@ -387,13 +284,13 @@ const LegalView = ({
 };
 
 export default function App() {
-  const [openAccordion, setOpenAccordion] = useState<number>(0);
-  const [view, setView] = useState<"home" | "legal" | "data">("home");
+  const [view, setView] = useState<"home" | "legal">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("routekaart");
   const [netpanelTab, setNetpanelTab] = useState<"afname" | "invoeding">("afname");
+  const [openAccordion, setOpenAccordion] = useState<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -404,8 +301,6 @@ export default function App() {
   }, []);
 
   const t = translations[lang];
-
-  const accordions = t.wat.accordions;
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -481,15 +376,6 @@ export default function App() {
               </li>
               <li>
                 <a
-                  href="#wat"
-                  onClick={(e) => scrollToSection(e, "wat")}
-                  className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
-                >
-                  {t.nav.watIsHet}
-                </a>
-              </li>
-              <li>
-                <a
                   href="#netpanel"
                   onClick={(e) => scrollToSection(e, "netpanel")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
@@ -525,15 +411,13 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <button
-                  onClick={() => {
-                    setView("data");
-                    window.scrollTo(0, 0);
-                  }}
-                  className="text-[15px] font-medium transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
+                <a
+                  href="#faq"
+                  onClick={(e) => scrollToSection(e, "faq")}
+                  className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
-                  {t.nav.data}
-                </button>
+                  {t.nav.faq}
+                </a>
               </li>
             </ul>
 
@@ -625,15 +509,6 @@ export default function App() {
             </li>
             <li>
               <a
-                href="#wat"
-                onClick={(e) => scrollToSection(e, "wat")}
-                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
-              >
-                {t.nav.watIsHet}
-              </a>
-            </li>
-            <li>
-              <a
                 href="#netpanel"
                 onClick={(e) => scrollToSection(e, "netpanel")}
                 className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
@@ -669,16 +544,13 @@ export default function App() {
               </a>
             </li>
             <li>
-              <button
-                onClick={() => {
-                  setView("data");
-                  setIsMobileMenuOpen(false);
-                  window.scrollTo(0, 0);
-                }}
-                className="text-2xl font-bold transition-colors bg-transparent border-none cursor-pointer p-0 text-white hover:text-accent"
+              <a
+                href="#faq"
+                onClick={(e) => scrollToSection(e, "faq")}
+                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
               >
-                {t.nav.data}
-              </button>
+                {t.nav.faq}
+              </a>
             </li>
             <li className="mt-4">
               <a
@@ -790,46 +662,135 @@ export default function App() {
             </div>
           </div>
 
-          {/* WAT IS HET */}
+          {/* NETBEWUST INTRO SECTION */}
           <section
-            id="wat"
-            className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative"
+            id="netbewust"
+            className="py-16 md:py-24 px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative border-t border-white/10"
           >
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-20 items-start">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.6 }}
-              >
-                <SectionLabel>{t.wat.label}</SectionLabel>
-                <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-6 text-white whitespace-pre-line">
-                  {t.wat.title}
-                </h2>
-                <p className="text-[15px] leading-[1.8] text-white/70 max-w-[340px] m-0">
-                  {t.wat.desc}
-                </p>
-              </motion.div>
+            <div className="space-y-16">
+              {/* Header */}
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-8 md:gap-20 items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <SectionLabel>{t.netbewust.label}</SectionLabel>
+                  <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-4 text-white">
+                    {t.netbewust.title}
+                  </h2>
+                </motion.div>
 
-              <motion.div
-                className="flex flex-col gap-[2px]"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                {accordions.map((acc, i) => (
-                  <AccordionItem
-                    key={i}
-                    title={acc.title}
-                    content={acc.content}
-                    isOpen={openAccordion === i}
-                    onClick={() =>
-                      setOpenAccordion(openAccordion === i ? -1 : i)
-                    }
-                  />
-                ))}
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <p className="text-lg md:text-xl leading-relaxed text-white/80 m-0">
+                    {t.netbewust.desc}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Grid of 3 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Card 1 */}
+                <motion.div
+                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section1.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-white/70">
+                      {t.netbewust.section1.desc}
+                    </p>
+                    <div className="pt-2">
+                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
+                        {t.netbewust.section1.header}
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section1.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  {t.netbewust.section1.footer && (
+                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
+                      {t.netbewust.section1.footer}
+                    </p>
+                  )}
+                </motion.div>
+
+                {/* Card 2 */}
+                <motion.div
+                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section2.title}
+                    </h3>
+                    <div className="pt-2">
+                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
+                        {t.netbewust.section2.header}
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section2.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  {t.netbewust.section2.footer && (
+                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
+                      {t.netbewust.section2.footer}
+                    </p>
+                  )}
+                </motion.div>
+
+                {/* Card 3 */}
+                <motion.div
+                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section3.title}
+                    </h3>
+                    <div className="pt-2">
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section3.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="text-xs text-white/40 border-t border-white/10 pt-4 m-0 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span>Systeembewuste aanpak</span>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </section>
 
@@ -1426,6 +1387,49 @@ export default function App() {
             </div>
           </section>
 
+          {/* FAQ SECTION */}
+          <section
+            id="faq"
+            className="py-16 md:py-24 px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative border-t border-white/10"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1.8fr] gap-10 lg:gap-20 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6 }}
+              >
+                <SectionLabel>{t.faq.label}</SectionLabel>
+                <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-[1.1] mb-6 text-white whitespace-pre-line">
+                  {t.faq.title}
+                </h2>
+                <p className="text-[15px] leading-[1.8] text-white/70 max-w-md m-0">
+                  {t.faq.desc}
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col gap-3 w-full"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {t.faq.accordions.map((acc: any, i: number) => (
+                  <AccordionItem
+                    key={i}
+                    title={acc.title}
+                    content={acc.content}
+                    isOpen={openAccordion === i}
+                    onClick={() =>
+                      setOpenAccordion(openAccordion === i ? -1 : i)
+                    }
+                  />
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
           {/* CONTACT CTA */}
           <section
             id="contact"
@@ -1462,15 +1466,6 @@ export default function App() {
             </div>
           </section>
         </>
-      )}
-      {view === "data" && (
-        <DataView
-          onBack={() => {
-            setView("home");
-            window.scrollTo(0, 0);
-          }}
-          lang={lang}
-        />
       )}
       {view === "legal" && (
         <LegalView

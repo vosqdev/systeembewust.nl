@@ -61,7 +61,7 @@ Belangrijke context over VOVON en netbewuste gebiedsontwikkeling:
   - BESS (Batterijopslag)
   - PV + Laadinfra (Solar Parking)
   - Energy Management (AI-gestuurd)
-  - Energiegemeenschap (CEC, Energiewet 2024)
+  - Energiegemeenschap (CEC, Energiewet 2026)
   - Dynamische Netaansluiting
   - Faseringsmodel
   - Kwartierdata (onmisbaar voor inzicht in energieverbruik en peak shaving in de infrastructuur)

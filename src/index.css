@@ -53,7 +53,7 @@ body::before {
 }
 
 .animate-ticker {
-  animation: ticker 50s linear infinite;
+  animation: ticker 80s linear infinite;
 }
 
 .animate-pulse-fast {

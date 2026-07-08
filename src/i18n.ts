@@ -4,11 +4,10 @@ export const translations = {
   nl: {
     nav: {
       home: "Home",
-      watIsHet: "Wat is het",
       netpanel: "Netpanel",
       werkwijze: "Werkwijze",
       casestudy: "Samenwerking",
-      data: "Kwartierdata",
+      faq: "FAQ",
       aanDeSlag: "Aan de slag"
     },
     hero: {
@@ -34,13 +33,13 @@ export const translations = {
       p3: "De Bandstad biedt ruimte.\nHet energiesysteem bepaalt of we die ruimte kunnen benutten."
     },
     ticker: [
-      "Energiewet 2024: energie gemeenschappen wettelijk verankerd",
+      "Energiewet 2026: energie gemeenschappen wettelijk verankerd",
       "2025 kamerbrief decentrale ontwikkeling van energiesystemen",
       "2026 motie tweede kamer - de FGU-regio - aanmerken als innovatiegebied",
       "zon/wind + opslag + EV laden"
     ],
-    wat: {
-      label: "Wat is het",
+    faq: {
+      label: "FAQ",
       title: "Net­bewust ontwerpen van de grond af",
       desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.\nMaar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen.",
       accordions: [
@@ -57,8 +56,8 @@ export const translations = {
           content: "Gemeenten, woningcorporaties, netbeheerders, projectontwikkelaars en bouwers. Denk vanuit ketensamenwerking, ecoketens en systemen zorg voor de juist input en ga publiek-privaat samenwerken."
         },
         {
-          title: "Hoe verhoudt dit zich tot de Energiewet 2024?",
-          content: "De Energiewet 2024 verankert 'Collectieve' Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden vanuit energie-profiel — productie, opslag, flexibiliteit, gebruik."
+          title: "Hoe verhoudt dit zich tot de Energiewet 2026?",
+          content: "De Energiewet 2026 verankert 'Collectieve' Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden vanuit energie-profiel — productie, opslag, flexibiliteit, gebruik."
         },
         {
           title: "Nieuw ACM-prioriteringskader (1 juli 2026)",
@@ -69,6 +68,41 @@ export const translations = {
           content: "De energietransitie vraagt niet alleen om meer opwek, maar vooral om slimmer gebruik van het bestaande systeem. Daarbij is één type data onmisbaar: kwartierdata.\n\nKwartierdata geeft inzicht in energieverbruik en -opwek per 15 minuten. Waar traditionele energiedata slechts totalen laat zien, maakt kwartierdata zichtbaar wanneer en hoe intensief het energiesysteem daadwerkelijk wordt belast. En precies daar ligt de kern van het probleem én de oplossing."
         }
       ]
+    },
+    netbewust: {
+      label: "Netbewust",
+      title: "Net­bewust ontwerpen van de grond af",
+      desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat. Maar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen",
+      section1: {
+        title: "Van verbruik naar vermogen",
+        desc: "Netcongestie wordt niet veroorzaakt door te veel energie, maar door gelijktijdigheid en piekbelasting. Het energiesysteem wordt afgerekend op vermogen (kW), niet alleen op volume (kWh).",
+        header: "Met data wordt inzichtelijk:",
+        bullets: [
+          "waar en wanneer pieken ontstaan",
+          "hoe infrastructuur daadwerkelijk wordt benut",
+          "waar flexibiliteit aanwezig is"
+        ],
+        footer: "Dit maakt het mogelijk om gericht te sturen in plaats van generiek te beperken."
+      },
+      section2: {
+        title: "Fundament voor slimme energiesystemen",
+        header: "Data vormt de basis voor:",
+        bullets: [
+          "energy hubs en lokale energiesystemen",
+          "batterijopslag (BESS) en peak shaving",
+          "slim laden van mobiliteit",
+          "afstemming tussen opwek, opslag en verbruik"
+        ],
+        footer: "Zonder data blijft sturing reactief. Met data wordt het systeem voorspelbaar en stuurbaar."
+      },
+      section3: {
+        title: "Wie werkt met data:",
+        bullets: [
+          "begrijpt het echte gedrag van het energiesysteem",
+          "kan sturen op zowel technisch als economisch niveau",
+          "en legt de basis voor toekomstbestendige plek"
+        ]
+      }
     },
     netpanel: {
       label: "Netpanel",
@@ -119,7 +153,7 @@ export const translations = {
         { title: "BESS — Batterij­opslag", desc: "Opslag als nettbuffer, dit verlaagt de piekbelasting, verhoogt zelfsufficiëntie en genereert hernieuwbare inkomsten.", badge: "Flexibiliteitsmarkt" },
         { title: "PV + Laadinfra", desc: "Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte -dubbelfunctie gebruik, flex en diensten zoals potentiële ERE-opbrengst via EV-charge.", badge: "Mobiliteit" },
         { title: "Energy Management:", desc: "Slim energiemanagementsysteem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau.", badge: "AI-gestuurd" },
-        { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2024 voor gezamenlijk opwekken, opslaan en delen binnen een gebied ook groepscontract (GTO) en energiecoöperatie mogelijkheden.", badge: "Energiewet 2024" },
+        { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2026 voor gezamenlijk opwekken, opslaan en delen binnen een gebied ook groepscontract (GTO) en energiecoöperatie mogelijkheden.", badge: "Energiewet 2026" },
         { title: "Dynamische Netaansluiting", desc: "Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting.", badge: "Netbeheerder" },
         { title: "Faserings­model", desc: "Bouwprogramma afgestemd op netcapaciteit en integratie. Rekening houdend met passief huis en energiesysteem systeem netbewust.", badge: "Ruimtelijk" }
       ]
@@ -355,11 +389,10 @@ export const translations = {
   en: {
     nav: {
       home: "Home",
-      watIsHet: "What is it",
       netpanel: "Grid Panel",
       werkwijze: "Approach",
       casestudy: "Collaboration",
-      data: "Data",
+      faq: "FAQ",
       aanDeSlag: "Get Started"
     },
     hero: {
@@ -385,13 +418,13 @@ export const translations = {
       p3: "The Bandstad offers space.\nThe energy system determines whether we can utilize that space."
     },
     ticker: [
-      "Energy Act 2024: energy communities legally anchored",
+      "Energy Act 2026: energy communities legally anchored",
       "2025 parliamentary letter on decentralized development of energy systems",
       "2026 parliamentary motion - designate the FGU region as an innovation area",
       "solar/wind + storage + EV charging"
     ],
-    wat: {
-      label: "What is it",
+    faq: {
+      label: "FAQ",
       title: "Grid-aware design from the ground up",
       desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.\nBut also respond on time regarding a connection so you can continue building.",
       accordions: [
@@ -408,8 +441,8 @@ export const translations = {
           content: "Municipalities, housing corporations, grid operators, project developers, and builders. Think from chain collaboration, eco-chains and systems ensure the right input and engage in public-private partnerships."
         },
         {
-          title: "How does this relate to the Energy Act 2024?",
-          content: "The Energy Act 2024 legally anchors 'Collective' Energy Communities (CEC) and energy sharing. This creates new opportunities for areas based on energy profile — production, storage, flexibility, usage."
+          title: "How does this relate to the Energy Act 2026?",
+          content: "The Energy Act 2026 legally anchors 'Collective' Energy Communities (CEC) and energy sharing. This creates new opportunities for areas based on energy profile — production, storage, flexibility, usage."
         },
         {
           title: "New ACM Prioritization Framework (July 1, 2026)",
@@ -420,6 +453,41 @@ export const translations = {
           content: "The energy transition requires not only more generation, but above all smarter use of the existing system. One type of data is indispensable here: quarter-hourly data.\n\nQuarter-hourly data provides insight into energy consumption and generation per 15 minutes. Where traditional energy data only shows totals, quarter-hourly data makes visible when and how intensively the energy system is actually loaded. And exactly there lies the core of the problem and the solution."
         }
       ]
+    },
+    netbewust: {
+      label: "Grid-aware",
+      title: "Grid-aware design from the ground up",
+      desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground. But also respond on time regarding a connection so you can continue building.",
+      section1: {
+        title: "From consumption to power",
+        desc: "Grid congestion is not caused by too much energy, but by simultaneity and peak loads. The energy system is billed on power (kW), not just volume (kWh).",
+        header: "With data, it becomes clear:",
+        bullets: [
+          "where and when peaks occur",
+          "how infrastructure is actually utilized",
+          "where flexibility is present"
+        ],
+        footer: "This makes it possible to target control instead of generic restriction."
+      },
+      section2: {
+        title: "Foundation for smart energy systems",
+        header: "Data forms the basis for:",
+        bullets: [
+          "energy hubs and local energy systems",
+          "battery storage (BESS) and peak shaving",
+          "smart charging of mobility",
+          "coordination between generation, storage, and consumption"
+        ],
+        footer: "Without data, control remains reactive. With data, the system becomes predictable and controllable."
+      },
+      section3: {
+        title: "Who works with data:",
+        bullets: [
+          "understands the real behavior of the energy system",
+          "can steer on both a technical and economic level",
+          "and lays the foundation for a future-proof area"
+        ]
+      }
     },
     netpanel: {
       label: "Grid Panel",
@@ -470,7 +538,7 @@ export const translations = {
         { title: "BESS — Battery Storage", desc: "Storage as a grid buffer, this lowers peak load, increases self-sufficiency, and generates renewable revenue.", badge: "Flexibility Market" },
         { title: "PV + Charging Infra", desc: "Solar, storage, and EV charging infrastructure via Solar Parking. Maximum utilization of available space - dual-function use, flex and services such as potential ERE revenue via EV-charge.", badge: "Mobility" },
         { title: "Energy Management:", desc: "Smart energy management system that optimizes supply, demand, and grid tariffs in real-time at the area level.", badge: "AI-driven" },
-        { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2024 for joint generation, storage, and sharing within an area, including group contract (GTO) and energy cooperative possibilities.", badge: "Energy Act 2024" },
+        { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2026 for joint generation, storage, and sharing within an area, including group contract (GTO) and energy cooperative possibilities.", badge: "Energy Act 2026" },
         { title: "Dynamic Grid Connection", desc: "Contractual flexibility agreements with grid operator: controllable power in exchange for priority connection.", badge: "Grid Operator" },
         { title: "Phasing Model", desc: "Construction program aligned with grid capacity and integration. Taking into account passive house and energy system grid-conscious.", badge: "Spatial" }
       ]

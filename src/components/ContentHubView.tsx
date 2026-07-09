@@ -24,7 +24,7 @@ import {
 
 interface Article {
   id: string;
-  source: "VNG" | "ACM" | "TenneT" | "Liander" | "Enexis" | "Custom";
+  source: "VNG" | "ACM" | "TenneT" | "Liander" | "Enexis";
   sourceName: string;
   title: string;
   desc: string;
@@ -32,7 +32,6 @@ interface Article {
   url: string;
   date: string;
   topic: "Energie" | "Vastgoed" | "Gebiedsontwikkeling";
-  isNoise: boolean; // if true, filtered out when Ruis Filter is active
 }
 
 interface FeedConfig {
@@ -40,7 +39,7 @@ interface FeedConfig {
   name: string;
   url: string;
   topic: "Energie" | "Vastgoed" | "Gebiedsontwikkeling";
-  source: "VNG" | "ACM" | "TenneT" | "Liander" | "Enexis" | "Custom";
+  source: "VNG" | "ACM" | "TenneT" | "Liander" | "Enexis";
   status: "active" | "syncing" | "error";
   articlesCount: number;
 }
@@ -54,13 +53,9 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
   const [activeTopic, setActiveTopic] = useState<"all" | "Energie" | "Vastgoed" | "Gebiedsontwikkeling">("all");
   const [activeSource, setActiveSource] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [isRuisFilterActive, setIsRuisFilterActive] = useState(true);
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState("");
-  const [customFeedUrl, setCustomFeedUrl] = useState("");
-  const [customFeedName, setCustomFeedName] = useState("");
-  const [customFeedTopic, setCustomFeedTopic] = useState<"Energie" | "Vastgoed" | "Gebiedsontwikkeling">("Gebiedsontwikkeling");
 
   // Pre-seeded curated news (always available and highly polished)
   const [articles, setArticles] = useState<Article[]>([
@@ -70,15 +65,14 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
       sourceName: "VNG Actueel",
       title: lang === "nl" ? "Codebesluit prioriteringskader ACM gepubliceerd: Handreiking voor gemeenten" : "ACM priority framework code decision published: Guide for municipalities",
       desc: lang === "nl"
-        ? "De VNG heeft een praktische toelichting en handreiking uitgebracht voor de bewijslast die gemeenten moeten aanleveren voor woningbouwprojecten en scholen."
+        ? "De VNG heeft een practical toelichting en handreiking uitgebracht voor de bewijslast die gemeenten moeten aanleveren voor woningbouwprojecten en scholen."
         : "VNG has released a practical explanation and guidelines for the evidence municipalities must submit for housing projects and schools.",
       content: lang === "nl"
         ? "Gemeenten kunnen vanaf 1 oktober transportcapaciteit aanvragen met prioriteit voor cruciale projecten. Dit codebesluit legt de formele regels en de benodigde bewijslast vast. Gemeenten worden aangeraden om nu al dossieropbouw te starten om vertraging te voorkomen. Te overleggen stukken zijn onder andere omgevingsplannen, raadsbesluiten en exploitatieovereenkomsten."
         : "As of October 1, municipalities can apply for transmission capacity with priority for critical projects. This code decision establishes the formal rules and the required burden of proof. Municipalities are advised to start building dossiers now to prevent delays.",
       url: "https://vng.nl/sites/default/files/2026-05/toelichting-bewijslast-prioriteringskader-acm.pdf",
       date: "2026-07-08",
-      topic: "Gebiedsontwikkeling",
-      isNoise: false
+      topic: "Gebiedsontwikkeling"
     },
     {
       id: "acm-1",
@@ -93,8 +87,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
         : "As of July 1, 2026, the old reservation for small consumers has expired. Parties without priority in congestion areas will face waiting lists faster. Grid prioritization strictly follows social utility.",
       url: "https://www.acm.nl",
       date: "2026-07-01",
-      topic: "Energie",
-      isNoise: false
+      topic: "Energie"
     },
     {
       id: "tennet-1",
@@ -109,8 +102,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
         : "The expansion of the 380kV ring in the southern Netherlands ensures a more stable transmission of offshore wind energy. While it does not directly solve local distribution grid congestion, it forms the foundation for regional upgrades.",
       url: "https://www.tennet.eu",
       date: "2026-07-06",
-      topic: "Energie",
-      isNoise: false
+      topic: "Energie"
     },
     {
       id: "liander-1",
@@ -125,8 +117,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
         : "Despite a formal connection freeze, businesses in Haarlem, in cooperation with Liander, founded a local energy cooperative. Sharing a battery and a smart EMS, companies match their peak demand.",
       url: "https://www.liander.nl",
       date: "2026-07-05",
-      topic: "Gebiedsontwikkeling",
-      isNoise: false
+      topic: "Gebiedsontwikkeling"
     },
     {
       id: "enexis-1",
@@ -141,45 +132,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
         : "By treating the Brabantse Poort as a single virtual connection, housing and light industry can co-operate within a flexible transmission band, avoiding separate wait times for 450 homes.",
       url: "https://www.enexis.nl",
       date: "2026-07-04",
-      topic: "Vastgoed",
-      isNoise: false
-    },
-    // Noise Articles (to demonstrate the Filter)
-    {
-      id: "vng-noise",
-      source: "VNG",
-      sourceName: "VNG Actueel",
-      title: lang === "nl" ? "VNG benoemt nieuwe commissievoorzitter voor interne organisatiezaken" : "VNG appoints new committee chair for internal organizational affairs",
-      desc: lang === "nl" ? "De interne commissie Organisatie & Financiën verwelkomt een nieuw lid na een stemronde tijdens de jaarlijkse algemene ledenvergadering." : "The internal Organization & Finance committee welcomes a new member following a vote.",
-      content: "Dit artikel bevat interne verenigingsinformatie die niet direct relevant is voor gebiedsontwikkeling, energie-infrastructuur of netcongestie.",
-      url: "https://vng.nl",
-      date: "2026-07-07",
-      topic: "Gebiedsontwikkeling",
-      isNoise: true
-    },
-    {
-      id: "liander-noise",
-      source: "Liander",
-      sourceName: "Liander Pers",
-      title: lang === "nl" ? "Onderhoudswerkzaamheden aan Liander-kantoor in Arnhem afgerond" : "Maintenance work at Liander office in Arnhem completed",
-      desc: lang === "nl" ? "Het regionale kantoorpand van Liander in Arnhem heeft een nieuwe, energiezuinige glasgevel gekregen ter verduurzaming van de eigen bedrijfsvoering." : "The regional Liander office building in Arnhem received a new, energy-efficient glass facade.",
-      content: "Dit artikel betreft de eigen kantoorinfrastructuur van de netbeheerder en heeft geen betrekking op capaciteitsvraagstukken of woningbouwopgaven.",
-      url: "https://www.liander.nl",
-      date: "2026-07-02",
-      topic: "Energie",
-      isNoise: true
-    },
-    {
-      id: "acm-noise",
-      source: "ACM",
-      sourceName: "ACM Consument & Markt",
-      title: lang === "nl" ? "ACM waarschuwt online webshops voor onduidelijke abonnementsvoorwaarden" : "ACM warns online webshops about unclear subscription terms",
-      desc: lang === "nl" ? "Consumentenbescherming: Webshops moeten duidelijker zijn over opzegtermijnen en automatische verlengingen van consumentenabonnementen." : "Consumer protection: Webshops must be clearer about cancellation periods and automatic renewals.",
-      content: "Dit persbericht gaat over retailconsumentenrecht en heeft geen enkele link met energie-infrastructuur, vastgoed, of de woningbouwopgaven op het elektriciteitsnet.",
-      url: "https://www.acm.nl",
-      date: "2026-06-29",
-      topic: "Energie",
-      isNoise: true
+      topic: "Vastgoed"
     }
   ]);
 
@@ -220,12 +173,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
           
           // Basic clean of HTML tags from desc
           const cleanDesc = description.replace(/<[^>]*>/g, "").slice(0, 180) + "...";
-          
-          // Smart classification: is it noise or relevant?
-          const relevantKeywords = ["congestie", "net", "energie", "warmte", "woningbouw", "gebouwd", "klimaat", "co2", "capaciteit", "aanvragen", "prioritering"];
-          const isRelevant = relevantKeywords.some(keyword => 
-            title.toLowerCase().includes(keyword) || description.toLowerCase().includes(keyword)
-          );
 
           fetchedArticles.push({
             id: `vng-live-${i}`,
@@ -236,8 +183,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
             content: description.replace(/<[^>]*>/g, ""),
             url: link,
             date: new Date(pubDate).toISOString().split("T")[0],
-            topic: title.toLowerCase().includes("energie") ? "Energie" : "Gebiedsontwikkeling",
-            isNoise: !isRelevant
+            topic: title.toLowerCase().includes("energie") ? "Energie" : "Gebiedsontwikkeling"
           });
         }
 
@@ -261,73 +207,13 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
     }
   };
 
-  // Add custom feed
-  const handleAddFeed = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customFeedUrl || !customFeedName) return;
-
-    const newFeed: FeedConfig = {
-      id: `custom-${Date.now()}`,
-      name: customFeedName,
-      url: customFeedUrl,
-      topic: customFeedTopic,
-      source: "Custom",
-      status: "syncing",
-      articlesCount: 0
-    };
-
-    setFeeds(prev => [...prev, newFeed]);
-    setCustomFeedUrl("");
-    setCustomFeedName("");
-
-    // Simulate syncing for the new feed
-    setTimeout(() => {
-      // Add a simulated fresh article from this custom feed
-      const newArticle: Article = {
-        id: `custom-art-${Date.now()}`,
-        source: "Custom",
-        sourceName: customFeedName,
-        title: lang === "nl" 
-          ? `[Feed: ${customFeedName}] Nieuw stappenplan gelanceerd voor netinpassing`
-          : `[Feed: ${customFeedName}] New grid connection blueprint launched`,
-        desc: lang === "nl"
-          ? "Een verzameling van best-practices voor gebiedsontwikkelaars om de aanvraagfase met 3 maanden in te korten."
-          : "A collection of best-practices for area developers to shorten the application phase by 3 months.",
-        content: "Dit artikel is automatisch geïmporteerd via uw eigen toegevoegde RSS-feed. De contenthub controleert periodiek op updates en past de ingestelde ruis-filters toe.",
-        url: customFeedUrl,
-        date: new Date().toISOString().split("T")[0],
-        topic: customFeedTopic,
-        isNoise: false
-      };
-
-      setArticles(prev => [newArticle, ...prev]);
-      setFeeds(prev => prev.map(f => f.id === newFeed.id ? { ...f, status: "active", articlesCount: 1 } : f));
-    }, 1500);
-  };
-
-  // Delete custom feed
-  const handleDeleteFeed = (id: string) => {
-    setFeeds(prev => prev.filter(f => f.id !== id));
-    // Also clean up articles from that feed
-    const feedToDelete = feeds.find(f => f.id === id);
-    if (feedToDelete) {
-      setArticles(prev => prev.filter(a => a.sourceName !== feedToDelete.name));
-    }
-  };
-
   // Filter & Search Logic
   const filteredArticles = articles.filter(article => {
     // Topic filter
     if (activeTopic !== "all" && article.topic !== activeTopic) return false;
     
     // Source filter
-    if (activeSource !== "all") {
-      if (activeSource === "Custom" && article.source !== "Custom") return false;
-      if (activeSource !== "Custom" && article.source !== activeSource) return false;
-    }
-
-    // Noise filter
-    if (isRuisFilterActive && article.isNoise) return false;
+    if (activeSource !== "all" && article.source !== activeSource) return false;
 
     // Search query
     if (searchQuery) {
@@ -342,9 +228,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
 
     return true;
   });
-
-  // Count how many noise articles are filtered out
-  const noiseArticlesCount = articles.filter(a => a.isNoise).length;
 
   return (
     <div className="min-h-screen bg-paper pt-24 pb-16 px-4 md:px-8 lg:px-12 relative overflow-hidden text-white">
@@ -373,8 +256,8 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
             </h1>
             <p className="text-sm text-white/70 max-w-2xl mt-3 leading-relaxed">
               {lang === "nl"
-                ? "Volg automatisch de meest actuele publicaties van overheden en netbeheerders over energie, vastgoed en gebiedsontwikkeling. De intelligente ruis-filter zorgt ervoor dat alleen relevante artikelen overblijven."
-                : "Automatically follow publications from regulators and grid operators on energy, real estate, and area development. The smart noise-filter extracts raw value to maximize your online efficiency."}
+                ? "Volg automatisch de meest actuele publicaties van overheden en netbeheerders over energie, vastgoed en gebiedsontwikkeling."
+                : "Automatically follow publications from regulators and grid operators on energy, real estate, and area development."}
             </p>
           </div>
 
@@ -474,8 +357,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                   { id: "ACM", name: "ACM (Toezichthouder)" },
                   { id: "TenneT", name: "TenneT (Landelijk)" },
                   { id: "Liander", name: "Liander" },
-                  { id: "Enexis", name: "Enexis" },
-                  { id: "Custom", name: lang === "nl" ? "Eigen Feeds" : "Custom Feeds" }
+                  { id: "Enexis", name: "Enexis" }
                 ].map((src) => (
                   <button
                     key={src.id}
@@ -487,90 +369,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                     }`}
                   >
                     {src.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Section: Custom RSS Feed Administration */}
-          <div className="bg-card border border-white/5 p-6 rounded-2xl space-y-4">
-            <h2 className="font-display font-bold text-sm text-white flex items-center gap-2 border-b border-white/5 pb-3">
-              <Plus size={14} className="text-teal-400" />
-              {lang === "nl" ? "Nieuwe Feed Toevoegen" : "Add Custom Feed"}
-            </h2>
-
-            <form onSubmit={handleAddFeed} className="space-y-3">
-              <div className="space-y-1">
-                <label className="text-[10px] text-white/50 block font-mono">
-                  {lang === "nl" ? "FEED NAAM" : "FEED NAME"}
-                </label>
-                <input
-                  type="text"
-                  placeholder="Bijv. Stedin Nieuws"
-                  value={customFeedName}
-                  onChange={(e) => setCustomFeedName(e.target.value)}
-                  className="w-full bg-paper/50 border border-white/10 rounded-xl py-2 px-3 text-xs text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 transition-colors"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-[10px] text-white/50 block font-mono">
-                  {lang === "nl" ? "FEED URL / RSS" : "FEED URL / RSS"}
-                </label>
-                <input
-                  type="url"
-                  placeholder="https://example.com/rss"
-                  value={customFeedUrl}
-                  onChange={(e) => setCustomFeedUrl(e.target.value)}
-                  className="w-full bg-paper/50 border border-white/10 rounded-xl py-2 px-3 text-xs text-white placeholder-white/30 focus:outline-none focus:border-teal-500/50 transition-colors"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-[10px] text-white/50 block font-mono">
-                  {lang === "nl" ? "HOOFDRUBRIEK" : "PRIMARY TOPIC"}
-                </label>
-                <select
-                  value={customFeedTopic}
-                  onChange={(e) => setCustomFeedTopic(e.target.value as any)}
-                  className="w-full bg-paper/80 border border-white/10 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-teal-500/50 transition-colors cursor-pointer"
-                >
-                  <option value="Gebiedsontwikkeling">{lang === "nl" ? "Gebiedsontwikkeling" : "Area Development"}</option>
-                  <option value="Energie">{lang === "nl" ? "Energie & Netwerken" : "Energy & Grid"}</option>
-                  <option value="Vastgoed">{lang === "nl" ? "Vastgoed" : "Real Estate"}</option>
-                </select>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-teal-500 hover:bg-teal-600 text-white font-display text-xs font-bold py-2 px-4 rounded-xl transition-colors cursor-pointer mt-2"
-              >
-                {lang === "nl" ? "Voeg Feed Toe" : "Add Feed"}
-              </button>
-            </form>
-
-            {/* Quick pre-populate buttons */}
-            <div className="pt-2 border-t border-white/5 space-y-2">
-              <span className="text-[10px] font-mono text-white/40 uppercase block">
-                {lang === "nl" ? "AANBEVOLEN RSS" : "SUGGESTED RSS"}
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  { name: "Stedin", url: "https://www.stedin.net/nieuws/rss", topic: "Energie" },
-                  { name: "RVO", url: "https://www.rvo.nl/nieuws/rss", topic: "Gebiedsontwikkeling" }
-                ].map((s) => (
-                  <button
-                    key={s.name}
-                    type="button"
-                    onClick={() => {
-                      setCustomFeedName(s.name);
-                      setCustomFeedUrl(s.url);
-                      setCustomFeedTopic(s.topic as any);
-                    }}
-                    className="text-[10px] bg-white/5 border border-white/10 hover:border-teal-400 px-2 py-1 rounded text-white/70 hover:text-white cursor-pointer"
-                  >
-                    +{s.name}
                   </button>
                 ))}
               </div>
@@ -598,14 +396,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                     <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-white/50">
                       {feed.articlesCount} {lang === "nl" ? "art." : "art."}
                     </span>
-                    {feed.source === "Custom" && (
-                      <button
-                        onClick={() => handleDeleteFeed(feed.id)}
-                        className="text-white/40 hover:text-red p-1 cursor-pointer"
-                      >
-                        <Trash2 size={12} />
-                      </button>
-                    )}
                   </div>
                 </div>
               ))}
@@ -642,8 +432,8 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                     </h3>
                     <p className="text-xs text-white/50 max-w-sm mx-auto mt-1">
                       {lang === "nl"
-                        ? "Probeer de zoekterm aan te passen, rubrieken te wijzigen of schakel de Ruis-Filter tijdelijk uit."
-                        : "Try adjusting your search query, selecting different rubrics or temporarily turn off the Noise-Filter."}
+                        ? "Probeer de zoekterm aan te passen of rubrieken te wijzigen."
+                        : "Try adjusting your search query or selecting different rubrics."}
                     </p>
                   </div>
                   <button
@@ -651,7 +441,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                       setSearchQuery("");
                       setActiveTopic("all");
                       setActiveSource("all");
-                      setIsRuisFilterActive(false);
                     }}
                     className="text-xs text-accent font-bold hover:underline cursor-pointer"
                   >
@@ -687,11 +476,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                           <span className="text-[10px] text-white/50 bg-white/5 px-2 py-0.5 rounded-md font-medium">
                             {article.topic}
                           </span>
-                          {article.isNoise && (
-                            <span className="text-[10px] text-amber-400 bg-amber-400/15 border border-amber-400/20 px-2 py-0.5 rounded-md font-mono font-bold uppercase">
-                              {lang === "nl" ? "RUISSIGNAAL" : "NOISE SIGNAL"}
-                            </span>
-                          )}
                         </div>
 
                         {/* Title */}
@@ -860,14 +644,6 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                       <li className="flex items-start gap-2">
                         <span className="text-accent shrink-0">■</span>
                         <span>{lang === "nl" ? "Woningbouw en lichte industrie kunnen optimaal gekoppeld worden binnen één virtueel aansluitveld." : "Housing and light commercial utilities combine perfectly into a single virtual cluster."}</span>
-                      </li>
-                    </ul>
-                  )}
-                  {selectedArticle.source === "Custom" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Nieuwe extern geïmporteerde webfeed; analyseer de rubriek en controleer updates via de synchronisatie-knop." : "Newly imported webfeed; analyze topics and check updates via the main sync control."}</span>
                       </li>
                     </ul>
                   )}

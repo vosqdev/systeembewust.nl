@@ -470,7 +470,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
                           onClick={() => setSelectedArticle(article)}
                           className="w-full md:w-auto font-display text-xs font-bold bg-white/5 hover:bg-white/10 text-white border border-white/10 px-4 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                         >
-                          {lang === "nl" ? "Bekijk Analyse" : "View Analysis"}
+                          {lang === "nl" ? "Lees Artikel" : "Read Article"}
                           <ChevronRight size={12} />
                         </button>
                         <a
@@ -515,7 +515,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono font-bold text-accent tracking-wider uppercase">
-                    {lang === "nl" ? "GEANALYSEERD ARTIKEL" : "ANALYZED ARTICLE"}
+                    {lang === "nl" ? "DETAILS" : "DETAILS"}
                   </span>
                   <button
                     onClick={() => setSelectedArticle(null)}
@@ -545,84 +545,11 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
               {/* Main Content Block */}
               <div className="space-y-4">
                 <h4 className="text-[10px] font-mono font-bold tracking-wider text-white/40 uppercase">
-                  {lang === "nl" ? "VOLLEDIGE INGESTION EN SAMENVATTING" : "FULL INGESTION & SUMMARY"}
+                  {lang === "nl" ? "BERICHT EN SAMENVATTING" : "ARTICLE SUMMARY"}
                 </h4>
                 <p className="text-sm text-white/80 leading-relaxed bg-white/2 p-4 rounded-xl border border-white/5">
                   {selectedArticle.content}
                 </p>
-              </div>
-
-              {/* Takeaways / Smart Action Blueprint */}
-              <div className="bg-gradient-to-r from-accent/10 to-teal-500/5 border border-accent/20 rounded-2xl p-5 space-y-3">
-                <div className="flex items-center gap-2">
-                  <Cpu size={16} className="text-accent animate-pulse" />
-                  <h4 className="text-xs font-bold text-white uppercase tracking-wider font-display">
-                    {lang === "nl" ? "Systeembewust Actie-Advies" : "System-Minded Takeaways"}
-                  </h4>
-                </div>
-                
-                <div className="space-y-2">
-                  {selectedArticle.source === "VNG" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Gemeenten moeten direct starten met dossieropbouw voor lopende woningbouwprojecten om de formele bewijslast gereed te hebben." : "Municipalities should immediately start compiling dossiers to prepare formal evidence requirements."}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Gecoördineerde indiening in oktober 2026 biedt een cruciale kans; zorg dat de planningen hierop zijn afgestemd." : "Coordinated submission in October 2026 is critical; align planning deadlines accordingly."}</span>
-                      </li>
-                    </ul>
-                  )}
-                  {selectedArticle.source === "ACM" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Aangezien kleinverbruikers nu ook onder het prioriteringskader vallen, kunnen projecten zonder prioriteit langer vertragen." : "Small-scale connections now fall under the priority framework; non-priority projects will wait longer."}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Integratie van flexibele contracten en congestion management is verstandig om het prioriteitsstempel te ontwijken of versterken." : "Integrate flexible contracts and congestion management to bypass or bolster priority ratings."}</span>
-                      </li>
-                    </ul>
-                  )}
-                  {selectedArticle.source === "TenneT" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Versterking van het hoogspanningsnet is op stoom, maar de doorlooptijd voor regionale distributie blijft een knelpunt." : "Transmission upgrades are ongoing, but local distribution delivery times remain a primary bottleneck."}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Ontwerp gebieden direct 'systeembewust' met lokale buffering (BESS) om minder afhankelijk te zijn van regionale netcapaciteit." : "Design areas system-mindedly with local storage (BESS) to reduce dependency on grid delivery times."}</span>
-                      </li>
-                    </ul>
-                  )}
-                  {selectedArticle.source === "Liander" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "De De Waarderpolder case bewijst dat collectieve Energy Hubs de wachtlijst effectief kunnen omzeilen." : "The De Waarderpolder case proves collective Energy Hubs bypass grid lockouts effectively."}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Zet in op gemeenschappelijke contractering en gedeeld piekvermogen bij de start van gebiedsontwikkeling." : "Utilize unified group contracts and shared peak limits at the genesis of area planning."}</span>
-                      </li>
-                    </ul>
-                  )}
-                  {selectedArticle.source === "Enexis" && (
-                    <ul className="text-xs text-white/75 space-y-2 list-none p-0 m-0">
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "GroepsTransportOvereenkomsten (GTO) zijn juridisch haalbaar; betrek de juridische afdeling in een vroeg stadium." : "Group Transmission Agreements (GTO) are legally viable; engage legal departments early."}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-accent shrink-0">■</span>
-                        <span>{lang === "nl" ? "Woningbouw en lichte industrie kunnen optimaal gekoppeld worden binnen één virtueel aansluitveld." : "Housing and light commercial utilities combine perfectly into a single virtual cluster."}</span>
-                      </li>
-                    </ul>
-                  )}
-                </div>
               </div>
 
               {/* Action Buttons */}

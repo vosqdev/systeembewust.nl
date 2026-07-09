@@ -117,6 +117,29 @@ export const translations = {
         ]
       }
     },
+    systemExplanation: {
+      label: "HET SYSTEEM UITGELEGD",
+      title: "Waar loopt het net vast? Denk aan een snelweg",
+      steps: [
+        { title: "Opwek", desc: "Wind, zon, centrales" },
+        { title: "Hoogspanning", desc: "TenneT landelijk net" },
+        { title: "Regionaal net", desc: "Liander, Enexis, Stedin" },
+        { title: "Wijkstation", desc: "Transformator in de wijk" },
+        { title: "Woning", desc: "Warmtepomp, PV, laadpaal" }
+      ]
+    },
+    gridChallenges: {
+      label: "VAN BELEID NAAR PRAKTIJK",
+      title: "Vijf opgaven komen samen op het elektriciteitsnet",
+      cards: [
+        { value: "900.000", title: "Woningbouwopgave", desc: "nieuwe woningen tot 2030 — vrijwel allemaal all-electric of met warmtenet" },
+        { value: "10.000+", title: "Netcongestie", desc: "bedrijven en projecten op de wachtlijst voor een (zwaardere) aansluiting" },
+        { value: "-55%", title: "Klimaatdoelen", desc: "CO₂-reductie in 2030 t.o.v. 1990 (Fit for 55) — vastgelegd in Europese wetgeving" },
+        { value: "2-3x", title: "Elektrificatie", desc: "groei van de elektriciteitsvraag: warmtepompen, laadpalen (logistiek, woon/werk verkeer), industrie en datacenters" },
+        { value: "100.000 km", title: "Ruimtelijke druk", desc: "aan nieuwe kabels plus duizenden stations nodig — in gebieden waar ruimte al schaars is" },
+        { value: "5-10 jr", title: "Doorlooptijd net", desc: "realisatie van een nieuw hoog- of middenspanningsstation duurt langer dan een woonwijk" }
+      ]
+    },
     netpanel: {
       label: "Netpanel",
       title: "Live netcapaciteit\nNederland",
@@ -165,10 +188,10 @@ export const translations = {
       pills: [
         { title: "BESS — Batterij­opslag", desc: "Opslag als nettbuffer, dit verlaagt de piekbelasting, verhoogt zelfsufficiëntie en genereert hernieuwbare inkomsten.", badge: "Flexibiliteitsmarkt" },
         { title: "PV + Laadinfra", desc: "Zon, opslag en EV-laadinfra via Solar Parking. Maximale benutting van beschikbare ruimte -dubbelfunctie gebruik, flex en diensten zoals potentiële ERE-opbrengst via EV-charge.", badge: "Mobiliteit" },
-        { title: "Energy Management:", desc: "Slim energiemanagementsysteem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau.", badge: "AI-gestuurd" },
+        { title: "EMS", desc: "Een slim Energy Management Systeem dat vraag, aanbod en nettarieven realtime optimaliseert op gebiedsniveau.", badge: "AI-gestuurd" },
         { title: "Energie­gemeenschap (CEC)", desc: "Wettelijk kader via Energiewet 2026 voor gezamenlijk opwekken, opslaan en delen binnen een gebied ook groepscontract (GTO) en energiecoöperatie mogelijkheden.", badge: "Energiewet 2026" },
         { title: "Dynamische Netaansluiting", desc: "Contractuele flexibiliteitsafspraken met netbeheerder: stuurbaar vermogen in ruil voor prioriteitsaansluiting.", badge: "Netbeheerder" },
-        { title: "Faserings­model", desc: "Bouwprogramma afgestemd op netcapaciteit en integratie. Rekening houdend met passief huis en energiesysteem systeem netbewust.", badge: "Ruimtelijk" }
+        { title: "Faserings­model", desc: "Bouwprogramma afgestemd op netcapaciteit en integratie. Rekening houdend met passief huis, thuis laden (woon-werk verkeer) en energiesysteem ook wel netbewust bouwen.", badge: "Ruimtelijk" }
       ]
     },
     banner: {
@@ -516,6 +539,29 @@ export const translations = {
         ]
       }
     },
+    systemExplanation: {
+      label: "THE SYSTEM EXPLAINED",
+      title: "Where does the grid clog? Think of a highway",
+      steps: [
+        { title: "Generation", desc: "Wind, solar, power plants" },
+        { title: "High Voltage", desc: "TenneT national grid" },
+        { title: "Regional Grid", desc: "Liander, Enexis, Stedin" },
+        { title: "Substation", desc: "Transformer in the neighborhood" },
+        { title: "Household", desc: "Heat pump, PV, charging station" }
+      ]
+    },
+    gridChallenges: {
+      label: "FROM POLICY TO PRACTICE",
+      title: "Five challenges converge on the electricity grid",
+      cards: [
+        { value: "900,000", title: "Housing Task", desc: "new homes until 2030 — almost all all-electric or with heat network" },
+        { value: "10,000+", title: "Grid Congestion", desc: "companies and projects on the waiting list for a (heavier) connection" },
+        { value: "-55%", title: "Climate Goals", desc: "CO₂ reduction in 2030 compared to 1990 (Fit for 55) — recorded in European legislation" },
+        { value: "2-3x", title: "Electrification", desc: "growth in electricity demand: heat pumps, charging stations (logistics, home/work commute), industry and data centers" },
+        { value: "100,000 km", title: "Spatial Pressure", desc: "new cables plus thousands of stations needed — in areas where space is already scarce" },
+        { value: "5-10 yrs", title: "Grid Lead Time", desc: "realization of a new high- or medium-voltage substation takes longer than building a residential area" }
+      ]
+    },
     netpanel: {
       label: "Grid Panel",
       title: "Live grid capacity\nNetherlands",
@@ -564,10 +610,10 @@ export const translations = {
       pills: [
         { title: "BESS — Battery Storage", desc: "Storage as a grid buffer, this lowers peak load, increases self-sufficiency, and generates renewable revenue.", badge: "Flexibility Market" },
         { title: "PV + Charging Infra", desc: "Solar, storage, and EV charging infrastructure via Solar Parking. Maximum utilization of available space - dual-function use, flex and services such as potential ERE revenue via EV-charge.", badge: "Mobility" },
-        { title: "Energy Management:", desc: "Smart energy management system that optimizes supply, demand, and grid tariffs in real-time at the area level.", badge: "AI-driven" },
+        { title: "EMS", desc: "A smart Energy Management System that optimizes supply, demand, and grid tariffs in real-time at the area level.", badge: "AI-driven" },
         { title: "Energy Community (CEC)", desc: "Legal framework via Energy Act 2026 for joint generation, storage, and sharing within an area, including group contract (GTO) and energy cooperative possibilities.", badge: "Energy Act 2026" },
         { title: "Dynamic Grid Connection", desc: "Contractual flexibility agreements with grid operator: controllable power in exchange for priority connection.", badge: "Grid Operator" },
-        { title: "Phasing Model", desc: "Construction program aligned with grid capacity and integration. Taking into account passive house and energy system grid-conscious.", badge: "Spatial" }
+        { title: "Phasing Model", desc: "Construction program aligned with grid capacity and integration. Taking into account passive house, home charging (commute) and energy system also known as grid-conscious construction.", badge: "Spatial" }
       ]
     },
     banner: {

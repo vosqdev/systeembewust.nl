@@ -19,6 +19,17 @@ import {
   Menu,
   X,
   Sparkles,
+  ArrowRight,
+  Network,
+  Factory,
+  Leaf,
+  Plug,
+  MapPin,
+  Clock,
+  FileText,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { translations, Language } from "./i18n";
 
@@ -292,6 +303,7 @@ export default function App() {
   const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("quickscan");
   const [netpanelTab, setNetpanelTab] = useState<"afname" | "invoeding">("afname");
   const [openAccordion, setOpenAccordion] = useState<number>(0);
+  const [werkwijzeStep, setWerkwijzeStep] = useState<number | null>(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -674,6 +686,199 @@ export default function App() {
             </div>
           </div>
 
+          {/* SYSTEM EXPLANATION SECTION */}
+          <section
+            id="system-explanation"
+            className="py-20 md:py-[100px] px-5 md:px-10 z-10 relative bg-paper text-white border-b border-white/5"
+          >
+            <div className="max-w-[1200px] mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-16"
+              >
+                <div className="inline-block px-4 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-500 text-sm font-semibold tracking-wider uppercase mb-6">
+                  {t.systemExplanation.label}
+                </div>
+                <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight text-white mb-6">
+                  {t.systemExplanation.title}
+                </h2>
+                <p className="text-[15px] leading-[1.8] text-white/70 max-w-[750px] mx-auto">
+                  {lang === "nl" 
+                    ? "Het elektriciteitsnet functioneert als een snelweg. Wanneer er te veel verkeer (stroomafname of teruglevering) tegelijkertijd plaatsvindt, ontstaan er files (congestie) op specifieke knooppunten. Dit is de keten van bron tot gebruiker:"
+                    : "The electricity grid functions like a highway. When there is too much traffic (electricity demand or supply) at the same time, traffic jams (congestion) arise at specific nodes. This is the chain from source to user:"}
+                </p>
+              </motion.div>
+
+              <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 relative">
+                {t.systemExplanation.steps.map((step: any, idx: number) => {
+                  let iconElement;
+                  let bgCircleColor = "";
+                  let strokeColor = "";
+
+                  if (idx === 0) { // Opwek
+                    iconElement = <Sun size={32} className="text-white" />;
+                    bgCircleColor = "bg-teal-500/90 shadow-[0_0_20px_rgba(13,148,136,0.4)]";
+                    strokeColor = "border-teal-500/30";
+                  } else if (idx === 1) { // Hoogspanning
+                    iconElement = <Network size={32} className="text-white" />;
+                    bgCircleColor = "bg-slate-700/90 shadow-[0_0_20px_rgba(71,85,105,0.4)]";
+                    strokeColor = "border-slate-500/20";
+                  } else if (idx === 2) { // Regionaal Net
+                    iconElement = <Factory size={32} className="text-white" />;
+                    bgCircleColor = "bg-slate-700/90 shadow-[0_0_20px_rgba(71,85,105,0.4)]";
+                    strokeColor = "border-slate-500/20";
+                  } else if (idx === 3) { // Wijkstation
+                    iconElement = <Zap size={32} className="text-white animate-pulse" />;
+                    bgCircleColor = "bg-pink-600/90 shadow-[0_0_25px_rgba(236,72,153,0.5)]";
+                    strokeColor = "border-pink-500/30";
+                  } else { // Woning
+                    iconElement = <Home size={32} className="text-white" />;
+                    bgCircleColor = "bg-teal-500/90 shadow-[0_0_20px_rgba(13,148,136,0.4)]";
+                    strokeColor = "border-teal-500/30";
+                  }
+
+                  return (
+                    <React.Fragment key={idx}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        className={`flex-1 w-full bg-card border ${strokeColor} rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:border-white/20 hover:shadow-xl relative`}
+                      >
+                        {/* Number badge */}
+                        <div className="absolute top-4 left-4 text-xs font-mono font-bold text-white/30">
+                          0{idx + 1}
+                        </div>
+
+                        {/* Circular Icon badge */}
+                        <div className={`w-20 h-20 rounded-full flex items-center justify-center ${bgCircleColor} mb-6 transition-transform duration-300 hover:rotate-12`}>
+                          {iconElement}
+                        </div>
+
+                        {/* Step Title */}
+                        <h3 className="font-display font-bold text-xl text-white mb-2">
+                          {step.title}
+                        </h3>
+
+                        {/* Step description */}
+                        <p className="text-sm text-white/70 leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </motion.div>
+
+                      {/* Arrow between cards (hidden on mobile) */}
+                      {idx < 4 && (
+                        <div className="hidden lg:flex items-center text-pink-500/40 animate-pulse">
+                          <ArrowRight size={24} />
+                        </div>
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          {/* GRID CHALLENGES SECTION */}
+          <section
+            id="grid-challenges"
+            className="py-20 md:py-[100px] px-5 md:px-10 z-10 relative bg-paper text-white border-b border-white/5"
+          >
+            <div className="max-w-[1200px] mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-16"
+              >
+                <div className="inline-block px-4 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-500 text-sm font-semibold tracking-wider uppercase mb-6">
+                  {t.gridChallenges.label}
+                </div>
+                <h2 className="font-display font-bold text-[clamp(28px,3.5vw,48px)] tracking-tight leading-tight text-white mb-6">
+                  {t.gridChallenges.title}
+                </h2>
+                <p className="text-[15px] leading-[1.8] text-white/70 max-w-[750px] mx-auto">
+                  {lang === "nl"
+                    ? "De druk op ons energiesysteem is ongekend hoog. De transitie van beleid naar de fysieke realiteit in de grond brengt gigantische maatschappelijke en ruimtelijke uitdagingen met zich mee:"
+                    : "The pressure on our energy system is unprecedented. The transition from policy to physical reality in the ground brings enormous social and spatial challenges:"}
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {t.gridChallenges.cards.map((card: any, idx: number) => {
+                  let iconElement;
+                  let bgCircleColor = "";
+                  let statColor = "";
+                  let borderHoverColor = "";
+
+                  // Alternating pink and teal colors like the image
+                  if (idx % 2 === 0) {
+                    // Even (0, 2, 4): Pink theme
+                    statColor = "text-pink-500";
+                    bgCircleColor = "bg-pink-500/10 text-pink-500 border border-pink-500/30";
+                    borderHoverColor = "hover:border-pink-500/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.1)]";
+                  } else {
+                    // Odd (1, 3, 5): Teal theme
+                    statColor = "text-teal-400";
+                    bgCircleColor = "bg-teal-400/10 text-teal-400 border border-teal-400/30";
+                    borderHoverColor = "hover:border-teal-400/30 hover:shadow-[0_0_30px_rgba(45,212,191,0.1)]";
+                  }
+
+                  // Assign icons according to the image cards
+                  if (idx === 0) {
+                    iconElement = <Home size={22} />;
+                  } else if (idx === 1) {
+                    iconElement = <Zap size={22} />;
+                  } else if (idx === 2) {
+                    iconElement = <Leaf size={22} />;
+                  } else if (idx === 3) {
+                    iconElement = <Plug size={22} />;
+                  } else if (idx === 4) {
+                    iconElement = <MapPin size={22} />;
+                  } else {
+                    iconElement = <Clock size={22} />;
+                  }
+
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: idx * 0.1 }}
+                      className={`bg-card border border-white/5 rounded-2xl p-8 flex flex-col items-start transition-all duration-300 hover:scale-[1.02] ${borderHoverColor} relative overflow-hidden h-full`}
+                    >
+                      {/* Top bar with icon and stat */}
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${bgCircleColor}`}>
+                          {iconElement}
+                        </div>
+                        <span className={`text-3xl md:text-4xl font-extrabold tracking-tight ${statColor}`}>
+                          {card.value}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="font-display font-bold text-lg text-white mb-3">
+                        {card.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-sm text-white/60 leading-relaxed">
+                        {card.desc}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
           {/* NET STATUS PANEL */}
           <section
             id="netpanel"
@@ -762,6 +967,259 @@ export default function App() {
 
           {/* TIMELINE SECTION (1 juli '26) */}
           <TimelineView isEmbedded={true} lang={lang} />
+
+          {/* WERKWIIJZE & WONINGBOUW SECTION */}
+          <section
+            id="werkwijze"
+            className="py-20 md:py-[100px] px-5 md:px-10 z-10 relative bg-paper text-white border-t border-b border-white/5"
+          >
+            <div className="max-w-[1200px] mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                
+                {/* Left Column: Image of Woningbouw */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="lg:col-span-5 space-y-6 lg:sticky lg:top-24"
+                >
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-accent/10 rounded-[32px] blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/3] shadow-2xl">
+                      <img
+                        src="https://www.image2url.com/r2/default/images/1783622639321-581a1a2d-ab5a-4583-b039-737ad71b52ac.jpeg"
+                        alt={lang === "nl" ? "Woningbouw projecten" : "Residential housing construction"}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <span className="text-xs font-mono tracking-wider text-accent uppercase bg-accent/15 px-3 py-1 rounded-full border border-accent/20">
+                          {lang === "nl" ? "Woningbouw" : "Housing"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-teal-500/10 rounded-[32px] blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/3] shadow-2xl">
+                      <img
+                        src="https://www.image2url.com/r2/default/images/1783622849556-1cf3c200-4c70-4da5-b126-973b874f3724.jpg"
+                        alt={lang === "nl" ? "Gecoördineerd indienen" : "Coordinated submission"}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <span className="text-xs font-mono tracking-wider text-teal-400 uppercase bg-teal-500/15 px-3 py-1 rounded-full border border-teal-500/20">
+                          {lang === "nl" ? "Netcapaciteit" : "Grid Capacity"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Right Column: Werkwijze Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="lg:col-span-7 bg-card border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl space-y-6"
+                >
+                  {/* Title & Icon Header */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400">
+                      <FileText size={26} />
+                    </div>
+                    <h2 className="font-display font-bold text-2xl md:text-3xl text-white">
+                      {lang === "nl" ? "Werkwijze" : "Method of Working"}
+                    </h2>
+                  </div>
+
+                  {/* Intro Description */}
+                  <p className="text-[14px] md:text-[15px] leading-[1.8] text-white/80">
+                    {lang === "nl" ? (
+                      <>
+                        Voor succes van de woondeals is het raadzaam om nu al te starten. Gemeenten kunnen tot maximaal 10 jaar vooruit <strong className="text-teal-400 font-semibold">transportcapaciteit</strong> (de hoeveelheid elektriciteit die via het elektriciteitsnet van de netbeheerder naar een aansluiting of gebied wordt vervoerd) aanvragen bij de netbeheerder. De aanvraag komt op basis van datum van indiening op de wachtlijst te staan. Dit is met uitzondering van het eenmalig gecoördineerd indienen in oktober 2026.
+                      </>
+                    ) : (
+                      <>
+                        For the success of the housing deals, it is highly advisable to start now. Municipalities can request <strong className="text-teal-400 font-semibold">transmission capacity</strong> (the amount of electricity transported via the grid-operator's electricity network to a connection or area) up to 10 years in advance from the grid operator. The application is queued on the waiting list based on the date of submission. This is with the exception of the one-time coordinated submission in October 2026.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Horizontal Line Divider */}
+                  <div className="border-t border-white/5 my-6" />
+
+                  {/* Active Content Body (Rendered directly without tabs) */}
+                  <div className="space-y-6">
+                    <div className="space-y-6">
+                      {/* Paragraph block */}
+                      <p className="text-sm leading-relaxed text-white/70">
+                        {lang === "nl" ? (
+                          "Het ‘eerder aanvragen’ is een enorme opgave. De opgave verschilt per gemeente en is afhankelijk van de hoeveelheid en de fase van de projecten. Eenmalig worden deze aanvragen gecoördineerd ingediend."
+                        ) : (
+                          "Applying early is an enormous task. The challenge varies per municipality and depends on the volume and phase of projects. These applications are submitted coordinatively once."
+                        )}
+                      </p>
+
+                      {/* Steps Label */}
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-bold text-white/50 block font-mono tracking-wider uppercase">
+                          {lang === "nl" ? "STAPPENPLAN EERDER AANVRAGEN:" : "STEP-BY-STEP PROCESS:"}
+                        </span>
+
+                        {/* Accordion List */}
+                        <div className="space-y-2.5">
+                          {[
+                            {
+                              num: 1,
+                              title: lang === "nl" ? "Aanvragen aansluitingen" : "Apply for connections",
+                              fullTitle: lang === "nl" ? "Stap 1: Aanvragen van aansluitingen en transportcapaciteit" : "Step 1: Applying for connections and transport capacity",
+                              desc: lang === "nl" 
+                                ? "Eerder aanvragen kan door gemeente of gjortigde projectontwikkelaars worden gedaan. In gebieden met netcongestie komt de aanvraag op de wachtlijst terecht na een check van de netbeheerder op volledigheid van de informatie."
+                                : "Early applications can be made by the municipality or authorized project developers. In areas with grid congestion, the application is placed on the waiting list after a check by the grid operator."
+                            },
+                            {
+                              num: 2,
+                              title: lang === "nl" ? "Aanvragen prioriteit" : "Request priority",
+                              fullTitle: lang === "nl" ? "Stap 2: Aanvragen van prioriteit" : "Step 2: Requesting priority",
+                              desc: lang === "nl" 
+                                ? "Dit kan bij het eerder aanvragen door de gemeente worden gedaan, of door een gemachtigde ontwikkelaar. Als prioriteit wordt toegekend, komt de aanvraag hoger op de wachtlijst terecht."
+                                : "This can be done by the municipality or an authorized developer when applying early. If priority is granted, the application is placed higher on the waiting list."
+                            },
+                            {
+                              num: 3,
+                              title: lang === "nl" ? "Capaciteit vastleggen" : "Secure capacity",
+                              fullTitle: lang === "nl" ? "Stap 3: Capaciteit vastleggen" : "Step 3: Securing capacity",
+                              desc: lang === "nl" 
+                                ? "Zodra er capaciteit beschikbaar komt, stuurt de netbeheerder een aanbieding aan de aanvrager. Dat kan een ontwikkelaar zijn of de gemeente, afhankelijk van wie de aanvraag heeft gedaan. Door de aanbieding te accepteren wordt de gevraagde transportcapaciteit vastgelegd tussen netbeheerder en aanvrager. Op dat moment is er zekerheid dat er aansluitingen en transportcapaciteit beschikbaar zijn voor het project."
+                                : "As soon as capacity becomes available, the grid operator sends an offer to the applicant. By accepting the offer, the requested transport capacity is secured between the grid operator and the applicant."
+                            },
+                            {
+                              num: 4,
+                              title: lang === "nl" ? "Detailaanvraag" : "Detailed application",
+                              fullTitle: lang === "nl" ? "Stap 4: Detailaanvraag door ontwikkelaar" : "Step 4: Detailed application by developer",
+                              desc: lang === "nl" 
+                                ? "Zodra er een gedetailleerd ontwerp beschikbaar is, doet de ontwikkelaar een detailaanvraag. Deze stap is gelijk aan hoe dit nu gebeurt in het reguliere proces tussen ontwikkelaar en netbeheerder. Wanneer de gemeente de capaciteit heeft vastgelegd, kan de ontwikkelaar deze detailaanvraag doen op basis van de vastgelegde capaciteit door de gemeente."
+                                : "As soon as a detailed design is available, the developer submits a detailed request. This step is identical to the current regular process between the developer and the grid operator."
+                            }
+                          ].map((step, sIdx) => {
+                            const isOpen = werkwijzeStep === sIdx;
+                            return (
+                              <div 
+                                key={sIdx} 
+                                className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                                  isOpen 
+                                    ? "border-teal-500/50 bg-teal-500/5 shadow-[0_0_15px_rgba(45,212,191,0.05)]" 
+                                    : "border-white/5 bg-paper/50 hover:border-white/15"
+                                }`}
+                              >
+                                {/* Step Header */}
+                                <button
+                                  onClick={() => setWerkwijzeStep(isOpen ? null : sIdx)}
+                                  className="w-full text-left px-4 py-3 flex items-center justify-between gap-3 cursor-pointer select-none bg-transparent"
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-bold transition-all ${
+                                      isOpen 
+                                        ? "bg-teal-500 text-white" 
+                                        : "bg-paper border border-white/15 text-white/60"
+                                    }`}>
+                                      {step.num}
+                                    </div>
+                                    <span className={`font-display font-bold text-sm text-white transition-colors ${
+                                      isOpen ? "text-teal-400" : ""
+                                    }`}>
+                                      {step.title}
+                                    </span>
+                                  </div>
+                                  <div className="text-white/40 shrink-0">
+                                    {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                                  </div>
+                                </button>
+
+                                {/* Expandable Body */}
+                                <motion.div
+                                  initial={false}
+                                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                                  transition={{ duration: 0.25 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="px-4 pb-4 pt-1 text-xs text-white/70 leading-relaxed border-t border-white/5 space-y-1.5">
+                                    <div className="font-bold text-white text-[11px] uppercase tracking-wider mb-1 opacity-90">
+                                      {step.fullTitle}
+                                    </div>
+                                    <p>{step.desc}</p>
+                                  </div>
+                                </motion.div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Eenmalig gecoördineerd indienen footer segment */}
+                      <div className="bg-paper/40 border border-white/5 rounded-2xl p-5 flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 shrink-0">
+                          <Calendar size={18} />
+                        </div>
+                        <div className="space-y-3 flex-1">
+                          <h4 className="font-display font-bold text-sm text-white">
+                            {lang === "nl" ? "Eenmalig gecoördineerd indienen" : "One-time Coordinated Submission"}
+                          </h4>
+                          <div className="text-xs text-white/60 leading-relaxed space-y-2">
+                            {lang === "nl" ? (
+                              <>
+                                <p>
+                                  Van 1 tot en met 23 oktober 2026 geldt dat gemeenten eenmalig hun aanvragen gecoördineerd kunnen indienen. Dit gaat in tijdsblokken op basis van het startbouwjaar. Netbeheerders faciliteren deze aanpak via het online aanvraagportaal —{" "}
+                                  <a
+                                    href="https://www.mijnaansluiting.nl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-teal-400 hover:underline font-semibold"
+                                  >
+                                    www.mijnaansluiting.nl
+                                  </a>
+                                </p>
+                                <p className="pt-1 text-white/50 border-t border-white/5">
+                                  Daarna kunnen gemeenten capaciteit aanvragen volgens de vanaf dan geldende reguliere werkwijze.
+                                </p>
+                              </>
+                            ) : (
+                              <>
+                                <p>
+                                  From 1 to 23 October 2026, municipalities can submit their applications coordinatively once. This happens in time blocks based on construction start year. Grid operators facilitate this via the online application portal —{" "}
+                                  <a
+                                    href="https://www.mijnaansluiting.nl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-teal-400 hover:underline font-semibold"
+                                  >
+                                    www.mijnaansluiting.nl
+                                  </a>
+                                </p>
+                                <p className="pt-1 text-white/50 border-t border-white/5">
+                                  Afterwards, municipalities can request capacity according to the regular procedure that applies from then on.
+                                </p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </motion.div>
+
+              </div>
+            </div>
+          </section>
 
           {/* NETBEWUST INTRO SECTION */}
           <section
@@ -894,7 +1352,6 @@ export default function App() {
               </div>
             </div>
           </section>
-
           {/* DIAGRAM SECTION */}
           <section
             id="diagram"
@@ -937,24 +1394,24 @@ export default function App() {
                 <div className="flex flex-col md:flex-row gap-12 items-center md:items-stretch relative z-10">
                   {/* Dragers */}
                   <div className="flex flex-col gap-4 items-center justify-center w-full md:w-auto">
-                    <div className="bg-card border border-white/10 text-white font-bold text-xl py-3 px-10 rounded-md tracking-widest uppercase mb-2">
+                    <div className="bg-card border border-white/10 text-white font-bold text-xl py-3 px-12 rounded-md tracking-widest uppercase mb-2">
                       DRAGERS
                     </div>
-                    <div className="flex flex-col gap-4 w-full">
-                      <div className="bg-blue/10 border border-blue/30 text-blue font-bold py-4 px-8 rounded-xl flex items-center gap-4 shadow-sm text-lg">
+                    <div className="flex flex-col gap-3 w-full">
+                      <div className="bg-blue/10 border border-blue/30 text-blue font-bold py-4 px-8 rounded-xl flex items-center gap-4 text-base">
                         <Zap size={24} /> elektriciteit
                       </div>
-                      <div className="bg-amber/10 border border-amber/30 text-amber font-bold py-4 px-8 rounded-xl flex items-center gap-4 shadow-sm text-lg">
+                      <div className="bg-amber/10 border border-amber/30 text-amber font-bold py-4 px-8 rounded-xl flex items-center gap-4 text-base">
                         <Droplet size={24} /> moleculen
                       </div>
-                      <div className="bg-red/10 border border-red/30 text-red font-bold py-4 px-8 rounded-xl flex items-center gap-4 shadow-sm text-lg">
+                      <div className="bg-red/10 border border-red/30 text-red font-bold py-4 px-8 rounded-xl flex items-center gap-4 text-base">
                         <Flame size={24} /> warmte
                       </div>
                     </div>
                   </div>
 
                   {/* Cycle */}
-                  <div className="flex-1 relative flex items-center justify-center min-h-[400px] w-full">
+                  <div className="flex-1 relative flex items-center justify-center min-h-[350px] w-full">
                     <EnergyCircle />
                   </div>
                 </div>

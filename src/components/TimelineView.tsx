@@ -107,7 +107,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ onBack, lang, isEmbe
           highlight: "Vanaf 2027 vervalt de exclusieve reservering voor prioriteitsprojecten. Snelheid en systeemsturing in het voorstadium zijn essentieel."
         },
         {
-          date: "1 jul '26",
+          date: "Voorwaarden",
           badge: "Werkwijze & Voorwaarden",
           summary: "Werkwijze en voorwaarden voor transportcapaciteit en prioritering vanaf 1 juli 2026.",
           details: [
@@ -233,7 +233,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ onBack, lang, isEmbe
           highlight: "From 2027, the exclusive reservation for priority projects expires. Speed and system-level management in the pre-planning stage are vital."
         },
         {
-          date: "1 Jul '26",
+          date: "Conditions",
           badge: "Working Method & Conditions",
           summary: "Working method and conditions for transport capacity and prioritization from July 1, 2026.",
           details: [
@@ -412,6 +412,122 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ onBack, lang, isEmbe
                     <span>{activePhase.highlight}</span>
                   </div>
 
+                  {/* Additional table specific to Phase 2 / Gecoördineerd Aanvragen (activeStep === 1) */}
+                  {activeStep === 1 && (
+                    <div className="space-y-6 pt-6 border-t border-white/10 mt-6">
+                      {/* Coordinated submissions time block table */}
+                      <div className="bg-white/2 border border-white/5 p-5 rounded-xl space-y-4">
+                        <div className="flex items-center gap-2 text-accent font-display font-bold text-xs uppercase tracking-wider">
+                          <Calendar size={14} />
+                          {lang === "nl" ? "Eenmalig gecoördineerd indienen" : "One-off Coordinated Submission"}
+                        </div>
+                        <p className="text-xs text-white/85 leading-relaxed">
+                          {lang === "nl"
+                            ? "Capaciteit aanvragen gaat in tijdsblokken op basis van het startbouwjaar, omdat dit in de praktijk de meest gangbare datum is voor het moment waarop netcapaciteit wordt aangevraagd en nodig is."
+                            : "Capacity requests are organized in time blocks based on the planned construction start year, as this is practically the most common date for requesting and needing grid capacity."}
+                        </p>
+
+                        {/* Flowchart Schema Diagram */}
+                        <div className="space-y-3 pt-2">
+                          <span className="text-[11px] font-bold text-white/50 block font-mono uppercase tracking-wider">
+                            {lang === "nl" ? "PROCESSCHEMA VAN AANVRAAG TOT REALISATIE:" : "PROCESS DIAGRAM FROM REQUEST TO REALIZATION:"}
+                          </span>
+                          <div className="flex flex-col md:flex-row items-center justify-between gap-3 bg-white/2 p-4 rounded-xl border border-white/5">
+                            {[
+                              {
+                                num: "1",
+                                title: lang === "nl" ? "Aanvraag transportcapaciteit en aansluitingen" : "Apply for transport capacity and connections",
+                              },
+                              {
+                                num: "2",
+                                title: lang === "nl" ? "Aanvragen prioriteit" : "Request priority",
+                              },
+                              {
+                                num: "3",
+                                title: lang === "nl" ? "Capaciteit vastleggen" : "Secure capacity",
+                              },
+                              {
+                                num: "4",
+                                title: lang === "nl" ? "Detailaanvraag door ontwikkelaar" : "Detailed application by developer",
+                              }
+                            ].map((step, idx) => (
+                              <React.Fragment key={idx}>
+                                {/* Step Box */}
+                                <div className="w-full md:w-1/4 border-2 border-accent bg-accent/5 rounded-lg p-3 min-h-[80px] flex items-center justify-center text-center hover:bg-accent/10 transition-all duration-200">
+                                  <span className="text-white font-display text-xs font-bold leading-relaxed">
+                                    {step.num}. {step.title}
+                                  </span>
+                                </div>
+                                {/* Connection arrow */}
+                                {idx < 3 && (
+                                  <div className="flex shrink-0 items-center justify-center">
+                                    <ArrowRight className="text-accent/60 rotate-90 md:rotate-0" size={16} />
+                                  </div>
+                                )}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="overflow-x-auto border border-white/10 rounded-lg bg-white/2">
+                          <table className="w-full text-left text-xs text-white/80 border-collapse">
+                            <thead>
+                              <tr className="bg-white/5 border-b border-white/10 font-display text-white font-semibold">
+                                <th className="p-3 border-r border-white/10">{lang === "nl" ? "Datum" : "Date"}</th>
+                                <th className="p-3 border-r border-white/10">{lang === "nl" ? "Indienen projecten met start bouwjaar" : "Submit projects with start construction year"}</th>
+                                <th className="p-3">{lang === "nl" ? "Gepland opleverjaar" : "Planned completion year"}</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 1 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2028</td>
+                                <td className="p-3 text-accent font-semibold align-middle text-center" rowSpan={8}>
+                                  <div className="px-2 py-4 font-display">
+                                    {lang === "nl" ? "Uiterlijk oplevering in 2036" : "Completion by 2036 at the latest"}
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 6 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2029</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 8 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2030</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 12 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2031</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 14 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2032</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 16 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2033</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 20 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2034</td>
+                              </tr>
+                              <tr className="hover:bg-white/2 transition-colors">
+                                <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 22 oktober om 09.00 uur</td>
+                                <td className="p-3 border-r border-white/5">Startbouw t/m 2035</td>
+                              </tr>
+                              <tr className="bg-white/5 font-semibold text-white/90">
+                                <td className="p-3 border-r border-white/10 font-mono">Per 23 oktober</td>
+                                <td className="p-3 border-r border-white/10">{lang === "nl" ? "Einde tijdsblokkenschema" : "End of time block schedule"}</td>
+                                <td className="p-3 text-white/30 italic text-center">-</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Additional conditions and information specific to Phase 4 / Voorwaarden (activeStep === 3) */}
                   {activeStep === 3 && (
                     <div className="space-y-6 pt-6 border-t border-white/10 mt-6">
@@ -484,117 +600,6 @@ export const TimelineView: React.FC<TimelineViewProps> = ({ onBack, lang, isEmbe
                                 </>
                               )}
                             </p>
-                          </div>
-                        </div>
-
-                        {/* Coordinated submissions time block table */}
-                        <div className="bg-white/2 border border-white/5 p-5 rounded-xl space-y-4">
-                          <div className="flex items-center gap-2 text-accent font-display font-bold text-xs uppercase tracking-wider">
-                            <Calendar size={14} />
-                            {lang === "nl" ? "Eenmalig gecoördineerd indienen" : "One-off Coordinated Submission"}
-                          </div>
-                          <p className="text-xs text-white/85 leading-relaxed">
-                            {lang === "nl"
-                              ? "Capaciteit aanvragen gaat in tijdsblokken op basis van het startbouwjaar, omdat dit in de praktijk de meest gangbare datum is voor het moment waarop netcapaciteit wordt aangevraagd en nodig is."
-                              : "Capacity requests are organized in time blocks based on the planned construction start year, as this is practically the most common date for requesting and needing grid capacity."}
-                          </p>
-
-                          {/* Flowchart Schema Diagram */}
-                          <div className="space-y-3 pt-2">
-                            <span className="text-[11px] font-bold text-white/50 block font-mono uppercase tracking-wider">
-                              {lang === "nl" ? "PROCESSCHEMA VAN AANVRAAG TOT REALISATIE:" : "PROCESS DIAGRAM FROM REQUEST TO REALIZATION:"}
-                            </span>
-                            <div className="flex flex-col md:flex-row items-center justify-between gap-3 bg-white/2 p-4 rounded-xl border border-white/5">
-                              {[
-                                {
-                                  num: "1",
-                                  title: lang === "nl" ? "Aanvraag transportcapaciteit en aansluitingen" : "Apply for transport capacity and connections",
-                                },
-                                {
-                                  num: "2",
-                                  title: lang === "nl" ? "Aanvragen prioriteit" : "Request priority",
-                                },
-                                {
-                                  num: "3",
-                                  title: lang === "nl" ? "Capaciteit vastleggen" : "Secure capacity",
-                                },
-                                {
-                                  num: "4",
-                                  title: lang === "nl" ? "Detailaanvraag door ontwikkelaar" : "Detailed application by developer",
-                                }
-                              ].map((step, idx) => (
-                                <React.Fragment key={idx}>
-                                  {/* Step Box */}
-                                  <div className="w-full md:w-1/4 border-2 border-accent bg-accent/5 rounded-lg p-3 min-h-[80px] flex items-center justify-center text-center hover:bg-accent/10 transition-all duration-200">
-                                    <span className="text-white font-display text-xs font-bold leading-relaxed">
-                                      {step.num}. {step.title}
-                                    </span>
-                                  </div>
-                                  {/* Connection arrow */}
-                                  {idx < 3 && (
-                                    <div className="flex shrink-0 items-center justify-center">
-                                      <ArrowRight className="text-accent/60 rotate-90 md:rotate-0" size={16} />
-                                    </div>
-                                  )}
-                                </React.Fragment>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="overflow-x-auto border border-white/10 rounded-lg bg-white/2">
-                            <table className="w-full text-left text-xs text-white/80 border-collapse">
-                              <thead>
-                                <tr className="bg-white/5 border-b border-white/10 font-display text-white font-semibold">
-                                  <th className="p-3 border-r border-white/10">{lang === "nl" ? "Datum" : "Date"}</th>
-                                  <th className="p-3 border-r border-white/10">{lang === "nl" ? "Indienen projecten met start bouwjaar" : "Submit projects with start construction year"}</th>
-                                  <th className="p-3">{lang === "nl" ? "Gepland opleverjaar" : "Planned completion year"}</th>
-                                </tr>
-                              </thead>
-                              <tbody className="divide-y divide-white/5">
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 1 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2028</td>
-                                  <td className="p-3 text-accent font-semibold align-middle text-center" rowSpan={8}>
-                                    <div className="px-2 py-4 font-display">
-                                      {lang === "nl" ? "Uiterlijk oplevering in 2036" : "Completion by 2036 at the latest"}
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 6 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2029</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 8 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2030</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 12 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2031</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 14 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2032</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 16 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2033</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 20 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2034</td>
-                                </tr>
-                                <tr className="hover:bg-white/2 transition-colors">
-                                  <td className="p-3 border-r border-white/5 font-mono text-white/90">Per 22 oktober om 09.00 uur</td>
-                                  <td className="p-3 border-r border-white/5">Startbouw t/m 2035</td>
-                                </tr>
-                                <tr className="bg-white/5 font-semibold text-white/90">
-                                  <td className="p-3 border-r border-white/10 font-mono">Per 23 oktober</td>
-                                  <td className="p-3 border-r border-white/10">{lang === "nl" ? "Einde tijdsblokkenschema" : "End of time block schedule"}</td>
-                                  <td className="p-3 text-white/30 italic text-center">-</td>
-                                </tr>
-                              </tbody>
-                            </table>
                           </div>
                         </div>
                       </div>

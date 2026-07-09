@@ -375,32 +375,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
             </div>
           </div>
 
-          {/* Connected Webfeeds Administration list */}
-          <div className="bg-card border border-white/5 p-6 rounded-2xl space-y-3">
-            <h2 className="font-display font-bold text-xs text-white/50 block font-mono tracking-wider uppercase">
-              {lang === "nl" ? "FEED REGISTERS" : "FEED REGISTERS"}
-            </h2>
-            <div className="space-y-2">
-              {feeds.map((feed) => (
-                <div key={feed.id} className="flex items-center justify-between p-2 rounded-xl bg-white/2 border border-white/5 text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full ${
-                      feed.status === "active" ? "bg-teal-400" : feed.status === "syncing" ? "bg-amber-400 animate-pulse" : "bg-red"
-                    }`} />
-                    <div className="font-medium text-white/80">
-                      {feed.name}
-                      <span className="block text-[9px] text-white/40">{feed.topic}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/5 text-white/50">
-                      {feed.articlesCount} {lang === "nl" ? "art." : "art."}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+
 
         </div>
 

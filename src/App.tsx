@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { EnergyCircle } from "./components/EnergyCircle";
 import { AIAssistant } from "./components/AIAssistant";
 import { TimelineView } from "./components/TimelineView";
+import { ContentHubView } from "./components/ContentHubView";
 import {
   BatteryCharging,
   Sun,
@@ -296,7 +297,7 @@ const LegalView = ({
 };
 
 export default function App() {
-  const [view, setView] = useState<"home" | "legal" | "timeline">("home");
+  const [view, setView] = useState<"home" | "legal" | "timeline" | "hub">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -380,7 +381,7 @@ export default function App() {
           </span>
         </a>
 
-        {(view === "home" || view === "timeline") && (
+        {(view === "home" || view === "timeline" || view === "hub") && (
           <div className="hidden lg:flex items-center gap-10">
             <ul className="flex gap-8 list-none m-0 p-0 items-center">
               <li>
@@ -440,6 +441,21 @@ export default function App() {
                   {t.nav.faq}
                 </a>
               </li>
+              <li>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setView("hub");
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`text-[15px] font-medium no-underline transition-colors pb-1 ${
+                    view === "hub" ? "text-accent border-b-2 border-accent" : "text-white hover:text-accent"
+                  }`}
+                >
+                  {t.nav.hub}
+                </a>
+              </li>
             </ul>
 
             <div className="flex items-center gap-6">
@@ -477,7 +493,7 @@ export default function App() {
         )}
 
         {/* Mobile Menu Toggle */}
-        {(view === "home" || view === "timeline") && (
+        {(view === "home" || view === "timeline" || view === "hub") && (
           <div className="flex lg:hidden items-center gap-4">
             <button
               onClick={() => setLang(lang === "nl" ? "en" : "nl")}
@@ -512,7 +528,7 @@ export default function App() {
       </nav>
 
       {/* Mobile Menu Dropdown */}
-      {(view === "home" || view === "timeline") && (
+      {(view === "home" || view === "timeline" || view === "hub") && (
         <div
           className={`fixed inset-0 bg-paper/95 backdrop-blur-md z-40 lg:hidden transition-all duration-300 ease-in-out flex flex-col items-center justify-center ${
             isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -574,6 +590,22 @@ export default function App() {
                 className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
               >
                 {t.nav.faq}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  setView("hub");
+                  window.scrollTo(0, 0);
+                }}
+                className={`text-2xl font-bold transition-colors no-underline ${
+                  view === "hub" ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
+                {t.nav.hub}
               </a>
             </li>
             <li className="mt-4">
@@ -1678,6 +1710,15 @@ export default function App() {
       )}
       {view === "timeline" && (
         <TimelineView
+          onBack={() => {
+            setView("home");
+            window.scrollTo(0, 0);
+          }}
+          lang={lang}
+        />
+      )}
+      {view === "hub" && (
+        <ContentHubView
           onBack={() => {
             setView("home");
             window.scrollTo(0, 0);

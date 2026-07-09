@@ -9,6 +9,7 @@ export const translations = {
       netbewust: "Netbewust",
       casestudy: "Samenwerking",
       faq: "FAQ",
+      hub: "Contenthub",
       aanDeSlag: "Aan de slag"
     },
     hero: {
@@ -431,6 +432,7 @@ export const translations = {
       netbewust: "Grid-Aware",
       casestudy: "Collaboration",
       faq: "FAQ",
+      hub: "Content Hub",
       aanDeSlag: "Get Started"
     },
     hero: {

@@ -5,7 +5,8 @@ export const translations = {
     nav: {
       home: "Home",
       netpanel: "Netpanel",
-      werkwijze: "Werkwijze",
+      werkwijze: "1 juli 2026!",
+      netbewust: "Netbewust",
       casestudy: "Samenwerking",
       faq: "FAQ",
       aanDeSlag: "Aan de slag"
@@ -40,24 +41,36 @@ export const translations = {
     ],
     faq: {
       label: "FAQ",
-      title: "Net­bewust ontwerpen van de grond af",
-      desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat.\nMaar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen.",
+      title: "Uitdagingen & Kansen",
+      desc: "Netcongestie vraagt om een slimme aanpak. Door vroegtijdig en systeembewust te plannen, transformeren we netbeperkingen in unieke kansen voor snellere, toekomstbestendige gebiedsontwikkeling.",
       accordions: [
         {
           title: "Wat is netbewust?",
           content: "Netbewust ontwikkelen of bouwen integreert de beschikbare netcapaciteit als randvoorwaarde in het ruimtelijk, technische en programmatisch ontwerp. Denk aan fasering op basis van transportcapaciteit, contractering, clustering van functies voor gedeeld netgebruik, en opslag als buffer. Maar ook mobiliteit en laadinfra."
         },
         {
-          title: "Waarom is dit nu urgent?",
-          content: "In meer dan 87% van de Nederlandse netgebieden bestaat transportschaarste. Nieuwe aansluitingen worden geweigerd of uitgesteld met 5–10 jaar. Bestaande aansluitingen kunnen niet worden vergroot. Wie niet netbewust ontwerpt, riskeert stilstand van de bouw, maar ook van zijn bedrijf."
+          title: "Aanpak van netcongestie",
+          content: "Om de leveringszekerheid van stroom ook in de toekomst te kunnen garanderen, moet het netwerk uitbreiden en verzwaren. Dit vraagt veel investeringen en kan enige jaren duren. Gemeenten hebben daarin een rol: ze verlenen vergunningen voor het plaatsen van hoogspanningsmasten en transformatorhuisjes in wijken.\n\nDaarnaast moet ook het stroomgebruik veranderen. Door het net slimmer te benutten en stroomgebruik te spreiden, worden hoge pieken verlaagd en hoeft een netwerk niet onnodig te worden verzwaard. Dit vermindert ook de kans op storingen."
         },
         {
-          title: "Welke partijen?",
-          content: "Gemeenten, woningcorporaties, netbeheerders, projectontwikkelaars en bouwers. Denk vanuit ketensamenwerking, ecoketens en systemen zorg voor de juist input en ga publiek-privaat samenwerken."
+          title: "Impact van netcongestie",
+          content: "Het tekort aan netwerkcapaciteit heeft impact op woningbouwplannen en de verduurzaming van de gebouwde omgeving, het wagenpark, industrie en mkb. Diverse gemeenten verwachten dat tot meer dan de helft van de woningbouwplannen vertragen of niet doorgaan omdat ze niet of veel later kunnen worden aangesloten op het stroomnetwerk.\n\nDaarnaast kunnen gemeenten niet altijd voldoen aan de wettelijke kaders voor het uitvoeren van gemeentelijke warmteprogramma’s. Voor woningen vallen nieuwe elektriciteitsaansluitingen en verzwaring van bestaande aansluitingen voor een warmtenet, warmtepomp of elektrisch koken onder de functie warmtevoorziening en/of woonbehoefte (categorie 3 van het prioriteringskader). Maar voor een groot deel van het mkb en maatschappelijk vastgoed geldt dat niet. Deze aanvragen komen op basis van binnenkomst onder de geprioriteerde aanvragen.\n\nWe adviseren gemeenten om voor de ontwikkeling van het warmteprogramma in gesprek te gaan met de netbeheerder om te bepalen wanneer er ruimte op het net is en wanneer dit mogelijk benut kan worden."
         },
         {
-          title: "Hoe verhoudt dit zich tot de Energiewet 2026?",
-          content: "De Energiewet 2026 verankert 'Collectieve' Energiegemeenschappen (CEC) en energie-deling wettelijk. Dit creëert nieuwe kansen voor gebieden vanuit energie-profiel — productie, opslag, flexibiliteit, gebruik."
+          title: "Nieuwe werkwijze: eerder aanvragen in het bouwproces",
+          content: "Gemeenten kunnen voor de bouw van woningen en scholen eerder duidelijkheid krijgen of op het moment van oplevering transportcapaciteit beschikbaar is. Tot 10 jaar vooruit kunnen ze transportcapaciteit toegekend krijgen door de netbeheerder. Als het project concreter is geworden, dan kunnen ze vervolgens ook prioritering op de wachtlijst aanvragen."
+        },
+        {
+          title: "Prioriteringskader ACM",
+          content: "Om te zorgen dat in netcongestiegebieden belangrijke maatschappelijke functies zoals scholen, woningen en ziekenhuizen voorrang krijgen, heeft de ACM het maatschappelijk prioriteringskader opgesteld. Dit is een werkwijze waarbij netbeheerders de beschikbare capaciteit op het stroomnet verdelen op basis van maatschappelijke prioriteit. Ook essentiële basisbehoeften zoals woningen, verzwaring van bestaande aansluiting van woningen, scholen, openbaar vervoer en gas-, warmte- en telecomnetten kunnen voor prioritering in aanmerking komen. Veel mkb’ers, zoals winkels en horeca, vallen hier niet onder."
+        },
+        {
+          title: "Voorbereiding op aansluitstop",
+          content: "Het prioriteringskader creëert geen extra ruimte, maar regelt alleen de verdeling van de schaarse capaciteit. In sommige regio’s dreigt een aansluitstop. Gemeenten in de regio Flevoland, Utrecht en Gelderland zijn zich hierop al aan het voorbereiden."
+        },
+        {
+          title: "Landelijk Actieprogramma Netcongestie",
+          content: "Het Landelijk Actieprogramma Netcongestie (LAN) is een samenwerkingsprogramma van netbeheerders, overheden, Autoriteit Consument & Markt en marktpartijen. De partners werken aan vermindering van netcongestie en voorbereiding op het energiesysteem van de toekomst."
         },
         {
           title: "Nieuw ACM-prioriteringskader (1 juli 2026)",
@@ -71,8 +84,8 @@ export const translations = {
     },
     netbewust: {
       label: "Netbewust",
-      title: "Net­bewust ontwerpen van de grond af",
-      desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat. Maar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen",
+      title: "Systeembewust",
+      desc: "Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat. Maar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen. Dus geen netbewust bouwen maar systeembewust werken.",
       section1: {
         title: "Van verbruik naar vermogen",
         desc: "Netcongestie wordt niet veroorzaakt door te veel energie, maar door gelijktijdigheid en piekbelasting. Het energiesysteem wordt afgerekend op vermogen (kW), niet alleen op volume (kWh).",
@@ -133,8 +146,8 @@ export const translations = {
     },
     diagram: {
       label: "Systeemmodel",
-      title: "Integrale aanpak in beeld",
-      desc: "Zonder de juiste balans tussen dragers en vragers is een gebied maar ook een systeem niet haalbaar en uitvoerbaar zonder hoge kosten."
+      title: "Netbewust ontwerpen van de grond af.",
+      desc: "Zonder de juiste balans is een gebied maar ook een systeem niet haalbaar en uitvoerbaar zonder hoge kosten. Ontwikkeling en energie-infrastructuur worden te vaak los van elkaar gepland en start energieplanologie in de ruimtelijke ontwikkeling te laat. Combineer beide disciplines — zodat de nieuwbouw woonwijk of bedrijventerrein aansluitbaar is vóórdat de eerste paal de grond in gaat. Maar ook reageer op tijd bij een aansluiting zodat je door kunt bouwen. Onderstaande de integrale aanpak in beeld"
     },
     aanpak: {
       label: "Werkwijze",
@@ -218,7 +231,7 @@ export const translations = {
       title1: "Uw gebied",
       title2: "netklaar",
       title3: "maken?",
-      desc: "Starten met een Quickscan van uw locatie — om zo een helder beeld van kansen en risico's te krijgen.",
+      desc: "Meer weten? Heeft u een complex vraagstuk vanuit energie? Of loopt u vast vanuit energie.",
       btn1: "Meer informatie",
       btn2: "Meer over VOVON"
     },
@@ -302,6 +315,7 @@ export const translations = {
     },
     frameworks: {
       tabs: {
+        quickscan: "Quickscan Werkwijze",
         routekaart: "De Routekaart (6 Stappen)",
         locatieNaarSysteem: "Locatie naar Systeem",
         planvorming: "Voor Planvorming"
@@ -390,7 +404,8 @@ export const translations = {
     nav: {
       home: "Home",
       netpanel: "Grid Panel",
-      werkwijze: "Approach",
+      werkwijze: "July 1, 2026!",
+      netbewust: "Grid-Aware",
       casestudy: "Collaboration",
       faq: "FAQ",
       aanDeSlag: "Get Started"
@@ -425,24 +440,36 @@ export const translations = {
     ],
     faq: {
       label: "FAQ",
-      title: "Grid-aware design from the ground up",
-      desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground.\nBut also respond on time regarding a connection so you can continue building.",
+      title: "Challenges & Opportunities",
+      desc: "Grid congestion requires a smart approach. By planning early and system-aware, we transform grid limitations into unique opportunities for faster, future-proof area development.",
       accordions: [
         {
           title: "What is grid-aware?",
           content: "Grid-aware development or construction integrates the available grid capacity as a precondition in the spatial, technical, and programmatic design. Think of phasing based on transport capacity, contracting, clustering functions for shared grid use, and storage as a buffer. But also mobility and charging infrastructure."
         },
         {
-          title: "Why is this urgent now?",
-          content: "There is transport scarcity in more than 87% of Dutch grid areas. New connections are refused or delayed by 5–10 years. Existing connections cannot be enlarged. Those who do not design grid-aware risk a standstill of construction, but also of their business."
+          title: "Grid Congestion Approach",
+          content: "To guarantee the security of power supply in the future, the grid must expand and be reinforced. This requires significant investment and can take several years. Municipalities have a role to play: they grant permits for placing high-voltage pylons and transformer substations in neighborhoods.\n\nIn addition, electricity usage must also change. By utilizing the grid more smartly and spreading electricity consumption, high peaks are reduced and a network does not need to be unnecessarily reinforced. This also reduces the risk of power outages."
         },
         {
-          title: "Which parties?",
-          content: "Municipalities, housing corporations, grid operators, project developers, and builders. Think from chain collaboration, eco-chains and systems ensure the right input and engage in public-private partnerships."
+          title: "Impact of Grid Congestion",
+          content: "The lack of grid capacity impacts residential construction plans, the sustainability transition of the built environment, fleets, industry, and SMEs. Various municipalities expect that up to more than half of housing plans will be delayed or cancelled because they cannot be connected to the grid or can only be connected much later.\n\nIn addition, municipalities cannot always meet the legal frameworks for executing municipal heat programs. For homes, new electricity connections and upgrades of existing connections for a heat network, heat pump, or electric cooking fall under the heat supply and/or housing needs category (category 3 of the prioritization framework). However, this does not apply to a large part of SMEs and public real estate. These applications are processed on a first-come, first-served basis below the prioritized requests.\n\nWe advise municipalities to consult with the grid operator for the development of the heat program to determine when there is capacity on the grid and when it could potentially be utilized."
         },
         {
-          title: "How does this relate to the Energy Act 2026?",
-          content: "The Energy Act 2026 legally anchors 'Collective' Energy Communities (CEC) and energy sharing. This creates new opportunities for areas based on energy profile — production, storage, flexibility, usage."
+          title: "New Working Method: Earlier Applications in the Construction Process",
+          content: "Municipalities can get earlier clarity on whether transport capacity is available at the time of completion for the construction of housing and schools. They can be allocated transport capacity by the grid operator up to 10 years in advance. Once the project becomes more concrete, they can subsequently apply for prioritization on the waiting list."
+        },
+        {
+          title: "ACM Prioritization Framework",
+          content: "To ensure that in grid congestion areas important societal functions such as schools, housing, and hospitals receive priority, the ACM has established the societal prioritization framework. This is a method by which grid operators distribute the available capacity on the grid based on societal priority. Essential basic needs such as housing, upgrading existing residential connections, schools, public transport, and gas, heat, and telecom networks can also qualify for prioritization. Many SMEs, such as shops and restaurants, are not covered by this."
+        },
+        {
+          title: "Preparing for a Connection Freeze",
+          content: "The prioritization framework does not create extra capacity, but only regulates the distribution of scarce capacity. In some regions, a connection freeze is imminent. Municipalities in the Flevoland, Utrecht, and Gelderland regions are already preparing for this."
+        },
+        {
+          title: "National Action Program Grid Congestion",
+          content: "The National Action Program Grid Congestion (LAN) is a collaborative program of grid operators, governments, the Authority for Consumers and Markets, and market parties. The partners work on reducing grid congestion and preparing for the energy system of the future."
         },
         {
           title: "New ACM Prioritization Framework (July 1, 2026)",
@@ -456,8 +483,8 @@ export const translations = {
     },
     netbewust: {
       label: "Grid-aware",
-      title: "Grid-aware design from the ground up",
-      desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground. But also respond on time regarding a connection so you can continue building.",
+      title: "System-aware",
+      desc: "Development and energy infrastructure are too often planned separately and energy planning starts too late in spatial development. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground. But also respond on time regarding a connection so you can continue building. So not grid-aware building, but system-aware working.",
       section1: {
         title: "From consumption to power",
         desc: "Grid congestion is not caused by too much energy, but by simultaneity and peak loads. The energy system is billed on power (kW), not just volume (kWh).",
@@ -518,8 +545,8 @@ export const translations = {
     },
     diagram: {
       label: "System Model",
-      title: "Integral approach visualized",
-      desc: "Without the right balance between carriers and demanders, an area as well as a system is neither feasible nor executable without high costs."
+      title: "Grid-aware design from the ground up.",
+      desc: "Without the right balance, an area as well as a system is neither feasible nor executable without high costs. Development and energy infrastructure are too often planned in isolation, and energy planning in spatial development starts too late. Combine both disciplines — so that the new residential area or business park is connectable before the first pile is driven into the ground. But also react in time to a connection so you can keep building. Below is the integral approach visualized"
     },
     aanpak: {
       label: "Approach",
@@ -603,7 +630,7 @@ export const translations = {
       title1: "Make your area",
       title2: "grid-ready",
       title3: "?",
-      desc: "Start with a Quick Scan of your location — to get a clear picture of opportunities and risks.",
+      desc: "Want to know more? Do you have a complex energy issue? Or are you stuck due to energy constraints?",
       btn1: "More information",
       btn2: "More about VOVON"
     },
@@ -687,6 +714,7 @@ export const translations = {
     },
     frameworks: {
       tabs: {
+        quickscan: "Quickscan Method",
         routekaart: "The Roadmap (6 Steps)",
         locatieNaarSysteem: "Location to System",
         planvorming: "For Planning"

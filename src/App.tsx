@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { EnergyCircle } from "./components/EnergyCircle";
 import { AIAssistant } from "./components/AIAssistant";
+import { TimelineView } from "./components/TimelineView";
 import {
   BatteryCharging,
   Sun,
@@ -284,11 +285,11 @@ const LegalView = ({
 };
 
 export default function App() {
-  const [view, setView] = useState<"home" | "legal">("home");
+  const [view, setView] = useState<"home" | "legal" | "timeline">("home");
   const [lang, setLang] = useState<Language>("nl");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("routekaart");
+  const [activeFrameworkTab, setActiveFrameworkTab] = useState<string>("quickscan");
   const [netpanelTab, setNetpanelTab] = useState<"afname" | "invoeding">("afname");
   const [openAccordion, setOpenAccordion] = useState<number>(0);
 
@@ -306,14 +307,19 @@ export default function App() {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
+    let targetId = id;
+    if (id === "aanpak") {
+      targetId = "werkwijze";
+    }
+    
     if (view !== "home") {
       setView("home");
       setTimeout(() => {
-        if (id === "hero") {
+        if (targetId === "hero") {
           window.scrollTo({ top: 0, behavior: "smooth" });
           return;
         }
-        const element = document.getElementById(id);
+        const element = document.getElementById(targetId);
         if (element) {
           const navHeight = 64;
           const elementPosition = element.getBoundingClientRect().top;
@@ -324,12 +330,12 @@ export default function App() {
       return;
     }
     
-    if (id === "hero") {
+    if (targetId === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     
-    const element = document.getElementById(id);
+    const element = document.getElementById(targetId);
     if (element) {
       const navHeight = 64; // 4rem = 64px
       const elementPosition = element.getBoundingClientRect().top;
@@ -362,14 +368,16 @@ export default function App() {
           </span>
         </a>
 
-        {view === "home" && (
+        {(view === "home" || view === "timeline") && (
           <div className="hidden lg:flex items-center gap-10">
-            <ul className="flex gap-8 list-none m-0 p-0">
+            <ul className="flex gap-8 list-none m-0 p-0 items-center">
               <li>
                 <a
                   href="#hero"
                   onClick={(e) => scrollToSection(e, "hero")}
-                  className="text-[15px] font-medium text-accent border-b-2 border-accent pb-1 no-underline"
+                  className={`text-[15px] font-medium pb-1 no-underline transition-colors ${
+                    view === "home" ? "text-accent border-b-2 border-accent" : "text-white hover:text-accent"
+                  }`}
                 >
                   {t.nav.home}
                 </a>
@@ -385,8 +393,8 @@ export default function App() {
               </li>
               <li>
                 <a
-                  href="#aanpak"
-                  onClick={(e) => scrollToSection(e, "aanpak")}
+                  href="#werkwijze"
+                  onClick={(e) => scrollToSection(e, "werkwijze")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
                   {t.nav.werkwijze}
@@ -394,13 +402,14 @@ export default function App() {
               </li>
               <li>
                 <a
-                  href="#modellen"
-                  onClick={(e) => scrollToSection(e, "modellen")}
+                  href="#netbewust"
+                  onClick={(e) => scrollToSection(e, "netbewust")}
                   className="text-[15px] font-medium text-white hover:text-accent transition-colors no-underline"
                 >
-                  {lang === "nl" ? "Modellen" : "Frameworks"}
+                  {t.nav.netbewust}
                 </a>
               </li>
+
               <li>
                 <a
                   href="#projecten"
@@ -456,7 +465,7 @@ export default function App() {
         )}
 
         {/* Mobile Menu Toggle */}
-        {view === "home" && (
+        {(view === "home" || view === "timeline") && (
           <div className="flex lg:hidden items-center gap-4">
             <button
               onClick={() => setLang(lang === "nl" ? "en" : "nl")}
@@ -491,7 +500,7 @@ export default function App() {
       </nav>
 
       {/* Mobile Menu Dropdown */}
-      {view === "home" && (
+      {(view === "home" || view === "timeline") && (
         <div
           className={`fixed inset-0 bg-paper/95 backdrop-blur-md z-40 lg:hidden transition-all duration-300 ease-in-out flex flex-col items-center justify-center ${
             isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -502,7 +511,9 @@ export default function App() {
               <a
                 href="#hero"
                 onClick={(e) => scrollToSection(e, "hero")}
-                className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
+                className={`text-2xl font-bold transition-colors no-underline ${
+                  view === "home" ? "text-accent" : "text-white hover:text-accent"
+                }`}
               >
                 {t.nav.home}
               </a>
@@ -518,8 +529,8 @@ export default function App() {
             </li>
             <li>
               <a
-                href="#aanpak"
-                onClick={(e) => scrollToSection(e, "aanpak")}
+                href="#werkwijze"
+                onClick={(e) => scrollToSection(e, "werkwijze")}
                 className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
               >
                 {t.nav.werkwijze}
@@ -527,13 +538,14 @@ export default function App() {
             </li>
             <li>
               <a
-                href="#modellen"
-                onClick={(e) => scrollToSection(e, "modellen")}
+                href="#netbewust"
+                onClick={(e) => scrollToSection(e, "netbewust")}
                 className="text-2xl font-bold text-white hover:text-accent transition-colors no-underline"
               >
-                {lang === "nl" ? "Modellen" : "Frameworks"}
+                {t.nav.netbewust}
               </a>
             </li>
+
             <li>
               <a
                 href="#projecten"
@@ -662,138 +674,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* NETBEWUST INTRO SECTION */}
-          <section
-            id="netbewust"
-            className="py-16 md:py-24 px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative border-t border-white/10"
-          >
-            <div className="space-y-16">
-              {/* Header */}
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-8 md:gap-20 items-start">
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <SectionLabel>{t.netbewust.label}</SectionLabel>
-                  <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-4 text-white">
-                    {t.netbewust.title}
-                  </h2>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <p className="text-lg md:text-xl leading-relaxed text-white/80 m-0">
-                    {t.netbewust.desc}
-                  </p>
-                </motion.div>
-              </div>
-
-              {/* Grid of 3 Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Card 1 */}
-                <motion.div
-                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className="space-y-4">
-                    <h3 className="font-display text-xl font-bold text-white">
-                      {t.netbewust.section1.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-white/70">
-                      {t.netbewust.section1.desc}
-                    </p>
-                    <div className="pt-2">
-                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
-                        {t.netbewust.section1.header}
-                      </p>
-                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
-                        {t.netbewust.section1.bullets.map((bullet: string, idx: number) => (
-                          <li key={idx}>
-                            <span className="text-white/70">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  {t.netbewust.section1.footer && (
-                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
-                      {t.netbewust.section1.footer}
-                    </p>
-                  )}
-                </motion.div>
-
-                {/* Card 2 */}
-                <motion.div
-                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <div className="space-y-4">
-                    <h3 className="font-display text-xl font-bold text-white">
-                      {t.netbewust.section2.title}
-                    </h3>
-                    <div className="pt-2">
-                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
-                        {t.netbewust.section2.header}
-                      </p>
-                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
-                        {t.netbewust.section2.bullets.map((bullet: string, idx: number) => (
-                          <li key={idx}>
-                            <span className="text-white/70">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  {t.netbewust.section2.footer && (
-                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
-                      {t.netbewust.section2.footer}
-                    </p>
-                  )}
-                </motion.div>
-
-                {/* Card 3 */}
-                <motion.div
-                  className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full space-y-6"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="space-y-4">
-                    <h3 className="font-display text-xl font-bold text-white">
-                      {t.netbewust.section3.title}
-                    </h3>
-                    <div className="pt-2">
-                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
-                        {t.netbewust.section3.bullets.map((bullet: string, idx: number) => (
-                          <li key={idx}>
-                            <span className="text-white/70">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="text-xs text-white/40 border-t border-white/10 pt-4 m-0 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                    <span>Systeembewuste aanpak</span>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-
           {/* NET STATUS PANEL */}
           <section
             id="netpanel"
@@ -880,80 +760,138 @@ export default function App() {
             </div>
           </section>
 
-          {/* WERKWIJZE / STAPPEN */}
-          <section
-            id="aanpak"
-            className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6 }}
-            >
-              <SectionLabel>{t.aanpak.label}</SectionLabel>
-              <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight mb-16 max-w-[600px] leading-[1.05] text-white whitespace-pre-line">
-                {t.aanpak.title}
-              </h2>
-            </motion.div>
+          {/* TIMELINE SECTION (1 juli '26) */}
+          <TimelineView isEmbedded={true} lang={lang} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.0 }}
-                className="h-full"
-              >
-                <Step
-                  num={t.aanpak.steps[0].num}
-                  title={t.aanpak.steps[0].title}
-                  desc={t.aanpak.steps[0].desc}
-                  tag={t.aanpak.steps[0].tag}
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="h-full"
-              >
-                <Step
-                  num={t.aanpak.steps[1].num}
-                  title={t.aanpak.steps[1].title}
-                  desc={t.aanpak.steps[1].desc}
-                  tag={t.aanpak.steps[1].tag}
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="h-full"
-              >
-                <Step
-                  num={t.aanpak.steps[2].num}
-                  title={t.aanpak.steps[2].title}
-                  desc={t.aanpak.steps[2].desc}
-                  tag={t.aanpak.steps[2].tag}
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="h-full"
-              >
-                <Step
-                  num={t.aanpak.steps[3].num}
-                  title={t.aanpak.steps[3].title}
-                  desc={t.aanpak.steps[3].desc}
-                  tag={t.aanpak.steps[3].tag}
-                />
-              </motion.div>
+          {/* NETBEWUST INTRO SECTION */}
+          <section
+            id="netbewust"
+            className="py-16 md:py-24 px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative border-t border-white/10"
+          >
+            <div className="space-y-16">
+              {/* Header */}
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-8 md:gap-20 items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <SectionLabel>{t.netbewust.label}</SectionLabel>
+                  <h2 className="font-display font-bold text-[clamp(32px,4vw,54px)] tracking-tight leading-[1.05] mb-4 text-white">
+                    {t.netbewust.title}
+                  </h2>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <p className="text-lg md:text-xl leading-relaxed text-white/80 m-0">
+                    {t.netbewust.desc}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Grid of 3 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Card 1 */}
+                <motion.div
+                  className="bg-card border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-accent/20 transition-all shadow-sm"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section1.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-white/70">
+                      {t.netbewust.section1.desc}
+                    </p>
+                    <div className="pt-2">
+                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
+                        {t.netbewust.section1.header}
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section1.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  {t.netbewust.section1.footer && (
+                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
+                      {t.netbewust.section1.footer}
+                    </p>
+                  )}
+                </motion.div>
+
+                {/* Card 2 */}
+                <motion.div
+                  className="bg-card border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-accent/20 transition-all shadow-sm"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section2.title}
+                    </h3>
+                    <div className="pt-2">
+                      <p className="text-xs uppercase tracking-wider font-bold text-accent mb-3">
+                        {t.netbewust.section2.header}
+                      </p>
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section2.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  {t.netbewust.section2.footer && (
+                    <p className="text-xs text-white/50 border-t border-white/10 pt-4 m-0 italic">
+                      {t.netbewust.section2.footer}
+                    </p>
+                  )}
+                </motion.div>
+
+                {/* Card 3 */}
+                <motion.div
+                  className="bg-card border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-accent/20 transition-all shadow-sm"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-display text-xl font-bold text-white">
+                      {t.netbewust.section3.title}
+                    </h3>
+                    <div className="pt-2">
+                      <ul className="list-disc pl-5 space-y-2 text-accent text-sm">
+                        {t.netbewust.section3.bullets.map((bullet: string, idx: number) => (
+                          <li key={idx}>
+                            <span className="text-white/70">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="text-xs text-white/40 border-t border-white/10 pt-4 m-0 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span>Systeembewuste aanpak</span>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </section>
 
@@ -1132,190 +1070,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* MODEILLEN / FRAMEWORKS */}
-          <section
-            id="modellen"
-            className="py-20 md:py-[120px] px-5 md:px-10 max-w-[1200px] mx-auto z-10 relative"
-          >
-            {/* Tabs & Section Header */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <SectionLabel>{lang === "nl" ? "Systeem Modellen" : "System Frameworks"}</SectionLabel>
-                <h2 className="font-display font-bold text-[clamp(32px,4vw,56px)] tracking-tight leading-[1.05] text-white">
-                  {lang === "nl" ? "Netbewuste frameworks" : "Grid-aware frameworks"}
-                </h2>
-              </motion.div>
 
-              {/* Tab Toggles */}
-              <div className="flex flex-wrap gap-2 p-1.5 bg-card border border-white/10 rounded-2xl self-start lg:self-end">
-                {["routekaart", "locatieNaarSysteem", "planvorming"].map((tab) => {
-                  const active = activeFrameworkTab === tab;
-                  return (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveFrameworkTab(tab)}
-                      className={`px-5 py-2.5 rounded-xl font-display text-[14px] font-bold transition-all ${
-                        active
-                          ? "bg-accent text-paper shadow-lg"
-                          : "text-white/60 hover:text-white hover:bg-white/5"
-                      }`}
-                    >
-                      {t.frameworks.tabs[tab as keyof typeof t.frameworks.tabs]}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* TAB CONTENT */}
-            <div className="min-h-[450px]">
-              {/* TAB 1: Routekaart */}
-              {activeFrameworkTab === "routekaart" && (
-                <motion.div
-                  key="routekaart"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-8"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {t.frameworks.routekaart.steps.map((step: any, idx: number) => (
-                      <div
-                        key={idx}
-                        className="bg-card border border-white/10 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between hover:border-white/20 transition-all duration-300"
-                      >
-                        {/* Colored Top Bar */}
-                        <div
-                          className="absolute top-0 left-0 right-0 h-[4px]"
-                          style={{ backgroundColor: step.color }}
-                        />
-
-                        <div>
-                          {/* Number Bubble */}
-                          <div
-                            className="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-lg text-white mb-6"
-                            style={{ backgroundColor: step.color }}
-                          >
-                            {step.num}
-                          </div>
-
-                          <h3 className="font-display font-bold text-xl text-white mb-3">
-                            {step.title}
-                          </h3>
-                        </div>
-
-                        <p className="text-[14px] leading-[1.6] text-white/70 whitespace-pre-line m-0 mt-2">
-                          {step.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {/* TAB 2: Locatie naar Systeem */}
-              {activeFrameworkTab === "locatieNaarSysteem" && (
-                <motion.div
-                  key="locatieNaarSysteem"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
-                    {lang === "nl"
-                      ? "Hoe we een locatie omvormen tot een betrouwbaar en werkend lokaal energiesysteem met optimale balans."
-                      : "How we transform a location into a reliable and working local energy system with optimal balance."}
-                  </p>
-
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                    {t.frameworks.locatieNaarSysteem.cols.map((col: any, idx: number) => (
-                      <div
-                        key={idx}
-                        className="bg-card border border-white/10 rounded-3xl p-8 flex flex-col hover:border-white/20 transition-all duration-300"
-                      >
-                        {/* Col Title & Color Accent */}
-                        <div className="flex items-center gap-3 mb-8">
-                          <span
-                            className="w-3.5 h-3.5 rounded-full shrink-0"
-                            style={{ backgroundColor: col.color }}
-                          />
-                          <h3 className="font-display font-bold text-2xl text-white">
-                            <span className="text-white/40 mr-2">{idx + 1}</span>
-                            {col.title}
-                          </h3>
-                        </div>
-
-                        {/* List Items */}
-                        <ul className="space-y-4 list-none p-0 m-0 flex-1 flex flex-col justify-between">
-                          {col.items.map((item: string, itemIdx: number) => (
-                            <li key={itemIdx} className="flex gap-3 text-[14px] leading-[1.6] text-white/80">
-                              <span className="w-1.5 h-6 shrink-0 rounded-full" style={{ backgroundColor: col.color }} />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {/* TAB 3: Planvorming */}
-              {activeFrameworkTab === "planvorming" && (
-                <motion.div
-                  key="planvorming"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="space-y-6"
-                >
-                  <p className="text-[15px] leading-[1.8] text-white/70 max-w-[600px] mb-8">
-                    {lang === "nl"
-                      ? "Integratie van energie-eisen in de vroege ruimtelijke fasen om risico's en faalkosten te elimineren."
-                      : "Integration of energy requirements into early spatial phases to eliminate risks and failure costs."}
-                  </p>
-
-                  <div className="space-y-4">
-                    {t.frameworks.planvorming.phases.map((item: any, idx: number) => (
-                      <div
-                        key={idx}
-                        className="bg-card border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/20 transition-all duration-300"
-                      >
-                        <div className="flex flex-col md:flex-row md:items-center gap-6 flex-1">
-                          {/* Phase Label */}
-                          <div
-                            className="px-5 py-2.5 rounded-xl font-display font-bold text-sm text-center min-w-[160px] max-w-[200px]"
-                            style={{
-                              backgroundColor: `${item.color}20`,
-                              color: item.color,
-                              border: `1px solid ${item.color}40`,
-                            }}
-                          >
-                            {item.phase}
-                          </div>
-
-                          {/* Phase Content */}
-                          <div className="flex-1">
-                            <p className="text-[16px] font-bold text-white m-0 leading-snug">
-                              {item.content}
-                            </p>
-                            <p className="text-[13px] text-white/50 m-0 mt-1 flex items-center gap-1.5 font-medium">
-                              <span className="text-[15px]" style={{ color: item.color }}>↑</span> {item.note}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          </section>
 
           {/* SAMENWERKING (PUBLIEK-PRIVATE SAMENWERKING) */}
           <section
@@ -1457,6 +1212,15 @@ export default function App() {
       )}
       {view === "legal" && (
         <LegalView
+          onBack={() => {
+            setView("home");
+            window.scrollTo(0, 0);
+          }}
+          lang={lang}
+        />
+      )}
+      {view === "timeline" && (
+        <TimelineView
           onBack={() => {
             setView("home");
             window.scrollTo(0, 0);

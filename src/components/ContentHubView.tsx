@@ -327,7 +327,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
               {lang === "nl" ? "Geautomatiseerde Webfeeds" : "Automated Web Feeds"}
             </div>
             <h1 className="font-display font-bold text-[clamp(28px,4vw,44px)] tracking-tight leading-none text-white">
-              {lang === "nl" ? "Centrale Contenthub" : "Central Content Hub"}
+              {lang === "nl" ? "Nieuws" : "News"}
             </h1>
             <p className="text-sm text-white/70 max-w-2xl mt-3 leading-relaxed">
               {lang === "nl"
@@ -347,7 +347,7 @@ export const ContentHubView: React.FC<ContentHubViewProps> = ({ onBack, lang }) 
               }`}
             >
               <RefreshCw size={16} className={isSyncing ? "animate-spin" : ""} />
-              {isSyncing ? (lang === "nl" ? "Synchroniseren..." : "Syncing...") : (lang === "nl" ? "Synchroniseer Feeds" : "Sync Feeds")}
+              {isSyncing ? (lang === "nl" ? "Synchroniseren..." : "Syncing...") : "Sync"}
             </button>
           </div>
         </div>
